@@ -1,0 +1,20 @@
+from .base_settings import *
+
+TEMPLATES[0]['DIRS'].append("./src/app/templates")
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'casting',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '',
+        'OPTIONS': {'charset': 'utf8mb4'}
+    }
+}
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_FAKE = 'no'
