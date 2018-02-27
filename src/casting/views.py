@@ -7,8 +7,8 @@ from app.utils import body_parser
 class Home(View):
     def get(self, request):
         context = {}
-        return render(request, 'casting/base.html', context)
+        return render(request, 'casting/index.html', context)
 
     @body_parser
     def post(self, request, data):
-        return redirect('/exchange')
+        pass
