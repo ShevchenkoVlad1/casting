@@ -8,6 +8,6 @@ else
     python3 src/manage.py loaddata src/casting/fixtures/*.json
 fi
 
-python3 src/manage.py collectstatic
+sudo python3 src/manage.py collectstatic
 
 uwsgi --ini uwsgi/production.ini
