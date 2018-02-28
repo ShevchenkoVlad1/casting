@@ -1,10 +1,8 @@
-# temp imports
 import pprint
 from datetime import datetime
 
+from django.contrib.auth.models import User
 from django.core.management import BaseCommand
-
-from user.models import User
 
 pp = pprint.PrettyPrinter(indent=4)
 
