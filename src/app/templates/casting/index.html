@@ -23,10 +23,18 @@
     <link rel="stylesheet" href="/static/casting/css/base.css">
     <link rel="stylesheet" href="/static/casting/css/vendor.css">
     <link rel="stylesheet" href="/static/casting/css/main.css">
+    <link rel="stylesheet" href="/static/casting/css/nav.css">
+    <link rel="stylesheet" href="/static/casting/css/animate.min.css">
 
     <!-- script
     ================================================== -->
-    <script src="/static/casting/js/modernizr.js"></script>
+    <!-- Modernizr JS -->
+	<script src="/static/casting/js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="/static/casting/js/respond.min.js"></script>
+	<![endif]-->
+
     <script src="/static/casting/js/pace.min.js"></script>
 
     <!-- favicons
@@ -38,685 +46,667 @@
 
 </head>
 
-<body id="top">
+<body>
 
-    <!-- header
-    ================================================== -->
-    <header class="s-header">
+    <div id="page">
 
-        <nav class="header-nav">
+        <!-- header
+        ================================================== -->
+        <header class="s-header">
+            <nav class="cast-nav" role="navigation">
+                <!-- <div class="top-menu"> -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="text-center menu-1 menu-wrap">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active"><a href="#" data-nav-section="home">Home</a></li>
+                                    <li><a href="#" data-nav-section="about">About</a></li>
+                                    <li><a href="#" data-nav-section="crew">Crew</a></li>
+                                    <li><a href="#" data-nav-section="casting">Casting</a></li>
+                                    <li><a href="#" data-nav-section="videos">Videos</a></li>
+                                    <li><a href="#" data-nav-section="photos">Photos</a></li>
+                                    <li><a href="#" data-nav-section="sign_up">Sign up</a></li>
+                                    <li><a href="#" data-nav-section="social">Social updates</a></li>
+                                    <li><a href="#" data-nav-section="partners">Partners</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                <!-- </div> -->
+            </nav>
+        </header>
 
-            <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
+        <!-- home
+        ================================================== -->
+        <div data-section="home">
+            <section class="s-home target-section" data-parallax="scroll" data-image-src="/static/casting/img/home_bg.jpg" data-position-y=top>
 
-            <div class="header-nav__content">
-                <h3>Navigation</h3>
-                
-                <ul class="header-nav__list">
-                    <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
-                    <li><a class="smoothscroll"  href="#about" title="about">About</a></li>
-                    <li><a class="smoothscroll"  href="#crew" title="crew">Crew</a></li>
-                    <li><a class="smoothscroll"  href="#casting" title="casting">Casting</a></li>
-                    <li><a class="smoothscroll"  href="#videos" title="videos">Videos</a></li>
-                    <li><a class="smoothscroll"  href="#photos" title="photos">Photos</a></li>
-                    <li><a class="smoothscroll"  href="#signup" title="Sign up">Sign up</a></li>
-                    <li><a class="smoothscroll"  href="#social" title="Social updates">Social updates</a></li>
-                    <li><a class="smoothscroll"  href="#partners" title="partners">Partners</a></li>
+                <div class="overlay"></div>
+                <div class="shadow-overlay"></div>
+
+                <div class="home-content">
+                    <div class="home-buttons">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3 home-casting">
+                                    <div class="home-content__buttons">
+                                        <a href="#" data-nav-section="casting" class="btn btn--stroke">
+                                            Go to the casting
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3 home-news">
+                                    <div class="home-content__buttons">
+                                        <a href="#" data-nav-section="social" class="btn btn--stroke">
+                                            News
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="home-content__scroll">
+                        <a href="#" data-nav-section="about">
+                            <span>Scroll Down</span>
+                        </a>
+                    </div>
+
+                    <div class="home-content__line"></div>
+
+                </div> <!-- end home-content -->
+
+
+                <ul class="home-social">
+                    <li>
+                        <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
+                    </li>
+                    <li>
+                        <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
+                    </li>
                 </ul>
+                <!-- end home-social -->
 
-                <ul class="header-nav__social">
-                    <li>
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                    </li>
-                </ul>
-
-            </div> <!-- end header-nav__content -->
-
-        </nav>  <!-- end header-nav -->
-
-        <a class="header-menu-toggle" href="#0">
-            <span class="header-menu-text">Menu</span>
-            <span class="header-menu-icon"></span>
-        </a>
-
-    </header> <!-- end s-header -->
-
-
-    <!-- home
-    ================================================== -->
-    <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="/static/casting/img/platform-bit.jpg" data-position-y=top>
-
-        <div class="overlay"></div>
-        <div class="shadow-overlay"></div>
-
-        <div class="home-content">
-
-            <div class="row home-content__main">
-
-                <h3>Movie Auditions & Casting</h3>
-
-                <div class="home-content__buttons">
-                    <a href="#casting" class="smoothscroll btn btn--stroke">
-                        Go to the casting
-                    </a>
-                </div>
-
-            </div>
-
-            <div class="home-content__scroll">
-                <a href="#about" class="scroll-link smoothscroll">
-                    <span>Scroll Down</span>
-                </a>
-            </div>
-
-            <div class="home-content__line"></div>
-
-        </div> <!-- end home-content -->
-
-
-        <ul class="home-social">
-            <li>
-                <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
-            </li>
-            <li>
-                <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-            </li>
-        </ul> 
-        <!-- end home-social -->
-
-    </section> <!-- end s-home -->
-
-
-    <!-- about
-    ================================================== -->
-    <section id='about' class="s-about">
-
-        <div class="row section-header has-bottom-sep" data-aos="fade-up">
-            <div class="col-full">
-                <h3 class="subhead subhead--dark">About us</h3>
-                <h1 class="display-1 display-1--light">MOVIE AUDITIONS & CASTING</h1>
-            </div>
-        </div> <!-- end section-header -->
-
-        <div class="row about-desc" data-aos="fade-up">
-            <div class="col-full">
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt. 
-                </p>
-            </div>
-        </div> <!-- end about-desc -->
-
-        <div class="row about-stats stats block-1-4 block-m-1-2 block-mob-full" data-aos="fade-up">
-                
-            <div class="col-block stats__col ">
-                <div class="stats__count">127</div>
-                <h5>Awards Received</h5>
-            </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">150</div>
-                <h5>Cups of Coffee</h5>
-            </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">109</div>
-                <h5>Projects Completed</h5>
-            </div>
-            <div class="col-block stats__col">
-                <div class="stats__count">102</div>
-                <h5>Happy Clients</h5> 
-            </div>
-
-        </div> <!-- end about-stats -->
-
-        <div class="about__line"></div>
-
-    </section> <!-- end s-about -->
-
-
-    <!-- crew
-    ================================================== -->
-    <section id='crew' class="s-services">
-
-        <div class="row section-header has-bottom-sep" data-aos="fade-up">
-            <div class="col-full">
-                <h3 class="subhead">Our crew</h3>
-                <h1 class="display-2">We work only with highly qualified crew</h1>
-            </div>
-        </div> <!-- end section-header -->
-
-        <div class="row services-list block-1-2 block-tab-full">
-
-            <div class="col-block service-item" data-aos="fade-up">
-                <div class="service-icon">
-                    <i class="icon-megaphone"></i>
-                </div>
-                <div class="service-text">
-                    <h3 class="h2">Producer</h3>
-                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
-                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
-                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-block service-item" data-aos="fade-up">
-                <div class="service-icon">
-                    <i class="icon-pen"></i>
-                </div>
-                <div class="service-text">
-                    <h3 class="h2">Stage director</h3>
-                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
-                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
-                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-block service-item" data-aos="fade-up">
-                <div class="service-icon">
-                    <i class="icon-megaphone"></i>
-                </div>  
-                <div class="service-text">
-                    <h3 class="h2">Marketologist</h3>
-                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
-                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
-                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-block service-item" data-aos="fade-up">
-                <div class="service-icon">
-                    <i class="icon-earth"></i>
-                </div>
-                <div class="service-text">
-                    <h3 class="h2">...</h3>
-                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
-                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
-                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
-                    </p>
-                </div>
-            </div>
-
-            <div class="col-block service-item" data-aos="fade-up">
-                <div class="service-icon">
-                    <i class="icon-cube"></i>
-                </div>
-                <div class="service-text">
-                    <h3 class="h2">...</h3>
-                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
-                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
-                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
-                    </p>
-                </div>
-            </div>
-    
-            <div class="col-block service-item" data-aos="fade-up">
-                <div class="service-icon"><i class="icon-lego-block"></i></div>
-                <div class="service-text">
-                    <h3 class="h2">...</h3>
-                    <p>Nemo cupiditate ab quibusdam quaerat impedit magni. Earum suscipit ipsum laudantium. 
-                    Quo delectus est. Maiores voluptas ab sit natus veritatis ut. Debitis nulla cumque veritatis.
-                    Sunt suscipit voluptas ipsa in tempora esse soluta sint.
-                    </p>
-                </div>
-            </div>
-
-        </div> <!-- end crew-list -->
-
-    </section> <!-- end s-crew -->
-
-    <!-- casting
-    ================================================== -->
-    <section id="casting" class="s-home" data-parallax="scroll" data-image-src="/static/casting/img/hero-bg.jpg" data-position-y=top>
-
-        <div class="overlay"></div>
-        <div class="contact__line"></div>
-
-        <div class="row section-header" data-aos="fade-up">
-            <div class="col-full">
-                <h1 class="display-2 display-2--light">Sign up for the casting</h1>
-            </div>
+            </section> <!-- end s-home -->
         </div>
 
-        <div class="row contact-content" data-aos="fade-up">
 
-            <div class="contact-primary">
+        <!-- about
+        ================================================== -->
+        <div data-section="about">
+            <section class="s-about">
 
-                <h3 class="h6">Sign up form</h3>
+                <div class="overlay"></div>
+                <div class="shadow-overlay"></div>
 
-                <form name="contactForm" id="contactForm" method="post" action="" novalidate="novalidate">
-                    <fieldset>
-
-                    <div class="form-field">
-                        <input name="first_name" type="text" id="first_name" placeholder="Your First Name" value="" minlength="2" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <input name="second_name" type="text" id="second_name" placeholder="Your Second Name" value="" minlength="2" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <input name="email" type="email" id="email" placeholder="Your Email" value="" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <input name="phone" type="text" id="phone" placeholder="Your Phone Number" value="" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <input name="gender" type="radio" id="male" value="male" required="" aria-required="true" checked> Male<br>
-                        <input name="gender" type="radio" id="female" value="female" required="" aria-required="true"> Female<br>
-                    </div>
-                    <div class="form-field">
-                        <input name="age" type="number" min="16" max="70" id="age" placeholder="Your Age" value="" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <input name="city" type="text" id="city" placeholder="Your City" value="" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <textarea name="experience" id="experience" placeholder="Your Experience" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
-                    </div>
-                    <div class="form-field">
-                        <textarea name="about_info" id="about_info" placeholder="About you" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
-                    </div>
-                    <div class="form-field">
-                        <p class="full-width">Your Photo</p>
-                        <input name="contact_image" type="file" id="contact_image" accept="image/*" value="" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <input name="video_url" type="url" id="video_url" placeholder="Url On Your Video" value="" required="" aria-required="true" class="full-width">
-                    </div>
-                    <div class="form-field">
-                        <button class="full-width btn--primary">Submit</button>
-                        <div class="submit-loader">
-                            <div class="text-loader">Sending...</div>
-                            <div class="s-loader">
-                                <div class="bounce1"></div>
-                                <div class="bounce2"></div>
-                                <div class="bounce3"></div>
-                            </div>
+                <div class="about-title container" data-aos="fade-up">
+                    <div class="section-header">
+                        <div class="col-full">
+                            <p>MOVIE AUDITIONS & CASTING</p>
                         </div>
-                    </div>
-
-                    </fieldset>
-                </form>
-
-                <!-- casting-warning -->
-                <div class="message-warning">
-                    Something went wrong. Please try again.
+                    </div> <!-- end section-header -->
                 </div>
 
-                <!-- casting-success -->
-                <div class="message-success">
-                    Your message was sent, thank you!<br>
-                </div>
+                <div class="about-info container" data-aos="fade-up">
+                    <div class="row__divide-3">
+                        <div class="about-poster">
+                            <img src="/static/casting/img/home_bg.jpg" alt="">
+                        </div>
 
-            </div> <!-- end casting-primary -->
-
-            <div class="contact-secondary">
-                <div class="contact-info">
-
-                    <h3 class="h6 hide-on-fullwidth">List users who've already signed up</h3>
-
-
-
-                </div> <!-- end casting-info -->
-            </div> <!-- end casting-secondary -->
-
-        </div> <!-- end casting-content -->
-
-    </section> <!-- end s-casting -->
-
-    <!-- videos
-    ================================================== -->
-
-    <section id='videos' class="s-videos">
-
-        <div class="intro-wrap">
-
-            <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
-                <div class="col-full">
-                    <h3 class="subhead">Videos</h3>
-                    <h1 class="display-2">We love what we do, check out some of our videos</h1>
-                </div>
-            </div> <!-- end section-header -->
-
-           <div class="row block-tab-full">
-                <div class="col-block service-item" data-aos="fade-up">
-                    <iframe src="https://www.youtube.com/embed/qylb0dvPOf8" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="col-block service-item" data-aos="fade-up">
-                    <iframe src="https://www.youtube.com/embed/_jukWyDbWE0" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-                <div class="col-block service-item" data-aos="fade-up">
-                    <iframe src="https://www.youtube.com/embed/oUWx3ZSjaRw" frameborder="0" allowfullscreen=""></iframe>
-                </div>
-            </div>
-
-        </div> <!-- end intro-wrap -->
-
-    </section> <!-- end s-videos -->
-
-    <!-- photos
-    ================================================== -->
-    <section id='photos' class="s-works">
-
-        <div class="intro-wrap">
-                
-            <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
-                <div class="col-full">
-                    <h3 class="subhead">Photos</h3>
-                    <h1 class="display-2 display-2--light">We love what we do, check out some of our photos</h1>
-                </div>
-            </div> <!-- end section-header -->
-
-        </div> <!-- end intro-wrap -->
-
-        <div class="row works-content">
-            <div class="col-full masonry-wrap">
-                <div class="masonry">
-    
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="/static/casting/img/platform-bit.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                    <img src="/static/casting/img/platform-bit.jpg"
-                                         srcset="/static/casting/img/platform-bit.jpg 1x, /static/casting/img/platform-bit.jpg 2x" alt="">
-                                </a>
-                            </div>
-    
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    Casting
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Casting
+                        <div class="about-desc">
+                            <div class="col-full">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas lacus et arcu ultrices, ac mattis metus bibendum. Integer et lacus nec dui condimentum sodales. Aenean venenatis nisl vitae varius fermentum. Phasellus sapien neque, blandit a blandit quis, sagittis eget orci. Vivamus interdum non urna quis eleifend. Duis egestas, tortor venenatis lobortis luctus, est neque tincidunt est, ac auctor massa massa ac eros. Curabitur vel accumsan tellus. Aenean sapien nisi, molestie pellentesque nisi id, aliquam laoreet neque.
+                                </p>
+                                <p>
+                                    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus eu massa turpis. Vestibulum semper odio ut vestibulum dignissim. Etiam eleifend, elit quis pharetra sodales, massa mauris ultrices lorem, quis aliquam mauris mauris eu urna. Ut vel lectus quis erat luctus efficitur. Donec semper risus sit amet tempor cursus. Nunc velit leo, rhoncus a turpis a, pulvinar auctor lacus. Quisque nulla ligula, ullamcorper at nulla sed, imperdiet luctus neque. Vivamus hendrerit orci sit amet malesuada mattis. Mauris placerat eleifend tellus et sollicitudin. Praesent vestibulum, quam in vestibulum rutrum, nisl tortor vehicula dolor, ac fermentum odio est non lectus. Sed auctor ex a varius aliquam.
                                 </p>
                             </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
                         </div>
-                    </div> <!-- end masonry__brick -->
-
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="/static/casting/img/platform-bit.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                    <img src="/static/casting/img/platform-bit.jpg"
-                                         srcset="/static/casting/img/platform-bit.jpg 1x, /static/casting/img/platform-bit.jpg 2x" alt="">
-                                </a>
-                            </div>
-    
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    Casting
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Casting
-                                </p>
-                            </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
-                        </div>
-                    </div> <!-- end masonry__brick -->
-    
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="/static/casting/img/platform-bit.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                    <img src="/static/casting/img/platform-bit.jpg"
-                                         srcset="/static/casting/img/platform-bit.jpg 1x, /static/casting/img/platform-bit.jpg 2x" alt="">
-                                </a>
-                            </div>
-    
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    Casting
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Casting
-                                </p>
-                            </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
-                        </div>
-                    </div> <!-- end masonry__brick -->
-    
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="/static/casting/img/platform-bit.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                    <img src="/static/casting/img/platform-bit.jpg"
-                                         srcset="/static/casting/img/platform-bit.jpg 1x, /static/casting/img/platform-bit.jpg 2x" alt="">
-                                </a>
-                            </div>
-
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    Casting
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Casting
-                                </p>
-                            </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
-                        </div>
-                    </div> <!-- end masonry__brick -->
-
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="/static/casting/img/platform-bit.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                    <img src="/static/casting/img/platform-bit.jpg"
-                                         srcset="/static/casting/img/platform-bit.jpg 1x, /static/casting/img/platform-bit.jpg 2x" alt="">
-                                </a>
-                            </div>
-
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    Casting
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Casting
-                                </p>
-                            </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
-                        </div>
-                    </div> <!-- end masonry__brick -->
-    
-                    <div class="masonry__brick" data-aos="fade-up">
-                        <div class="item-folio">
-                                
-                            <div class="item-folio__thumb">
-                                <a href="/static/casting/img/platform-bit.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                    <img src="/static/casting/img/platform-bit.jpg"
-                                         srcset="/static/casting/img/platform-bit.jpg 1x, /static/casting/img/platform-bit.jpg 2x" alt="">
-                                </a>
-                            </div>
-
-                            <div class="item-folio__text">
-                                <h3 class="item-folio__title">
-                                    Casting
-                                </h3>
-                                <p class="item-folio__cat">
-                                    Casting
-                                </p>
-                            </div>
-    
-                            <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                <i class="icon-link"></i>
-                            </a>
-    
-                            <div class="item-folio__caption">
-                                <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                            </div>
-    
-                        </div>
-                    </div> <!-- end masonry__brick -->
-
-                </div> <!-- end masonry -->
-            </div> <!-- end col-full -->
-        </div> <!-- end photos-content -->
-
-    </section> <!-- end s-photos -->
-
-    <!-- signup
-    ================================================== -->
-    <section id='signup' class="s-contact">
-
-        <div class="row section-header" data-aos="fade-up">
-            <div class="col-full">
-                <h3 class="subhead">Sign up</h3>
-                <h1 class="display-2 display-2--light">Subscribe us</h1>
-            </div>
-        </div> <!-- end section-header -->
-
-
-        <div class="row clients-outer" data-aos="fade-up">
-
-            <div class="col-full">
-
-                <p>Quia quo qui sed odit. Quaerat voluptas autem necessitatibus vitae aut non alias sed quia. Ut itaque enim optio ut excepturi deserunt iusto porro.</p>
-                <div class="footer-subscribe">
-                    <div class="subscribe-form">
-                        <form id="mc-form" class="group" novalidate="true">
-                            <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
-                            <input type="button" name="subscribe" value="Subscribe">
-                            <label for="mc-email" class="subscribe-message"></label>
-                        </form>
                     </div>
                 </div>
-            </div>
 
-        </div> <!-- end footer-main -->
 
-    </section> <!-- end s-signup -->
 
-    <!-- social updates
-    ================================================== -->
-    <section id='social' class="s-about">
+                <div class="about__line"></div>
 
-        <div class="row section-header has-bottom-sep" data-aos="fade-up">
-            <div class="col-full">
-                <h3 class="subhead subhead--dark">Social updates</h3>
-            </div>
-        </div> <!-- end section-header -->
-
-        <div class="row about-stats stats block-1-4 block-m-1-2 block-mob-full">
-            <div class="col-block" data-aos="fade-up">
-                <blockquote class="twitter-tweet" data-lang="ru"><p lang="en" dir="ltr">Hands up if the villainous Lord Nooth is your favourite <a href="https://twitter.com/hashtag/EarlyMan?src=hash&amp;ref_src=twsrc%5Etfw">#EarlyMan</a> character! 🙋 If you have&#39;t met him yet, here&#39;s Tom Hiddleston (the voice of Nooth) to introduce you… <a href="https://t.co/vApWNnqVld">pic.twitter.com/vApWNnqVld</a></p>&mdash; Early Man (@earlymanmovie) <a href="https://twitter.com/earlymanmovie/status/967733175064576005?ref_src=twsrc%5Etfw">25 февраля 2018 г.</a></blockquote>
-            </div>
-            <div class="col-block" data-aos="fade-up">
-                <blockquote class="twitter-tweet" data-lang="ru"><p lang="cs" dir="ltr">Т​​⁣o​‍‌ ​‍‌ｓ​‌⁢ｕ​‌⁡r​‌⁢v​‍­i​​⁣ⅴ​‍⁤e​‌⁢,​‍‍ ​‍‌ｔ‍⁡ｈ​‌⁢ｅ​‍⁣y‍⁡ ​‌⁡ｍ​‌‌u​‍⁢s​‌‌ｔ fighｔ <a href="https://twitter.com/hashtag/WhatsInside?src=hash&amp;ref_src=twsrc%5Etfw">#WhatsInside</a>． Get ｔｉϲｋｅｔｓ: <a href="https://t.co/oPDAK5GXMD">https://t.co/oPDAK5GXMD</a> <a href="https://t.co/6eFgFxSmdk">pic.twitter.com/6eFgFxSmdk</a></p>&mdash; Annihilation (@AnnihilationMov) <a href="https://twitter.com/AnnihilationMov/status/967051447392116736?ref_src=twsrc%5Etfw">23 февраля 2018 г.</a></blockquote>
-            </div>
-            <div class="col-block" data-aos="fade-up">
-                <blockquote class="twitter-tweet" data-lang="ru"><p lang="en" dir="ltr">Ｉ​​⁣ｎ​‍⁢ ​‌‌ｔ‍⁡w​⁠⁠o​‍‍ ​⁠­d‍⁡a​‍⁢ｙ​‌‌ｓ​​⁣，​‌​ ​⁠⁠w⁣­e faｃｅ <a href="https://twitter.com/hashtag/Annihilation?src=hash&amp;ref_src=twsrc%5Etfw">#Annihilation</a>． Ｇｅt ｔⅰϲkｅｔｓ：<a href="https://t.co/oPDAK5GXMD">https://t.co/oPDAK5GXMD</a> <a href="https://twitter.com/hashtag/WhatsInside?src=hash&amp;ref_src=twsrc%5Etfw">#WhatsInside</a> <a href="https://t.co/RUqmHfanQ9">pic.twitter.com/RUqmHfanQ9</a></p>&mdash; Annihilation (@AnnihilationMov) <a href="https://twitter.com/AnnihilationMov/status/966408129700249600?ref_src=twsrc%5Etfw">21 февраля 2018 г.</a></blockquote>
-            </div>
-            <div class="col-block" data-aos="fade-up">
-                <blockquote class="twitter-tweet" data-lang="ru"><p lang="und" dir="ltr">⚡️ “<a href="https://twitter.com/hashtag/TombRaider?src=hash&amp;ref_src=twsrc%5Etfw">#TombRaider</a>&#39;s Alicia Vikander describes Lara Croft in 3 words” <a href="https://twitter.com/TombRaiderMovie?ref_src=twsrc%5Etfw">@TombRaiderMovie</a><a href="https://t.co/b9jWcnKoEA">https://t.co/b9jWcnKoEA</a></p>&mdash; GameSpot (@gamespot) <a href="https://twitter.com/gamespot/status/967319476411580416?ref_src=twsrc%5Etfw">24 февраля 2018 г.</a></blockquote>
-            </div>
+            </section> <!-- end s-about -->
         </div>
 
-    </section> <!-- end s-about -->
+        <!-- crew
+        ================================================== -->
+        <div data-section="crew">
+            <section class="s-crew">
 
-    <!-- partners
-    ================================================== -->
-    <section id="partners" class="s-clients">
+                <div class="container section-header" data-aos="fade-up">
+                    <div class="col-full">
+                        <h3 class="subhead">Our crew</h3>
+                        <h1 class="display-2">We work only with highly qualified crew</h1>
+                    </div>
+                </div> <!-- end section-header -->
 
-        <div class="row section-header" data-aos="fade-up">
-            <div class="col-full">
-                <h3 class="subhead">Our Partners</h3>
-                <h1 class="display-2">We are glad to cooperate with all worthy companies.</h1>
-            </div>
-        </div> <!-- end section-header -->
+                <div class="crew-list block-1-2 block-tab-full">
+                    <div class="crew-item" data-aos="fade-up">
+                        <div class="crew-image">
+                           <img src="/static/casting/img/home_bg.jpg" alt="">
+                        </div>
+                        <div class="crew-text">
+                            <div class="crew-position">Name</div>
+                            <div class="crew-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas lacus et arcu ultrices, ac mattis metus bibendum. Phasellus sapien neque, blandit a blandit quis, sagittis eget orci.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crew-item" data-aos="fade-up">
+                        <div class="crew-image">
+                           <img src="/static/casting/img/home_bg.jpg" alt="">
+                        </div>
+                        <div class="crew-text">
+                            <div class="crew-position">Name</div>
+                            <div class="crew-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas lacus et arcu ultrices, ac mattis metus bibendum. Phasellus sapien neque, blandit a blandit quis, sagittis eget orci.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="crew-item" data-aos="fade-up">
+                        <div class="crew-image">
+                           <img src="/static/casting/img/home_bg.jpg" alt="">
+                        </div>
+                        <div class="crew-text">
+                            <div class="crew-position">Name</div>
+                            <div class="crew-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas lacus et arcu ultrices, ac mattis metus bibendum. Phasellus sapien neque, blandit a blandit quis, sagittis eget orci.
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end crew-list -->
 
-        <div class="row clients-outer" data-aos="fade-up">
-            <div class="col-full">
-                <div class="clients">
-                    
-                    <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/apple.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/atom.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/blackberry.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/dropbox.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/envato.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/firefox.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/joomla.png" /></a>
-                    <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/magento.png" /></a>
-                     
-                </div> <!-- end partners -->
-            </div> <!-- end col-full -->
-        </div> <!-- end clients-outer -->
+            </section> <!-- end s-crew -->
+        </div>
 
-    </section> <!-- end s-partners -->
+        <!-- casting
+        ================================================== -->
+        <div data-section="casting">
+            <section class="s-casting" data-parallax="scroll" data-image-src="/static/casting/img/hero-bg.jpg" data-position-y=top>
+
+                <div class="overlay"></div>
+                <div class="intro-wrap">
+
+                    <div class="container section-header" data-aos="fade-up">
+                        <div class="col-full">
+                            <h1 class="display-2 display-2--light">Sign up for the casting</h1>
+                        </div>
+                    </div>
+
+                    <div class="casting-content" data-aos="fade-up">
+
+                        <div class="casting-contact">
+
+                            <h3 class="h6">Sign up form</h3>
+
+                            <form name="contactForm" id="contactForm" method="post" action="" novalidate="novalidate">
+                                <fieldset>
+                                    <div class="casting-row">
+                                        <div class="form-field">
+                                            <input name="first_name" type="text" id="first_name" placeholder="Your First Name" value="" minlength="2" required="" aria-required="true" class="full-width">
+                                        </div>
+                                        <div class="form-field">
+                                            <input name="second_name" type="text" id="second_name" placeholder="Your Second Name" value="" minlength="2" required="" aria-required="true" class="full-width">
+                                        </div>
+                                    </div>
+                                    <div class="casting-row">
+                                        <div class="form-field">
+                                            <input name="email" type="email" id="email" placeholder="Your Email" value="" required="" aria-required="true" class="full-width">
+                                        </div>
+                                        <div class="form-field">
+                                            <input name="phone" type="text" id="phone" placeholder="Your Phone Number" value="" required="" aria-required="true" class="full-width">
+                                        </div>
+                                    </div>
+                                    <div class="casting-row">
+                                        <div class="form-field">
+                                            <input name="age" type="number" min="16" max="70" id="age" placeholder="Your Age" value="" class="full-width">
+                                        </div>
+                                        <div class="form-field">
+                                            <input name="city" type="text" id="city" placeholder="Your City" value="" required="" aria-required="true" class="full-width">
+                                        </div>
+                                    </div>
+                                    <div class="casting-row-group">
+                                        <div class="form-field">
+                                            <input name="gender" type="radio" id="male" value="male" required="" aria-required="true" checked> Male<br>
+                                        </div>
+                                        <div class="form-field">
+                                            <input name="gender" type="radio" id="female" value="female" required="" aria-required="true"> Female<br>
+                                        </div>
+                                    </div>
+                                    <div class="casting-row-group">
+                                        <div class="form-field">
+                                            <input name="prof" type="radio" id="amateur" value="amateur" required="" aria-required="true" checked> Amateur<br>
+                                        </div>
+                                        <div class="form-field">
+                                            <input name="prof" type="radio" id="professional" value="professional" required="" aria-required="true"> Professional<br>
+                                        </div>
+                                    </div>
+                                    <div class="form-field">
+                                        <textarea name="experience" id="experience" placeholder="Your Experience" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
+                                    </div>
+                                    <div class="casting-row-group">
+                                        <div class="form-field">
+                                            <input name="grouping" type="checkbox" id="grouping" value="grouping" required="" aria-required="true" checked> Grouping<br>
+                                        </div>
+                                        <div class="form-field">
+                                            <input name="crowd_scene" type="checkbox" id="crowd_scene" value="crowd_scene" required="" aria-required="true"> Professional<br>
+                                        </div>
+                                    </div>
+                                    <div class="form-field">
+                                        <textarea name="about_info" id="about_info" placeholder="About you" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
+                                    </div>
+                                    <div class="form-field">
+                                        <p class="full-width">Your Photo</p>
+                                        <input name="contact_image" type="file" id="contact_image" accept="image/*" value="" required="" aria-required="true" class="full-width">
+                                    </div>
+                                    <div class="form-field">
+                                        <input name="video_url" type="url" id="video_url" placeholder="Url On Your Video" value="" required="" aria-required="true" class="full-width">
+                                    </div>
+                                    <div class="form-field">
+                                        <button class="full-width btn--primary">Submit</button>
+                                        <div class="submit-loader">
+                                            <div class="text-loader">Sending...</div>
+                                            <div class="s-loader">
+                                                <div class="bounce1"></div>
+                                                <div class="bounce2"></div>
+                                                <div class="bounce3"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                            </form>
+
+                            <!-- casting-warning -->
+                            <div class="message-warning">
+                                Something went wrong. Please try again.
+                            </div>
+
+                            <!-- casting-success -->
+                            <div class="message-success">
+                                Your message was sent, thank you!<br>
+                            </div>
+
+                        </div> <!-- end casting-primary -->
+
+                        <div class="casting-table">
+                            <div class="contact-info">
+
+                                <h3 class="h6 hide-on-fullwidth">List users who've already signed up</h3>
 
 
-    <!-- footer
-    ================================================== -->
-    <footer>
 
-        <div class="row footer-bottom">
+                            </div> <!-- end casting-info -->
+                        </div> <!-- end casting-secondary -->
 
-            <div class="col-twelve">
-                <div class="copyright">
-                    <span>© Copyright 2018</span>
-                    <span>Site Created by <a href="https://www.linkedin.com/in/shevchenko-vlad/">Shevchenko Vlad</a></span>
+                    </div> <!-- end casting-content -->
+
+                </div>
+            </section> <!-- end s-casting -->
+        </div>
+
+        <!-- videos
+        ================================================== -->
+        <div data-section="videos">
+            <section class="s-videos">
+
+                <div class="intro-wrap">
+
+                    <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
+                        <div class="col-full">
+                            <h3 class="subhead">Videos</h3>
+                            <h1 class="display-2">We love what we do, check out some of our videos</h1>
+                        </div>
+                    </div> <!-- end section-header -->
+
+                   <div class="row block-tab-full">
+                        <div class="col-block crew-item" data-aos="fade-up">
+                            <iframe src="https://www.youtube.com/embed/qylb0dvPOf8" frameborder="0" allowfullscreen=""></iframe>
+                        </div>
+                        <div class="col-block crew-item" data-aos="fade-up">
+                            <iframe src="https://www.youtube.com/embed/_jukWyDbWE0" frameborder="0" allowfullscreen=""></iframe>
+                        </div>
+                        <div class="col-block crew-item" data-aos="fade-up">
+                            <iframe src="https://www.youtube.com/embed/oUWx3ZSjaRw" frameborder="0" allowfullscreen=""></iframe>
+                        </div>
+                    </div>
+
+                </div> <!-- end intro-wrap -->
+
+            </section> <!-- end s-videos -->
+        </div>
+
+        <!-- photos
+        ================================================== -->
+        <div data-section="photos">
+            <section class="s-works">
+
+                <div class="intro-wrap">
+
+                    <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
+                        <div class="col-full">
+                            <h3 class="subhead">Photos</h3>
+                            <h1 class="display-2 display-2--light">We love what we do, check out some of our photos</h1>
+                        </div>
+                    </div> <!-- end section-header -->
+
+                </div> <!-- end intro-wrap -->
+
+                <div class="row works-content">
+                    <div class="col-full masonry-wrap">
+                        <div class="masonry">
+
+                            <div class="masonry__brick" data-aos="fade-up">
+                                <div class="item-folio">
+
+                                    <div class="item-folio__thumb">
+                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
+                                            <img src="/static/casting/img/poster.jpg"
+                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="item-folio__text">
+                                        <h3 class="item-folio__title">
+                                            Casting
+                                        </h3>
+                                        <p class="item-folio__cat">
+                                            Casting
+                                        </p>
+                                    </div>
+
+                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                        <i class="icon-link"></i>
+                                    </a>
+
+                                    <div class="item-folio__caption">
+                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                                    </div>
+
+                                </div>
+                            </div> <!-- end masonry__brick -->
+
+                            <div class="masonry__brick" data-aos="fade-up">
+                                <div class="item-folio">
+
+                                    <div class="item-folio__thumb">
+                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
+                                            <img src="/static/casting/img/poster.jpg"
+                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="item-folio__text">
+                                        <h3 class="item-folio__title">
+                                            Casting
+                                        </h3>
+                                        <p class="item-folio__cat">
+                                            Casting
+                                        </p>
+                                    </div>
+
+                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                        <i class="icon-link"></i>
+                                    </a>
+
+                                    <div class="item-folio__caption">
+                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                                    </div>
+
+                                </div>
+                            </div> <!-- end masonry__brick -->
+
+                            <div class="masonry__brick" data-aos="fade-up">
+                                <div class="item-folio">
+
+                                    <div class="item-folio__thumb">
+                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
+                                            <img src="/static/casting/img/poster.jpg"
+                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="item-folio__text">
+                                        <h3 class="item-folio__title">
+                                            Casting
+                                        </h3>
+                                        <p class="item-folio__cat">
+                                            Casting
+                                        </p>
+                                    </div>
+
+                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                        <i class="icon-link"></i>
+                                    </a>
+
+                                    <div class="item-folio__caption">
+                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                                    </div>
+
+                                </div>
+                            </div> <!-- end masonry__brick -->
+
+                            <div class="masonry__brick" data-aos="fade-up">
+                                <div class="item-folio">
+
+                                    <div class="item-folio__thumb">
+                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
+                                            <img src="/static/casting/img/poster.jpg"
+                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="item-folio__text">
+                                        <h3 class="item-folio__title">
+                                            Casting
+                                        </h3>
+                                        <p class="item-folio__cat">
+                                            Casting
+                                        </p>
+                                    </div>
+
+                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                        <i class="icon-link"></i>
+                                    </a>
+
+                                    <div class="item-folio__caption">
+                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                                    </div>
+
+                                </div>
+                            </div> <!-- end masonry__brick -->
+
+                            <div class="masonry__brick" data-aos="fade-up">
+                                <div class="item-folio">
+
+                                    <div class="item-folio__thumb">
+                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
+                                            <img src="/static/casting/img/poster.jpg"
+                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="item-folio__text">
+                                        <h3 class="item-folio__title">
+                                            Casting
+                                        </h3>
+                                        <p class="item-folio__cat">
+                                            Casting
+                                        </p>
+                                    </div>
+
+                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                        <i class="icon-link"></i>
+                                    </a>
+
+                                    <div class="item-folio__caption">
+                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                                    </div>
+
+                                </div>
+                            </div> <!-- end masonry__brick -->
+
+                            <div class="masonry__brick" data-aos="fade-up">
+                                <div class="item-folio">
+
+                                    <div class="item-folio__thumb">
+                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
+                                            <img src="/static/casting/img/poster.jpg"
+                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="item-folio__text">
+                                        <h3 class="item-folio__title">
+                                            Casting
+                                        </h3>
+                                        <p class="item-folio__cat">
+                                            Casting
+                                        </p>
+                                    </div>
+
+                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                                        <i class="icon-link"></i>
+                                    </a>
+
+                                    <div class="item-folio__caption">
+                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
+                                    </div>
+
+                                </div>
+                            </div> <!-- end masonry__brick -->
+
+                        </div> <!-- end masonry -->
+                    </div> <!-- end col-full -->
+                </div> <!-- end photos-content -->
+
+            </section> <!-- end s-photos -->
+        </div>
+
+        <!-- signup
+        ================================================== -->
+        <div data-section="sign_up">
+            <section class="s-contact">
+
+                <div class="row section-header" data-aos="fade-up">
+                    <div class="col-full">
+                        <h3 class="subhead">Sign up</h3>
+                        <h1 class="display-2 display-2--light">Subscribe us</h1>
+                    </div>
+                </div> <!-- end section-header -->
+
+
+                <div class="row clients-outer" data-aos="fade-up">
+
+                    <div class="col-full">
+
+                        <p>Quia quo qui sed odit. Quaerat voluptas autem necessitatibus vitae aut non alias sed quia. Ut itaque enim optio ut excepturi deserunt iusto porro.</p>
+                        <div class="footer-subscribe">
+                            <div class="subscribe-form">
+                                <form id="mc-form" class="group" novalidate="true">
+                                    <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
+                                    <input type="button" name="subscribe" value="Subscribe">
+                                    <label for="mc-email" class="subscribe-message"></label>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- end footer-main -->
+
+            </section> <!-- end s-signup -->
+        </div>
+
+        <!-- social updates
+        ================================================== -->
+        <div data-section="social">
+            <section class="s-about">
+
+                <div class="row section-header has-bottom-sep" data-aos="fade-up">
+                    <div class="col-full">
+                        <h3 class="subhead subhead--dark">Social updates</h3>
+                    </div>
+                </div> <!-- end section-header -->
+
+                <div class="row about-stats stats block-1-4 block-m-1-2 block-mob-full">
+                    <div class="col-block" data-aos="fade-up">
+                        <blockquote class="twitter-tweet" data-lang="ru"><p lang="en" dir="ltr">Hands up if the villainous Lord Nooth is your favourite <a href="https://twitter.com/hashtag/EarlyMan?src=hash&amp;ref_src=twsrc%5Etfw">#EarlyMan</a> character! 🙋 If you have&#39;t met him yet, here&#39;s Tom Hiddleston (the voice of Nooth) to introduce you… <a href="https://t.co/vApWNnqVld">pic.twitter.com/vApWNnqVld</a></p>&mdash; Early Man (@earlymanmovie) <a href="https://twitter.com/earlymanmovie/status/967733175064576005?ref_src=twsrc%5Etfw">25 февраля 2018 г.</a></blockquote>
+                    </div>
+                    <div class="col-block" data-aos="fade-up">
+                        <blockquote class="twitter-tweet" data-lang="ru"><p lang="cs" dir="ltr">Т​​⁣o​‍‌ ​‍‌ｓ​‌⁢ｕ​‌⁡r​‌⁢v​‍­i​​⁣ⅴ​‍⁤e​‌⁢,​‍‍ ​‍‌ｔ‍⁡ｈ​‌⁢ｅ​‍⁣y‍⁡ ​‌⁡ｍ​‌‌u​‍⁢s​‌‌ｔ fighｔ <a href="https://twitter.com/hashtag/WhatsInside?src=hash&amp;ref_src=twsrc%5Etfw">#WhatsInside</a>． Get ｔｉϲｋｅｔｓ: <a href="https://t.co/oPDAK5GXMD">https://t.co/oPDAK5GXMD</a> <a href="https://t.co/6eFgFxSmdk">pic.twitter.com/6eFgFxSmdk</a></p>&mdash; Annihilation (@AnnihilationMov) <a href="https://twitter.com/AnnihilationMov/status/967051447392116736?ref_src=twsrc%5Etfw">23 февраля 2018 г.</a></blockquote>
+                    </div>
+                    <div class="col-block" data-aos="fade-up">
+                        <blockquote class="twitter-tweet" data-lang="ru"><p lang="en" dir="ltr">Ｉ​​⁣ｎ​‍⁢ ​‌‌ｔ‍⁡w​⁠⁠o​‍‍ ​⁠­d‍⁡a​‍⁢ｙ​‌‌ｓ​​⁣，​‌​ ​⁠⁠w⁣­e faｃｅ <a href="https://twitter.com/hashtag/Annihilation?src=hash&amp;ref_src=twsrc%5Etfw">#Annihilation</a>． Ｇｅt ｔⅰϲkｅｔｓ：<a href="https://t.co/oPDAK5GXMD">https://t.co/oPDAK5GXMD</a> <a href="https://twitter.com/hashtag/WhatsInside?src=hash&amp;ref_src=twsrc%5Etfw">#WhatsInside</a> <a href="https://t.co/RUqmHfanQ9">pic.twitter.com/RUqmHfanQ9</a></p>&mdash; Annihilation (@AnnihilationMov) <a href="https://twitter.com/AnnihilationMov/status/966408129700249600?ref_src=twsrc%5Etfw">21 февраля 2018 г.</a></blockquote>
+                    </div>
+                    <div class="col-block" data-aos="fade-up">
+                        <blockquote class="twitter-tweet" data-lang="ru"><p lang="und" dir="ltr">⚡️ “<a href="https://twitter.com/hashtag/TombRaider?src=hash&amp;ref_src=twsrc%5Etfw">#TombRaider</a>&#39;s Alicia Vikander describes Lara Croft in 3 words” <a href="https://twitter.com/TombRaiderMovie?ref_src=twsrc%5Etfw">@TombRaiderMovie</a><a href="https://t.co/b9jWcnKoEA">https://t.co/b9jWcnKoEA</a></p>&mdash; GameSpot (@gamespot) <a href="https://twitter.com/gamespot/status/967319476411580416?ref_src=twsrc%5Etfw">24 февраля 2018 г.</a></blockquote>
+                    </div>
                 </div>
 
-                <div class="go-top">
-                    <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+            </section> <!-- end s-about -->
+        </div>
+
+        <!-- partners
+        ================================================== -->
+        <div data-section="partners">
+            <section class="s-clients">
+
+                <div class="row section-header" data-aos="fade-up">
+                    <div class="col-full">
+                        <h3 class="subhead">Our Partners</h3>
+                        <h1 class="display-2">We are glad to cooperate with all worthy companies.</h1>
+                    </div>
+                </div> <!-- end section-header -->
+
+                <div class="row clients-outer" data-aos="fade-up">
+                    <div class="col-full">
+                        <div class="clients">
+
+                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/apple.png" /></a>
+                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/atom.png" /></a>
+                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/blackberry.png" /></a>
+                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/dropbox.png" /></a>
+                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/envato.png" /></a>
+                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/firefox.png" /></a>
+                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/joomla.png" /></a>
+                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/magento.png" /></a>
+
+                        </div> <!-- end partners -->
+                    </div> <!-- end col-full -->
+                </div> <!-- end clients-outer -->
+
+            </section> <!-- end s-partners -->
+        </div>
+
+
+        <!-- footer
+        ================================================== -->
+        <footer>
+
+            <div class="row footer-bottom">
+
+                <div class="col-twelve">
+                    <div class="copyright">
+                        <span>© Copyright 2018</span>
+                        <span>Site Created by <a href="https://www.linkedin.com/in/shevchenko-vlad/">Shevchenko Vlad</a></span>
+                    </div>
+
+                    <div class="go-top">
+                        <a href="#" data-nav-section="home" title="Back to Top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+                    </div>
                 </div>
-            </div>
 
-        </div> <!-- end footer-bottom -->
+            </div> <!-- end footer-bottom -->
 
-    </footer> <!-- end footer -->
+        </footer> <!-- end footer -->
 
+    </div> <!-- end page -->
 
     <!-- photoswipe background
     ================================================== -->
@@ -773,12 +763,24 @@
     </div>
 
 
+
+
     <!-- Java Script
     ================================================== -->
-    <script src="/static/casting/js/jquery-3.2.1.min.js"></script>
+    <!-- jQuery -->
+	<script src="/static/casting/js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="/static/casting/js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="/static/casting/js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="/static/casting/js/jquery.waypoints.min.js"></script>
+
     <script src="/static/casting/js/plugins.js"></script>
     <script src="/static/casting/js/main.js"></script>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="/static/casting/js/nav.js"></script>
+
+    <script async src="/static/casting/js/twitter.js"></script>
 
 </body>
 
