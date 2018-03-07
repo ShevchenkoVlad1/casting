@@ -2907,7 +2907,7 @@ html.no-csstransitions .home-content__main {
 .casting-person-info {
     display: none;
     position: absolute;
-	bottom: 20rem;
+	bottom: 0;
 	left: 50%;
 	transform: translate(-50%, -50%);
     background: white;
