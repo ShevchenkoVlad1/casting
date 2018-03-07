@@ -600,6 +600,8 @@ input[type="text"],
 input[type="tel"],
 input[type="url"],
 input[type="password"],
+input[type="date"],
+input[type="file"],
 textarea,
 select {
     display: block;
@@ -684,6 +686,8 @@ input[type="text"]:focus,
 input[type="tel"]:focus,
 input[type="url"]:focus,
 input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="file"]:focus,
 textarea:focus,
 select:focus {
     color: #000000;
@@ -2835,8 +2839,8 @@ html.no-csstransitions .home-content__main {
     min-height: 786px;
     background-color: transparent;
     position: relative;
-    display: table;
-    padding: 15rem 0 25.2rem;
+    padding-top: 9rem;
+    padding-bottom: 9rem;
 }
 
 .s-casting .shadow-overlay {
@@ -2858,7 +2862,7 @@ html.no-csstransitions .home-content__main {
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: .6;
+    opacity: 0.4;
     background-color: #000000;
 }
 
@@ -2872,9 +2876,14 @@ html.no-csstransitions .home-content__main {
 .casting-content {
     display: table-cell;
     width: 100%;
-    height: 100vh;
     vertical-align: middle;
     position: relative;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 6rem;
+    font-family: "montserrat-light", sans-serif;
+    font-size: 1.5rem;
+    line-height: 2;
+
     overflow: hidden;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -2885,12 +2894,46 @@ html.no-csstransitions .home-content__main {
     flex-direction: row;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    background-color: rgba(0, 0, 0, 0.2);
-    color: rgba(255, 255, 255, 0.4);
-    padding: 6rem;
+}
+
+*[data-link] {
+  cursor: pointer;
+}
+.casting-container {
+    position: relative;
+    width: 100%;
+}
+
+.casting-person-info {
+    display: none;
+    position: absolute;
+	bottom: 20rem;
+	left: 50%;
+	transform: translate(-50%, -50%);
+    background: white;
+    vertical-align: middle;
+    color: #000000;
     font-family: "montserrat-light", sans-serif;
     font-size: 1.5rem;
     line-height: 2;
+
+    overflow: hidden;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    padding: 2rem 6rem;
+}
+
+#person-close {
+    cursor: pointer;
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+}
+
+#person-close:hover {
+    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    color: #6d6d6d;
 }
 
 .casting-row {
@@ -2899,23 +2942,30 @@ html.no-csstransitions .home-content__main {
     display: flex;
 }
 
-.casting-row .form-field{
+.casting-row .form-field {
     width: 50%;
-    margin-right: 2rem;
 }
 
 .casting-row-group {
-    width: 50%;
     position: relative;
     display: flex;
 }
 
-.casting-row-group .form-field{
+.casting-row-group .form-field {
     width: 25%;
-    margin-right: 2rem;
 }
 
-.casting-contact .form-field textarea{
+.casting-row-inline {
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.casting-row-inline .form-field {
+    width: 100%;
+}
+
+.casting-contact .form-field textarea {
     min-height: 20rem;
 }
 
@@ -2930,6 +2980,59 @@ html.no-csstransitions .home-content__main {
     color: #feb47b;
 }
 
+.file_upload {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.1s linear
+}
+
+.file_upload.focus {
+    box-shadow: 0 0 5px rgba(0, 30, 255, 0.4)
+}
+
+.file_upload > button {
+    background: #7300df;
+    transition: background 0.2s;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    border-radius: 2px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: #fff;
+    text-shadow: #6200bd 0 -1px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.file_upload:hover > button {
+    background: #6200bd;
+    text-shadow: #5d00b3 0 -1px 0
+}
+
+.file_upload:active > button {
+    background: #5d00b3;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3) inset
+}
+
+@media only screen and ( max-width: 500px ) {
+    /* example */
+    .file_upload > div {
+        display: none
+    }
+
+    .file_upload > button {
+        width: 100%
+    }
+}
+
+.casting-content input[type="date"] {
+    background: none;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+}
+
 .casting-content input[type="email"],
 .casting-content input[type="number"],
 .casting-content input[type="search"],
@@ -2937,6 +3040,8 @@ html.no-csstransitions .home-content__main {
 .casting-content input[type="tel"],
 .casting-content input[type="url"],
 .casting-content input[type="password"],
+.casting-content input[type="file"],
+.casting-content input[type="date"],
 .casting-content textarea,
 .casting-content label,
 .casting-content select {
@@ -2952,6 +3057,8 @@ html.no-csstransitions .home-content__main {
 .casting-content input[type="tel"]:focus,
 .casting-content input[type="url"]:focus,
 .casting-content input[type="password"]:focus,
+.casting-content input[type="file"]:focus,
+.casting-content input[type="date"]:focus,
 .casting-content textarea:focus,
 .casting-content select:focus {
     color: #FFFFFF;
@@ -3048,10 +3155,28 @@ html.no-csstransitions .home-content__main {
 
 .casting-contact {
     width: 50%;
+    background: rgba(0, 0, 0, 0.3) repeat;
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 6rem;
 }
 
 .casting-table {
     width: 50%;
+    background: rgba(0, 0, 0, 0.3) repeat;
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 6rem;
+}
+
+.cast-table {
+    height: 50rem;
+    overflow: auto;
+    margin-top: 5rem;
+}
+
+.cast-td {
+    font-family: "lora-regular", serif;
+    text-align: center;
+    color: white;
 }
 
 .casting-content__buttons {

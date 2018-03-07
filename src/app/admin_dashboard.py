@@ -7,6 +7,15 @@ class CustomIndexDashboard(Dashboard):
     columns = 3
 
     def init_with_context(self, context):
+        # append an app list module for "Casting"
+        self.children.append(modules.ModelList(
+            _('Casting'),
+            exclude=('auth.*',),
+            models=('casting.*',),
+            column=0,
+            order=1
+        ))
+
         # append an app list module for "Applications"
         self.children.append(modules.AppList(
             _('Applications'),

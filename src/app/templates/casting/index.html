@@ -54,25 +54,19 @@
         ================================================== -->
         <header class="s-header">
             <nav class="cast-nav" role="navigation">
-                <!-- <div class="top-menu"> -->
-                    <div class="container">
-                        <div class="row">
-                            <div class="text-center menu-1 menu-wrap">
-                                <ul class="nav navbar-nav navbar-right">
-                                    <li class="active"><a href="#" data-nav-section="home">Home</a></li>
-                                    <li><a href="#" data-nav-section="about">About</a></li>
-                                    <li><a href="#" data-nav-section="crew">Crew</a></li>
-                                    <li><a href="#" data-nav-section="casting">Casting</a></li>
-                                    <li><a href="#" data-nav-section="videos">Videos</a></li>
-                                    <li><a href="#" data-nav-section="photos">Photos</a></li>
-                                    <li><a href="#" data-nav-section="sign_up">Sign up</a></li>
-                                    <li><a href="#" data-nav-section="social">Social updates</a></li>
-                                    <li><a href="#" data-nav-section="partners">Partners</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                <!-- </div> -->
+                <div class="text-center menu-1 menu-wrap">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#" data-nav-section="home">Home</a></li>
+                        <li><a href="#" data-nav-section="about">About</a></li>
+                        <li><a href="#" data-nav-section="crew">Crew</a></li>
+                        <li><a href="#" data-nav-section="casting">Casting</a></li>
+                        <li><a href="#" data-nav-section="videos">Videos</a></li>
+                        <li><a href="#" data-nav-section="photos">Photos</a></li>
+                        <li><a href="#" data-nav-section="sign_up">Sign up</a></li>
+                        <li><a href="#" data-nav-section="social">Social updates</a></li>
+                        <li><a href="#" data-nav-section="partners">Partners</a></li>
+                    </ul>
+                </div>
             </nav>
         </header>
 
@@ -245,7 +239,8 @@
 
                             <h3 class="h6">Sign up form</h3>
 
-                            <form name="contactForm" id="contactForm" method="post" action="" novalidate="novalidate">
+                            <form name="contactForm" id="contactForm" method="POST" data-url="{% url 'casting' %}">
+                                {% csrf_token %}
                                 <fieldset>
                                     <div class="casting-row">
                                         <div class="form-field">
@@ -265,7 +260,7 @@
                                     </div>
                                     <div class="casting-row">
                                         <div class="form-field">
-                                            <input name="age" type="number" min="16" max="70" id="age" placeholder="Your Age" value="" class="full-width">
+                                            <input name="age" type="date" id="age" placeholder="Your Date Of Birth" value="" class="full-width">
                                         </div>
                                         <div class="form-field">
                                             <input name="city" type="text" id="city" placeholder="Your City" value="" required="" aria-required="true" class="full-width">
@@ -288,22 +283,22 @@
                                         </div>
                                     </div>
                                     <div class="form-field">
-                                        <textarea name="experience" id="experience" placeholder="Your Experience" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
+                                        <textarea name="experience" id="experience" placeholder="Your Experience" rows="10" cols="50" class="full-width"></textarea>
                                     </div>
                                     <div class="casting-row-group">
                                         <div class="form-field">
-                                            <input name="grouping" type="checkbox" id="grouping" value="grouping" required="" aria-required="true" checked> Grouping<br>
+                                            <input name="grouping" type="checkbox" id="grouping" value="grouping" checked> Grouping<br>
                                         </div>
                                         <div class="form-field">
-                                            <input name="crowd_scene" type="checkbox" id="crowd_scene" value="crowd_scene" required="" aria-required="true"> Professional<br>
+                                            <input name="crowd_scene" type="checkbox" id="crowd_scene" value="crowd_scene" > Professional<br>
                                         </div>
                                     </div>
                                     <div class="form-field">
-                                        <textarea name="about_info" id="about_info" placeholder="About you" rows="10" cols="50" required="" aria-required="true" class="full-width"></textarea>
+                                        <textarea name="about_info" id="about_info" placeholder="About you" rows="10" cols="50" class="full-width"></textarea>
                                     </div>
                                     <div class="form-field">
                                         <p class="full-width">Your Photo</p>
-                                        <input name="contact_image" type="file" id="contact_image" accept="image/*" value="" required="" aria-required="true" class="full-width">
+                                        <input name="contact_image" type="file" id="contact_image" accept="image/*" value="" class="full-width">
                                     </div>
                                     <div class="form-field">
                                         <input name="video_url" type="url" id="video_url" placeholder="Url On Your Video" value="" required="" aria-required="true" class="full-width">
@@ -339,12 +334,38 @@
                             <div class="contact-info">
 
                                 <h3 class="h6 hide-on-fullwidth">List users who've already signed up</h3>
-
-
+                                    <div class="cast-table">
+                                        <table id="get-all-info">
+                                            <tbody>
+                                                {% for person in person_list %}
+                                                    <tr data-link="{% url 'person_list' %}" data-id="{{ person.id }}">
+                                                        <td class="cast-td">{{ person.contact_image }}</td>
+                                                        <td class="cast-td">{{ person.first_name }}</td>
+                                                        <td class="cast-td">{{ person.second_name }}</td>
+                                                        <td class="cast-td">{{ person.city }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
 
                             </div> <!-- end casting-info -->
                         </div> <!-- end casting-secondary -->
-
+                        <div class="casting-container">
+                            <div class="casting-person-info">
+                                <span id='person-close'>x</span>
+                                <p>{{ _('ФИО:') }} <span class="person-first_name"></span> <span class="person-second_name"></span></p>
+                                <p>{{ _('Email:') }} <span class="person-email"></span></p>
+                                <p>{{ _('Phone:') }} <span class="person-phone"></span></p>
+                                <p>{{ _('Age:') }} <span class="person-age"></span></p>
+                                <p>{{ _('City:') }} <span class="person-city"></span></p>
+                                <p>{{ _('Gender:') }} <span class="person-city"></span></p>
+                                <p>{{ _('Experience:') }} <span class="person-experience"></span></p>
+                                <p>{{ _('Crowd scene:') }} <span class="person-crowd_scene"></span></p>
+                                <p>{{ _('Grouping:') }} <span class="person-grouping"></span></p>
+                                <p>{{ _('Video url:') }} <span class="person-video_url"></span></p>
+                            </div>
+                        </div>
                     </div> <!-- end casting-content -->
 
                 </div>

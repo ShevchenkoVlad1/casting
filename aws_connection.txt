@@ -1,0 +1,1 @@
+sudo ssh -i "web.pem" ubuntu@ec2-18-221-180-106.us-east-2.compute.amazonaws.com
