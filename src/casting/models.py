@@ -21,7 +21,8 @@ class Person(models.Model):
     grouping = models.BooleanField(default=False)
     crowd_scene = models.BooleanField(default=False)
     about_info = models.TextField(max_length=1000, blank=True, null=True)
-    contact_image = models.ImageField(upload_to=get_image_path, null=True)
+    contact_image = models.ImageField(upload_to=get_image_path, blank=True,
+                                      null=True)
     video_url = models.CharField(max_length=70)
 
     is_main = models.BooleanField(default=False)
