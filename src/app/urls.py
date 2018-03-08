@@ -1,6 +1,8 @@
+from django.conf import settings
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path, include
+from django.views.static import serve
 
 admin.site.site_title = 'Casting'
 admin.site.site_header = 'Casting' + ' administration'
@@ -21,3 +23,8 @@ urlpatterns += i18n_patterns(
     # translate
     path('_translation_/', include('rosetta.urls')),
 )
+
+if settings.DEBUG:
+    urlpatterns += i18n_patterns(
+        path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT,
+                                          'show_indexes': True}))

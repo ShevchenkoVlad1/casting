@@ -1,11 +1,10 @@
 import os
 
 from django.db import models
-from datetime import datetime
 
 
 def get_image_path(instance, filename):
-    return os.path.join('photos', str(instance.id), filename)
+    return os.path.join('photos', str(instance.person_id), filename)
 
 
 class Person(models.Model):
@@ -17,13 +16,16 @@ class Person(models.Model):
     city = models.CharField(max_length=70)
     gender = models.CharField(max_length=70)
     prof = models.CharField(max_length=70)
-    experience = models.TextField(max_length=1000, blank=True, null=True)
+    experience = models.TextField(max_length=1000, blank=True)
     grouping = models.BooleanField(default=False)
     crowd_scene = models.BooleanField(default=False)
-    about_info = models.TextField(max_length=1000, blank=True, null=True)
-    contact_image = models.ImageField(upload_to=get_image_path, blank=True,
-                                      null=True)
-    video_url = models.CharField(max_length=70)
+    about_info = models.TextField(max_length=1000, blank=True)
+    video_url = models.CharField(max_length=70, blank=True)
 
     is_main = models.BooleanField(default=False)
-    created_date = models.DateTimeField(default=datetime.now())
+    created_date = models.DateTimeField(auto_now_add=True)
+
+
+class Image(models.Model):
+    person = models.ForeignKey(Person, default=None, on_delete=None)
+    image = models.ImageField(upload_to=get_image_path, blank=True, null=True)

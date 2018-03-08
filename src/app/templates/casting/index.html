@@ -54,7 +54,7 @@
         ================================================== -->
         <header class="s-header">
             <nav class="cast-nav" role="navigation">
-                <div class="text-center menu-1 menu-wrap">
+                <div id="navbar" class="text-center menu-1 menu-wrap">
                     <ul class="nav navbar-nav navbar-right">
                         <li class="active"><a href="#" data-nav-section="home">Home</a></li>
                         <li><a href="#" data-nav-section="about">About</a></li>
@@ -132,7 +132,7 @@
         <!-- about
         ================================================== -->
         <div data-section="about">
-            <section class="s-about">
+            <section class="s-about" data-parallax="scroll" data-image-src="/static/casting/img/about_bg.jpg">
 
                 <div class="overlay"></div>
                 <div class="shadow-overlay"></div>
@@ -239,69 +239,92 @@
 
                             <h3 class="h6">Sign up form</h3>
 
-                            <form name="contactForm" id="contactForm" method="POST" data-url="{% url 'casting' %}">
+                            <form name="contactForm" id="contactForm" method="POST" data-url="{% url 'casting' %}" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <fieldset>
                                     <div class="casting-row">
-                                        <div class="form-field">
-                                            <input name="first_name" type="text" id="first_name" placeholder="Your First Name" value="" minlength="2" required="" aria-required="true" class="full-width">
+                                        <div class="form-field input-group input-group-icon">
+                                            <input name="first_name" type="text" id="first_name" placeholder="Your First Name" minlength="2" class="full-width" required>
+                                            <div class="input-icon"><i class="fa fa-user"></i></div>
                                         </div>
-                                        <div class="form-field">
-                                            <input name="second_name" type="text" id="second_name" placeholder="Your Second Name" value="" minlength="2" required="" aria-required="true" class="full-width">
-                                        </div>
-                                    </div>
-                                    <div class="casting-row">
-                                        <div class="form-field">
-                                            <input name="email" type="email" id="email" placeholder="Your Email" value="" required="" aria-required="true" class="full-width">
-                                        </div>
-                                        <div class="form-field">
-                                            <input name="phone" type="text" id="phone" placeholder="Your Phone Number" value="" required="" aria-required="true" class="full-width">
+                                        <div class="form-field input-group input-group-icon">
+                                            <input name="second_name" type="text" id="second_name" placeholder="Your Second Name" minlength="2"class="full-width" required>
+                                            <div class="input-icon"><i class="fa fa-user"></i></div>
                                         </div>
                                     </div>
                                     <div class="casting-row">
-                                        <div class="form-field">
-                                            <input name="age" type="date" id="age" placeholder="Your Date Of Birth" value="" class="full-width">
+                                        <div class="form-field input-group input-group-icon">
+                                            <input name="email" type="email" id="email" placeholder="Your Email" class="full-width" required>
+                                            <div class="input-icon"><i class="fa fa-envelope"></i></div>
                                         </div>
-                                        <div class="form-field">
-                                            <input name="city" type="text" id="city" placeholder="Your City" value="" required="" aria-required="true" class="full-width">
-                                        </div>
-                                    </div>
-                                    <div class="casting-row-group">
-                                        <div class="form-field">
-                                            <input name="gender" type="radio" id="male" value="male" required="" aria-required="true" checked> Male<br>
-                                        </div>
-                                        <div class="form-field">
-                                            <input name="gender" type="radio" id="female" value="female" required="" aria-required="true"> Female<br>
+                                        <div class="form-field input-group input-group-icon">
+                                            <input name="phone" type="text" id="phone" placeholder="Your Phone Number" class="full-width" required>
+                                            <div class="input-icon"><i class="fa fa-phone"></i></div>
                                         </div>
                                     </div>
-                                    <div class="casting-row-group">
-                                        <div class="form-field">
-                                            <input name="prof" type="radio" id="amateur" value="amateur" required="" aria-required="true" checked> Amateur<br>
+                                    <div class="casting-row">
+                                        <div class="form-field input-group input-group-icon">
+                                            <input name="age" type="date" id="age" placeholder="Your Date Of Birth" class="full-width" required>
+                                            <div class="input-icon"><i class="fa fa-calendar"></i></div>
                                         </div>
-                                        <div class="form-field">
-                                            <input name="prof" type="radio" id="professional" value="professional" required="" aria-required="true"> Professional<br>
+                                        <div class="form-field input-group input-group-icon">
+                                            <input name="city" type="text" id="city" placeholder="Your City" class="full-width" required>
+                                            <div class="input-icon"><i class="fa fa-home"></i></div>
                                         </div>
                                     </div>
-                                    <div class="form-field">
+                                    <div class="casting-row-inline">
+                                        <div class="casting-row-group">
+                                            <div class="input-group">
+                                                <input type="radio" name="gender" value="male" id="gender-male" checked>
+                                                <label for="gender-male">Male</label>
+                                                <input type="radio" name="gender" value="female" id="gender-female">
+                                                <label for="gender-female">Female</label>
+                                            </div>
+                                        </div>
+                                        <div class="casting-row-group">
+                                            <div class="input-group">
+                                                <input type="radio" name="prof" value="amateur" id="amateur" checked>
+                                                <label for="amateur">Amateur</label>
+                                                <input type="radio" name="prof" value="professional" id="professional">
+                                                <label for="professional">Professional</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-field input-group input-group-icon">
                                         <textarea name="experience" id="experience" placeholder="Your Experience" rows="10" cols="50" class="full-width"></textarea>
+                                        <div class="input-icon"><i class="fa fa-align-justify"></i></div>
                                     </div>
-                                    <div class="casting-row-group">
-                                        <div class="form-field">
-                                            <input name="grouping" type="checkbox" id="grouping" value="grouping" checked> Grouping<br>
+                                    <div class="casting-row-inline">
+                                        <div class="casting-row-group">
+                                            <div class="input-group">
+                                                <p class="full-width">Grouping</p>
+                                                <input type="radio" name="grouping" value="True" id="grouping_yes" checked>
+                                                <label for="grouping_yes">Yes</label>
+                                                <input type="radio" name="grouping" value="False" id="grouping_no">
+                                                <label for="grouping_no">No</label>
+                                            </div>
                                         </div>
-                                        <div class="form-field">
-                                            <input name="crowd_scene" type="checkbox" id="crowd_scene" value="crowd_scene" > Crowd scene<br>
+                                        <div class="casting-row-group">
+                                            <div class="input-group">
+                                                <p class="full-width">Crowd Scene</p>
+                                                <input type="radio" name="crowd_scene" value="True" id="crowd_scene_yes" checked>
+                                                <label for="crowd_scene_yes">Yes</label>
+                                                <input type="radio" name="crowd_scene" value="False" id="crowd_scene_no">
+                                                <label for="crowd_scene_no">No</label>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="form-field">
+                                    <div class="form-field input-group input-group-icon">
                                         <textarea name="about_info" id="about_info" placeholder="About you" rows="10" cols="50" class="full-width"></textarea>
+                                        <div class="input-icon"><i class="fa fa-align-justify"></i></div>
                                     </div>
-                                    <div class="form-field">
-                                        <p class="full-width">Your Photo</p>
-                                        <input name="contact_image" type="file" id="contact_image" accept="image/*" value="" class="full-width">
-                                    </div>
-                                    <div class="form-field">
-                                        <input name="video_url" type="url" id="video_url" placeholder="Url On Your Video" value="" required="" aria-required="true" class="full-width">
+                                    <!--<div class="form-field input-group">-->
+                                        <!--<p class="full-width">Your Photo</p>-->
+                                        <!--<input name="contact_image" type="file" id="contact_image" accept="image/*" class="full-width" multiple required>-->
+                                    <!--</div>-->
+                                    <div class="form-field input-group input-group-icon">
+                                        <input name="video_url" type="url" id="video_url" placeholder="Url On Your Video" class="full-width">
+                                        <div class="input-icon"><i class="fa fa-link"></i></div>
                                     </div>
                                     <div class="form-field">
                                         <button class="full-width btn--primary">Submit</button>
@@ -339,7 +362,9 @@
                                             <tbody>
                                                 {% for person in person_list %}
                                                     <tr data-link="{% url 'person_list' %}" data-id="{{ person.id }}">
-                                                        <td class="cast-td">{{ person.contact_image }}</td>
+                                                        <td class="cast-td">
+                                                            <img src="/media/photos/noimage.png" alt="">
+                                                        </td>
                                                         <td class="cast-td">{{ person.first_name }}</td>
                                                         <td class="cast-td">{{ person.second_name }}</td>
                                                         <td class="cast-td">{{ person.city }}</td>
@@ -354,18 +379,43 @@
                         <div class="casting-container">
                             <div class="casting-person-info">
                                 <span id='person-close'>x</span>
-                                <p>{{ _('ФИО:') }} <span class="person-first_name"></span> <span class="person-second_name"></span></p>
-                                <p>{{ _('Email:') }} <span class="person-email"></span></p>
-                                <p>{{ _('Phone:') }} <span class="person-phone"></span></p>
-                                <p>{{ _('Date of birth:') }} <span class="person-age"></span></p>
-                                <p>{{ _('City:') }} <span class="person-city"></span></p>
-                                <p>{{ _('Gender:') }} <span class="person-gender"></span></p>
-                                <p>{{ _('Prof:') }} <span class="person-prof"></span></p>
-                                <p>{{ _('Experience:') }} <span class="person-experience"></span></p>
-                                <p>{{ _('Crowd scene:') }} <span class="person-crowd_scene"></span></p>
-                                <p>{{ _('Grouping:') }} <span class="person-grouping"></span></p>
-                                <p>{{ _('About info:') }} <span class="person-about_info"></span></p>
-                                <p>{{ _('Video url:') }} <span class="person-video_url"></span></p>
+                                <div class="person-block">
+                                    <div class="row__divide-3">
+                                        <div class="person-avatar">
+                                            <div class="w3-content">
+                                                <img class="mySlides person-contact_image" src="">
+                                                <img class="mySlides person-contact_image" src="">
+                                                <img class="mySlides person-contact_image" src="">
+
+                                                <div class="w3-row-padding w3-section">
+                                                    <div class="w3-col s4">
+                                                        <img class="demo w3-opacity w3-hover-opacity-off person-contact_image" src="" onclick="currentDiv(1)">
+                                                    </div>
+                                                    <div class="w3-col s4">
+                                                        <img class="demo w3-opacity w3-hover-opacity-off person-contact_image" src="" onclick="currentDiv(2)">
+                                                    </div>
+                                                    <div class="w3-col s4">
+                                                        <img class="demo w3-opacity w3-hover-opacity-off person-contact_image" src="" onclick="currentDiv(3)">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="person-info">
+                                            <p>{{ _('ФИО:') }} <span class="person-first_name"></span> <span class="person-second_name"></span></p>
+                                            <p>{{ _('Email:') }} <span class="person-email"></span></p>
+                                            <p>{{ _('Phone:') }} <span class="person-phone"></span></p>
+                                            <p>{{ _('Date of birth:') }} <span class="person-age"></span></p>
+                                            <p>{{ _('City:') }} <span class="person-city"></span></p>
+                                            <p>{{ _('Gender:') }} <span class="person-gender"></span></p>
+                                            <p>{{ _('Prof:') }} <span class="person-prof"></span></p>
+                                            <p>{{ _('Experience:') }} <span class="person-experience"></span></p>
+                                            <p>{{ _('Crowd scene:') }} <span class="person-crowd_scene"></span></p>
+                                            <p>{{ _('Grouping:') }} <span class="person-grouping"></span></p>
+                                            <p>{{ _('About info:') }} <span class="person-about_info"></span></p>
+                                            <p>{{ _('Video url:') }} <span class="person-video_url"></span></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div> <!-- end casting-content -->
@@ -383,20 +433,25 @@
 
                     <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
                         <div class="col-full">
-                            <h3 class="subhead">Videos</h3>
-                            <h1 class="display-2">We love what we do, check out some of our videos</h1>
+                            <h1 class="display-2">Videos</h1>
                         </div>
                     </div> <!-- end section-header -->
 
-                   <div class="row block-tab-full">
-                        <div class="col-block crew-item" data-aos="fade-up">
-                            <iframe src="https://www.youtube.com/embed/qylb0dvPOf8" frameborder="0" allowfullscreen=""></iframe>
-                        </div>
-                        <div class="col-block crew-item" data-aos="fade-up">
-                            <iframe src="https://www.youtube.com/embed/_jukWyDbWE0" frameborder="0" allowfullscreen=""></iframe>
-                        </div>
-                        <div class="col-block crew-item" data-aos="fade-up">
-                            <iframe src="https://www.youtube.com/embed/oUWx3ZSjaRw" frameborder="0" allowfullscreen=""></iframe>
+                    <div class="col-block video-main" data-aos="fade-up">
+                        <iframe src="https://www.youtube.com/embed/oUWx3ZSjaRw" frameborder="0" allowfullscreen=""></iframe>
+                    </div>
+
+                    <div class="block-tab-full video-slideshow">
+                        <div class="video-cont">
+                            <div class="video-item" data-aos="fade-up">
+                                <iframe src="https://www.youtube.com/embed/qylb0dvPOf8" frameborder="0" allowfullscreen=""></iframe>
+                            </div>
+                            <div class="video-item" data-aos="fade-up">
+                                <iframe src="https://www.youtube.com/embed/_jukWyDbWE0" frameborder="0" allowfullscreen=""></iframe>
+                            </div>
+                            <div class="video-item" data-aos="fade-up">
+                                <iframe src="https://www.youtube.com/embed/oUWx3ZSjaRw" frameborder="0" allowfullscreen=""></iframe>
+                            </div>
                         </div>
                     </div>
 
@@ -804,6 +859,39 @@
     <script src="/static/casting/js/nav.js"></script>
 
     <script async src="/static/casting/js/twitter.js"></script>
+
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function currentDiv(n) {
+            showDivs(slideIndex = n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            if (n > x.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = x.length
+            }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+            }
+            x[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " w3-opacity-off";
+        }
+    </script>
 
 </body>
 

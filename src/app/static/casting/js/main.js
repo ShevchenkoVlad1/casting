@@ -400,7 +400,7 @@
             fadeInTime = 400,         // how slow/fast you want the button to show
             fadeOutTime = 400,         // how slow/fast you want the button to hide
             scrollSpeed = 300,         // how slow/fast you want the button to scroll to top. can be a value, 'slow', 'normal' or 'fast'
-            goTopButton = $(".go-top")
+            goTopButton = $(".go-top");
 
         // Show or hide the sticky footer button
         $(window).on('scroll', function () {
@@ -436,7 +436,7 @@
 
     function PersoneInfoClose(){
         $('#person-close').on("click", function(){
-            $('.casting-person-info').slideUp("slow");
+            $('.casting-person-info').fadeOut("slow");
         });
     }
 
@@ -460,8 +460,8 @@
                     $('.person-grouping').html(data.grouping);
                     $('.person-about_info').html(data.about_info);
                     $('.person-video_url').html(data.video_url);
-
-                    $('.casting-person-info').slideDown("slow");
+                    $('.person-contact_image').attr("src" , "/media/photos/noimage.png");
+                    $('.casting-person-info').fadeIn("slow");
                 });
 
 
@@ -470,6 +470,37 @@
             });
         });
     }
+
+    // Reflect scrolling in navigation
+	var navActive = function(section) {
+		var $el = $('#navbar > ul');
+		$el.find('li').removeClass('active');
+		$el.each(function(){
+			$(this).find('a[data-nav-section="'+section+'"]').closest('li').addClass('active');
+		});
+
+	};
+	var navigationSection = function() {
+
+		var $section = $('div[data-section]');
+		$section.waypoint(function(direction) {
+		  	if (direction === 'down') {
+		    	navActive($(this.element).data('section'));
+
+		  	}
+		}, {
+		  	offset: '150px'
+		});
+
+		$section.waypoint(function(direction) {
+		  	if (direction === 'up') {
+		    	navActive($(this.element).data('section'));
+		  	}
+		}, {
+		  	offset: function() { return -$(this.element).height() + 155; }
+		});
+
+	};
 
     /* Initialize
      * ------------------------------------------------------ */
@@ -491,6 +522,7 @@
         CastingForm();
         GetAllInfo();
         PersoneInfoClose();
+		navigationSection();
 
     })();
 
