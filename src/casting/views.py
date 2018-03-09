@@ -1,27 +1,41 @@
+from django.conf import settings
+from django.core.mail import EmailMessage
 from django.forms import modelformset_factory
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
+from django.template.loader import render_to_string
 
 from casting.forms import PersonForm, ImageForm
-from casting.models import Person, Image
+from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, Poster, \
+    FilmPhoto
 
 
 def home(request):
     person_list = Person.objects.filter(is_main=1).order_by('-created_date')
+    youtube_list = YoutubeVideo.objects.all()
+    crew_list = Worker.objects.all()
+    poster = Poster.objects.order_by('-id')[:1]
+    film_photo_list = FilmPhoto.objects.all()
+
     context = {
         'person_list': person_list,
+        'youtube_list': youtube_list,
+        'crew_list': crew_list,
+        'poster': poster,
+        'film_photo_list': film_photo_list
+
     }
 
     return render(request, 'casting/index.html', context)
 
 
 def casting(request):
-    ImageFormSet = modelformset_factory(Image,
+    ImageFormSet = modelformset_factory(PersonPhoto,
                                         form=ImageForm, extra=3)
     if request.method == 'POST':
         person_form = PersonForm(request.POST)
         formset = ImageFormSet(request.POST, request.FILES,
-                               queryset=Image.objects.none())
+                               queryset=PersonPhoto.objects.none())
         print(person_form.is_valid())
         if person_form.is_valid():
             person = Person()
@@ -47,6 +61,25 @@ def casting(request):
             # images = Images()
             #
             # images.save()
+    return HttpResponse()
+
+
+def subscribe(request):
+    if request.method == 'POST':
+        email = request.POST['subscribe-email']
+        print('here')
+
+        email_title = 'Title'
+        context = {}
+        email_message = render_to_string('casting/email_subscribe.html', context)
+        to_email = '{}'.format(email)
+
+        if settings.EMAIL_FAKE == 'yes':
+            print(email_message)
+        else:
+            email_sending = EmailMessage(email_title, email_message,
+                                         to=[to_email])
+            email_sending.send()
     return HttpResponse()
 
 

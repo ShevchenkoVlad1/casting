@@ -8,8 +8,7 @@
     "use strict";
 
     var cfg = {
-            scrollDuration: 800, // smoothscroll duration
-            mailChimpURL: 'https://facebook.us8.list-manage.com/subscribe/post?u=cdb7b577e41181934ed6a6a44&amp;id=e6957d85dc'   // mailchimp url
+            scrollDuration: 800 // smoothscroll duration
         },
 
         $WIN = $(window);
@@ -96,76 +95,6 @@
         });
 
     };
-
-
-    /* photoswipe
-     * ----------------------------------------------------- */
-    var clPhotoswipe = function () {
-        var items = [],
-            $pswp = $('.pswp')[0],
-            $folioItems = $('.item-folio');
-
-        // get items
-        $folioItems.each(function (i) {
-
-            var $folio = $(this),
-                $thumbLink = $folio.find('.thumb-link'),
-                $title = $folio.find('.item-folio__title'),
-                $caption = $folio.find('.item-folio__caption'),
-                $titleText = '<h4>' + $.trim($title.html()) + '</h4>',
-                $captionText = $.trim($caption.html()),
-                $href = $thumbLink.attr('href'),
-                $size = $thumbLink.data('size').split('x'),
-                $width = $size[0],
-                $height = $size[1];
-
-            var item = {
-                src: $href,
-                w: $width,
-                h: $height
-            }
-
-            if ($caption.length > 0) {
-                item.title = $.trim($titleText + $captionText);
-            }
-
-            items.push(item);
-        });
-
-        // bind click event
-        $folioItems.each(function (i) {
-
-            $(this).on('click', function (e) {
-                e.preventDefault();
-                var options = {
-                    index: i,
-                    showHideOpacity: true
-                }
-
-                // initialize PhotoSwipe
-                var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
-                lightBox.init();
-            });
-
-        });
-
-    };
-
-
-    /* Masonry
-     * ---------------------------------------------------- */
-    var clMasonryFolio = function () {
-
-        var containerBricks = $('.masonry');
-
-        containerBricks.imagesLoaded(function () {
-            containerBricks.masonry({
-                itemSelector: '.masonry__brick',
-                resize: true
-            });
-        });
-    };
-
 
     /* slick slider
      * ------------------------------------------------------ */
@@ -285,64 +214,6 @@
     };
 
 
-    /* Contact Form
-     * ------------------------------------------------------ */
-    var clContactForm = function () {
-        var sLoader = $('.submit-loader');
-        sLoader.slideDown("slow");
-
-        /* local validation */
-        $('#contactForm').validate({
-
-            /* submit via ajax */
-            submitHandler: function (form) {
-
-                var sLoader = $('.submit-loader');
-                sLoader.slideDown("slow");
-
-                $.ajax({
-
-                    url: form.attr("data-validate-username-url"),
-                    data: form.serialize(),
-                    dataType: 'json',
-
-                    beforeSend: function () {
-
-                        sLoader.slideDown("slow");
-
-                    },
-                    success: function (msg) {
-
-                        // Message was sent
-                        if (msg == 'OK') {
-                            sLoader.slideUp("slow");
-                            $('.message-warning').fadeOut();
-                            $('#contactForm').fadeOut();
-                            $('.message-success').fadeIn();
-                        }
-                        // There was an error
-                        else {
-                            sLoader.slideUp("slow");
-                            $('.message-warning').html(msg);
-                            $('.message-warning').slideDown("slow");
-                        }
-
-                    },
-                    error: function () {
-
-                        sLoader.slideUp("slow");
-                        $('.message-warning').html("Something went wrong. Please try again.");
-                        $('.message-warning').slideDown("slow");
-
-                    }
-
-                });
-            }
-
-        });
-    };
-
-
     /* Animate On Scroll
      * ------------------------------------------------------ */
     var clAOS = function () {
@@ -355,39 +226,6 @@
             once: true,
             disable: 'mobile'
         });
-
-    };
-
-
-    /* AjaxChimp
-     * ------------------------------------------------------ */
-    var clAjaxChimp = function () {
-
-        $('#mc-form').ajaxChimp({
-            language: 'es',
-            url: cfg.mailChimpURL
-        });
-
-        // Mailchimp translation
-        //
-        //  Defaults:
-        //	 'submit': 'Submitting...',
-        //  0: 'We have sent you a confirmation email',
-        //  1: 'Please enter a value',
-        //  2: 'An email address must contain a single @',
-        //  3: 'The domain portion of the email address is invalid (the portion after the @: )',
-        //  4: 'The username portion of the email address is invalid (the portion before the @: )',
-        //  5: 'This email address looks fake or invalid. Please enter a real email address'
-
-        $.ajaxChimp.translations.es = {
-            'submit': 'Submitting...',
-            0: '<i class="fa fa-check"></i> We have sent you a confirmation email',
-            1: '<i class="fa fa-warning"></i> You must enter a valid e-mail address.',
-            2: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-            3: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-            4: '<i class="fa fa-warning"></i> E-mail address is not valid.',
-            5: '<i class="fa fa-warning"></i> E-mail address is not valid.'
-        }
 
     };
 
@@ -414,21 +252,44 @@
 
     var CastingForm = function () {
         $('#contactForm').submit(function (e) {
-            var sLoader = $('.submit-loader');
+            var sLoader = $('.cast-form.submit-loader');
             sLoader.slideDown("slow");
 
             var form = $(this).closest("form");
             $.post(form.attr("data-url"), $(this).serialize())
                 .done(function () {
                     sLoader.slideUp("slow");
-                    $('.message-warning').fadeOut();
+                    $('.cast-form.message-warning').fadeOut();
                     $('#contactForm').fadeOut();
-                    $('.message-success').fadeIn();
+                    $('.cast-form.message-success').fadeIn();
                 })
                 .fail(function () {
                     sLoader.slideUp("slow");
-                    $('.message-warning').html("Something went wrong. Please try again.");
-                    $('.message-warning').slideDown("slow");
+                    $('.cast-form.message-warning').html("Something went wrong. Please try again.");
+                    $('.cast-form.message-warning').slideDown("slow");
+                });
+            e.preventDefault();
+        });
+    };
+
+    var SubscribeForm = function () {
+        $('#mailForm').submit(function (e) {
+            console.log('here');
+            var sLoader = $('.sub-mail.submit-loader');
+            sLoader.slideDown("slow");
+
+            var form = $(this).closest("form");
+            $.post(form.attr("data-url"), $(this).serialize())
+                .done(function () {
+                    sLoader.slideUp("slow");
+                    $('.sub-mail.message-warning').fadeOut();
+                    $('#mailForm').fadeOut();
+                    $('.sub-mail.message-success').fadeIn();
+                })
+                .fail(function () {
+                    sLoader.slideUp("slow");
+                    $('.sub-mail.message-warning').html("Something went wrong. Please try again.");
+                    $('.sub-mail.message-warning').slideDown("slow");
                 });
             e.preventDefault();
         });
@@ -471,6 +332,29 @@
         });
     }
 
+    function youtubeNext() {
+        $('li.youtube-child').on("click", function(e) {
+            var youtube_id = $(this).data('youtube-id');
+            $('iframe.main-youtube').attr("src" , 'https://www.youtube.com/embed/' + youtube_id + '?autoplay=1&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1');
+            $('iframe.main-youtube').attr("data-youtube-id" , youtube_id);
+            e.stopPropagation();
+        })
+    }
+
+    function facebookShare() {
+        $('#facebook_share').on("click", function(e) {
+            var youtube_id = $('iframe.main-youtube').attr("data-youtube-id");
+            $(this).attr("href" , 'https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v=' + youtube_id)
+        })
+    }
+
+    function twitterShare() {
+        $('#twitter_share').on("click", function(e) {
+            var youtube_id = $('iframe.main-youtube').attr("data-youtube-id");
+            $(this).attr("href" , 'https://twitter.com/home?status=https://www.youtube.com/watch?v=' + youtube_id)
+        })
+    }
+
     // Reflect scrolling in navigation
 	var navActive = function(section) {
 		var $el = $('#navbar > ul');
@@ -480,6 +364,8 @@
 		});
 
 	};
+
+
 	var navigationSection = function() {
 
 		var $section = $('div[data-section]');
@@ -509,20 +395,20 @@
         clPreloader();
         clMenuOnScrolldown();
         clOffCanvas();
-        clPhotoswipe();
-        clMasonryFolio();
         clSlickSlider();
         clSmoothScroll();
         clPlaceholder();
         clAlertBoxes();
-        // clContactForm();
         clAOS();
-        clAjaxChimp();
         clBackToTop();
         CastingForm();
         GetAllInfo();
         PersoneInfoClose();
 		navigationSection();
+		youtubeNext();
+		facebookShare();
+		twitterShare();
+		SubscribeForm();
 
     })();
 

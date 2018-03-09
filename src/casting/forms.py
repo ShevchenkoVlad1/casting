@@ -1,6 +1,6 @@
 from django import forms
 
-from casting.models import Person, Image
+from casting.models import Person, PersonPhoto
 
 
 class PersonForm(forms.ModelForm):
@@ -29,5 +29,5 @@ class ImageForm(forms.ModelForm):
     image = forms.ImageField(label='Image')
 
     class Meta:
-        model = Image
-        fields = ('image',)
+        model = PersonPhoto
+        fields = ("photo",)

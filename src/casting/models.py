@@ -3,8 +3,34 @@ import os
 from django.db import models
 
 
-def get_image_path(instance, filename):
-    return os.path.join('photos', str(instance.person_id), filename)
+def get_person_photo_path(instance, filename):
+    return os.path.join('person_photos', str(instance.person_id), filename)
+
+
+def get_worker_photo_path(instance, filename):
+    return os.path.join('worker_photos', str(instance.position), filename)
+
+
+def get_poster_photo_path(instance, filename):
+    return os.path.join('poster_photos', str(instance.title), filename)
+
+
+def get_film_photo_path(instance, filename):
+    return os.path.join('film_photos', str(instance.title), filename)
+
+
+class Poster(models.Model):
+    title = models.CharField(max_length=250, null=True)
+    photo = models.ImageField(upload_to=get_poster_photo_path, blank=True,
+                              null=True)
+    about_info = models.TextField(max_length=1000, blank=True)
+
+
+class Worker(models.Model):
+    position = models.CharField(max_length=250)
+    about_info = models.TextField(max_length=1000, blank=True)
+    photo = models.ImageField(upload_to=get_worker_photo_path, blank=True,
+                              null=True)
 
 
 class Person(models.Model):
@@ -26,6 +52,18 @@ class Person(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
 
 
-class Image(models.Model):
+class PersonPhoto(models.Model):
     person = models.ForeignKey(Person, default=None, on_delete=None)
-    image = models.ImageField(upload_to=get_image_path, blank=True, null=True)
+    photo = models.ImageField(upload_to=get_person_photo_path, blank=True,
+                              null=True)
+
+
+class YoutubeVideo(models.Model):
+    title = models.CharField(max_length=250, null=True)
+    video_id = models.CharField(max_length=70)
+
+
+class FilmPhoto(models.Model):
+    title = models.CharField(max_length=250, null=True)
+    photo = models.ImageField(upload_to=get_film_photo_path, blank=True,
+                              null=True)

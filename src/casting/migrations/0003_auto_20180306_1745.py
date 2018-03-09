@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='person',
             name='contact_image',
-            field=models.ImageField(null=True, upload_to=casting.models.get_image_path),
+            field=models.ImageField(null=True, upload_to=casting.models.get_person_photo_path),
         ),
         migrations.AlterField(
             model_name='person',

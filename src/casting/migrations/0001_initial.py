@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('grouping', models.BooleanField(default=False)),
                 ('crowd_scene', models.BooleanField(default=False)),
                 ('about_info', models.TextField(blank=True, max_length=1000, null=True)),
-                ('contact_image', models.ImageField(blank=True, null=True, upload_to=casting.models.get_image_path)),
+                ('contact_image', models.ImageField(blank=True, null=True, upload_to=casting.models.get_person_photo_path)),
                 ('video_url', models.CharField(max_length=70)),
             ],
         ),

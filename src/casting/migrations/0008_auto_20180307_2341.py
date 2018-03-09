@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
             name='Images',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(blank=True, null=True, upload_to=casting.models.get_image_path)),
+                ('image', models.ImageField(blank=True, null=True, upload_to=casting.models.get_person_photo_path)),
             ],
         ),
         migrations.RemoveField(

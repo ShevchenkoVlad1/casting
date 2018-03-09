@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/static/casting/css/main.css">
     <link rel="stylesheet" href="/static/casting/css/nav.css">
     <link rel="stylesheet" href="/static/casting/css/animate.min.css">
+    <link rel="stylesheet" href="/static/casting/css/swiper.min.css">
 
     <!-- script
     ================================================== -->
@@ -62,7 +63,7 @@
                         <li><a href="#" data-nav-section="casting">Casting</a></li>
                         <li><a href="#" data-nav-section="videos">Videos</a></li>
                         <li><a href="#" data-nav-section="photos">Photos</a></li>
-                        <li><a href="#" data-nav-section="sign_up">Sign up</a></li>
+                        <li><a href="#" data-nav-section="subscribe">Subscribe</a></li>
                         <li><a href="#" data-nav-section="social">Social updates</a></li>
                         <li><a href="#" data-nav-section="partners">Partners</a></li>
                     </ul>
@@ -107,21 +108,14 @@
                         </a>
                     </div>
 
-                    <div class="home-content__line"></div>
-
                 </div> <!-- end home-content -->
 
 
                 <ul class="home-social">
-                    <li>
-                        <a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
-                    </li>
-                    <li>
-                        <a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a>
-                    </li>
-                    <li>
-                        <a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a>
-                    </li>
+                    <li><a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
+                    <li><a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a></li>
+                    <li><a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a></li>
+                    <li><a href="#0"><i class="fa fa-youtube" aria-hidden="true"></i><span>YouTube</span></a></li>
                 </ul>
                 <!-- end home-social -->
 
@@ -136,37 +130,50 @@
 
                 <div class="overlay"></div>
                 <div class="shadow-overlay"></div>
-
-                <div class="about-title container" data-aos="fade-up">
-                    <div class="section-header">
-                        <div class="col-full">
-                            <p>MOVIE AUDITIONS & CASTING</p>
-                        </div>
-                    </div> <!-- end section-header -->
-                </div>
-
-                <div class="about-info container" data-aos="fade-up">
-                    <div class="row__divide-3">
-                        <div class="about-poster">
-                            <img src="/static/casting/img/home_bg.jpg" alt="">
-                        </div>
-
-                        <div class="about-desc">
+                {% for post in poster %}
+                    <div class="about-title container" data-aos="fade-up">
+                        <div class="section-header">
                             <div class="col-full">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas lacus et arcu ultrices, ac mattis metus bibendum. Integer et lacus nec dui condimentum sodales. Aenean venenatis nisl vitae varius fermentum. Phasellus sapien neque, blandit a blandit quis, sagittis eget orci. Vivamus interdum non urna quis eleifend. Duis egestas, tortor venenatis lobortis luctus, est neque tincidunt est, ac auctor massa massa ac eros. Curabitur vel accumsan tellus. Aenean sapien nisi, molestie pellentesque nisi id, aliquam laoreet neque.
-                                </p>
-                                <p>
-                                    Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus eu massa turpis. Vestibulum semper odio ut vestibulum dignissim. Etiam eleifend, elit quis pharetra sodales, massa mauris ultrices lorem, quis aliquam mauris mauris eu urna. Ut vel lectus quis erat luctus efficitur. Donec semper risus sit amet tempor cursus. Nunc velit leo, rhoncus a turpis a, pulvinar auctor lacus. Quisque nulla ligula, ullamcorper at nulla sed, imperdiet luctus neque. Vivamus hendrerit orci sit amet malesuada mattis. Mauris placerat eleifend tellus et sollicitudin. Praesent vestibulum, quam in vestibulum rutrum, nisl tortor vehicula dolor, ac fermentum odio est non lectus. Sed auctor ex a varius aliquam.
-                                </p>
+                                <p>{{ post.title }}</p>
+                            </div>
+                        </div> <!-- end section-header -->
+                    </div>
+
+                    <div class="about-info container" data-aos="fade-up">
+                        <div class="row__divide-3">
+                            <div class="about-poster">
+                                <img src="/media/{{ post.photo }}" alt="">
+                            </div>
+
+                            <div class="about-desc">
+                                <div class="col-full">
+                                    <p>{{ post.about_info }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% empty %}
+                    <div class="about-title container" data-aos="fade-up">
+                        <div class="section-header">
+                            <div class="col-full">
+                                <p>Title</p>
+                            </div>
+                        </div> <!-- end section-header -->
+                    </div>
+                    <div class="about-info container" data-aos="fade-up">
+                        <div class="row__divide-3">
+                            <div class="about-poster">
+                                <img src="/media/photos/noimage.png" alt="">
+                            </div>
 
-
-
-                <div class="about__line"></div>
+                            <div class="about-desc">
+                                <div class="col-full">
+                                    <p>Text</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
 
             </section> <!-- end s-about -->
         </div>
@@ -184,36 +191,34 @@
                 </div> <!-- end section-header -->
 
                 <div class="crew-list block-1-2 block-tab-full">
-                    <div class="crew-item" data-aos="fade-up">
-                        <div class="crew-image">
-                           <img src="/static/casting/img/home_bg.jpg" alt="">
-                        </div>
-                        <div class="crew-text">
-                            <div class="crew-position">Name</div>
-                            <div class="crew-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas lacus et arcu ultrices, ac mattis metus bibendum. Phasellus sapien neque, blandit a blandit quis, sagittis eget orci.
+                    {% for worker in crew_list %}
+                        <div class="crew-item" data-aos="fade-up">
+                            <div class="crew-image">
+                               <img src="/media/{{ worker.photo }}" alt="">
+                            </div>
+                            <div class="crew-text">
+                                <div class="crew-position">
+                                    {{ worker.position }}
+                                </div>
+                                <div class="crew-info">
+                                    {{ worker.about_info }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="crew-item" data-aos="fade-up">
-                        <div class="crew-image">
-                           <img src="/static/casting/img/home_bg.jpg" alt="">
-                        </div>
-                        <div class="crew-text">
-                            <div class="crew-position">Name</div>
-                            <div class="crew-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas lacus et arcu ultrices, ac mattis metus bibendum. Phasellus sapien neque, blandit a blandit quis, sagittis eget orci.
+                    {% empty %}
+                        <div class="crew-item" data-aos="fade-up">
+                            <div class="crew-image">
+                               <img src="/media/photos/noimage.png" alt="">
+                            </div>
+                            <div class="crew-text">
+                                <div class="crew-position">Position</div>
+                                <div class="crew-info">
+                                    Text
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="crew-item" data-aos="fade-up">
-                        <div class="crew-image">
-                           <img src="/static/casting/img/home_bg.jpg" alt="">
-                        </div>
-                        <div class="crew-text">
-                            <div class="crew-position">Name</div>
-                            <div class="crew-info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam egestas lacus et arcu ultrices, ac mattis metus bibendum. Phasellus sapien neque, blandit a blandit quis, sagittis eget orci.
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
+
                 </div> <!-- end crew-list -->
 
             </section> <!-- end s-crew -->
@@ -328,7 +333,7 @@
                                     </div>
                                     <div class="form-field">
                                         <button class="full-width btn--primary">Submit</button>
-                                        <div class="submit-loader">
+                                        <div class="cast-form submit-loader">
                                             <div class="text-loader">Sending...</div>
                                             <div class="s-loader">
                                                 <div class="bounce1"></div>
@@ -342,12 +347,12 @@
                             </form>
 
                             <!-- casting-warning -->
-                            <div class="message-warning">
+                            <div class="cast-form message-warning">
                                 Что-то пошло не так...
                             </div>
 
                             <!-- casting-success -->
-                            <div class="message-success">
+                            <div class="cast-form message-success">
                                 Ваша анкета принята на рассмотрение, после проверки модератором она будет отображена на сайте<br>
                             </div>
 
@@ -384,20 +389,6 @@
                                         <div class="person-avatar">
                                             <div class="w3-content">
                                                 <img class="mySlides person-contact_image" src="">
-                                                <img class="mySlides person-contact_image" src="">
-                                                <img class="mySlides person-contact_image" src="">
-
-                                                <div class="w3-row-padding w3-section">
-                                                    <div class="w3-col s4">
-                                                        <img class="demo w3-opacity w3-hover-opacity-off person-contact_image" src="" onclick="currentDiv(1)">
-                                                    </div>
-                                                    <div class="w3-col s4">
-                                                        <img class="demo w3-opacity w3-hover-opacity-off person-contact_image" src="" onclick="currentDiv(2)">
-                                                    </div>
-                                                    <div class="w3-col s4">
-                                                        <img class="demo w3-opacity w3-hover-opacity-off person-contact_image" src="" onclick="currentDiv(3)">
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="person-info">
@@ -437,24 +428,56 @@
                         </div>
                     </div> <!-- end section-header -->
 
-                    <div class="col-block video-main" data-aos="fade-up">
-                        <iframe src="https://www.youtube.com/embed/oUWx3ZSjaRw" frameborder="0" allowfullscreen=""></iframe>
-                    </div>
+                    <div class="film-featured-videos--desktop container" data-aos="fade-up">
 
-                    <div class="block-tab-full video-slideshow">
-                        <div class="video-cont">
-                            <div class="video-item" data-aos="fade-up">
-                                <iframe src="https://www.youtube.com/embed/qylb0dvPOf8" frameborder="0" allowfullscreen=""></iframe>
+                        <div class="col-block video-main">
+                            <iframe class="main-youtube" data-youtube-id="" src="https://www.youtube.com/embed/qylb0dvPOf8?autoplay=0&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media"></iframe>
+                        </div>
+                        <div class="videos_social social-buttons">
+                            <a id="facebook_share" href="" data-type="facebook" class="btn btn--facebook exit" data-share-type="facebook" target="_blank">
+                                <span class="btn--left">
+                                    <i class="fa fa-facebook"></i>Share
+                                </span>
+                            </a>
+                            <div class="youtube-style">
+                                <div class="g-ytsubscribe" data-channelid="UC6zZubfeysFoOGaqx9mG6ng" data-layout="default" data-count="default"></div>
                             </div>
-                            <div class="video-item" data-aos="fade-up">
-                                <iframe src="https://www.youtube.com/embed/_jukWyDbWE0" frameborder="0" allowfullscreen=""></iframe>
+                            <a id="twitter_share" href="" data-type="twitter" class="btn btn--twitter exit" data-share-type="twitter" target="_blank">
+                                <span class="btn--left">
+                                    <i class="fa fa-twitter"></i>Tweet
+                                </span>
+                            </a>
+                        </div>
+                        <div class="block-tab-full video-slideshow padding-video">
+                            <div class="video-cont swiper-container">
+                                <ul class="swiper-wrapper ">
+                                    {% for video in youtube_list %}
+                                        <li class="item swiper-slide youtube-child" data-youtube-id="{{ video.video_id }}">
+                                            <div class="featured-content-img">
+                                                <div class="featured-video">
+                                                    <img class="video-image" src="https://img.youtube.com/vi/{{ video.video_id }}/0.jpg">
+                                                    <img class="play-video" src="/static/casting/img/youtube-play.png">
+                                                    <p class="video-title">{{ video.title }}</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% empty %}
+                                        <li class="item swiper-slide youtube-child" data-youtube-id="">
+                                            <div class="featured-content-img">
+                                                <div class="featured-video">
+                                                    <img class="video-image" src="https://img.youtube.com/vi/0.jpg">
+                                                    <img class="play-video" src="/static/casting/img/youtube-play.png">
+                                                    <p class="video-title">{{ video.title }}</p>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                             </div>
-                            <div class="video-item" data-aos="fade-up">
-                                <iframe src="https://www.youtube.com/embed/oUWx3ZSjaRw" frameborder="0" allowfullscreen=""></iframe>
-                            </div>
+                            <div class="video-prev swiper-button-prev"></div>
+                            <div class="video-next swiper-button-next"></div>
                         </div>
                     </div>
-
                 </div> <!-- end intro-wrap -->
 
             </section> <!-- end s-videos -->
@@ -463,218 +486,54 @@
         <!-- photos
         ================================================== -->
         <div data-section="photos">
-            <section class="s-works">
+            <section class="s-photos">
 
                 <div class="intro-wrap">
 
                     <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
                         <div class="col-full">
-                            <h3 class="subhead">Photos</h3>
-                            <h1 class="display-2 display-2--light">We love what we do, check out some of our photos</h1>
+                            <h1 class="display-2 display-2--light">Photos</h1>
                         </div>
                     </div> <!-- end section-header -->
 
+                    <div class="photo-cont swiper-container container">
+                        <div id="photo-overlay"></div>
+                            <div class="swiper-wrapper">
+                                {% for photo in film_photo_list %}
+                                    <div class="swiper-slide" data-aos="fade-up">
+                                        <div class="item-folio">
+
+                                            <div class="item-folio__thumb">
+                                                <a href="/media/{{ photo.photo }}" id="thumb-link">
+                                                    <img src="/media/{{ photo.photo }}" alt="">
+                                                </a>
+                                            </div>
+
+                                            <div class="item-folio__text">
+                                                <h3 class="item-folio__title">
+                                                    {{ photo.title }}
+                                                </h3>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                {%  endfor %}
+                            </div>
+                    </div> <!-- end photos-content -->
                 </div> <!-- end intro-wrap -->
-
-                <div class="row works-content">
-                    <div class="col-full masonry-wrap">
-                        <div class="masonry">
-
-                            <div class="masonry__brick" data-aos="fade-up">
-                                <div class="item-folio">
-
-                                    <div class="item-folio__thumb">
-                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                            <img src="/static/casting/img/poster.jpg"
-                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
-                                        </a>
-                                    </div>
-
-                                    <div class="item-folio__text">
-                                        <h3 class="item-folio__title">
-                                            Casting
-                                        </h3>
-                                        <p class="item-folio__cat">
-                                            Casting
-                                        </p>
-                                    </div>
-
-                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                        <i class="icon-link"></i>
-                                    </a>
-
-                                    <div class="item-folio__caption">
-                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end masonry__brick -->
-
-                            <div class="masonry__brick" data-aos="fade-up">
-                                <div class="item-folio">
-
-                                    <div class="item-folio__thumb">
-                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                            <img src="/static/casting/img/poster.jpg"
-                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
-                                        </a>
-                                    </div>
-
-                                    <div class="item-folio__text">
-                                        <h3 class="item-folio__title">
-                                            Casting
-                                        </h3>
-                                        <p class="item-folio__cat">
-                                            Casting
-                                        </p>
-                                    </div>
-
-                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                        <i class="icon-link"></i>
-                                    </a>
-
-                                    <div class="item-folio__caption">
-                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end masonry__brick -->
-
-                            <div class="masonry__brick" data-aos="fade-up">
-                                <div class="item-folio">
-
-                                    <div class="item-folio__thumb">
-                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                            <img src="/static/casting/img/poster.jpg"
-                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
-                                        </a>
-                                    </div>
-
-                                    <div class="item-folio__text">
-                                        <h3 class="item-folio__title">
-                                            Casting
-                                        </h3>
-                                        <p class="item-folio__cat">
-                                            Casting
-                                        </p>
-                                    </div>
-
-                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                        <i class="icon-link"></i>
-                                    </a>
-
-                                    <div class="item-folio__caption">
-                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end masonry__brick -->
-
-                            <div class="masonry__brick" data-aos="fade-up">
-                                <div class="item-folio">
-
-                                    <div class="item-folio__thumb">
-                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                            <img src="/static/casting/img/poster.jpg"
-                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
-                                        </a>
-                                    </div>
-
-                                    <div class="item-folio__text">
-                                        <h3 class="item-folio__title">
-                                            Casting
-                                        </h3>
-                                        <p class="item-folio__cat">
-                                            Casting
-                                        </p>
-                                    </div>
-
-                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                        <i class="icon-link"></i>
-                                    </a>
-
-                                    <div class="item-folio__caption">
-                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end masonry__brick -->
-
-                            <div class="masonry__brick" data-aos="fade-up">
-                                <div class="item-folio">
-
-                                    <div class="item-folio__thumb">
-                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                            <img src="/static/casting/img/poster.jpg"
-                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
-                                        </a>
-                                    </div>
-
-                                    <div class="item-folio__text">
-                                        <h3 class="item-folio__title">
-                                            Casting
-                                        </h3>
-                                        <p class="item-folio__cat">
-                                            Casting
-                                        </p>
-                                    </div>
-
-                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                        <i class="icon-link"></i>
-                                    </a>
-
-                                    <div class="item-folio__caption">
-                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end masonry__brick -->
-
-                            <div class="masonry__brick" data-aos="fade-up">
-                                <div class="item-folio">
-
-                                    <div class="item-folio__thumb">
-                                        <a href="/static/casting/img/poster.jpg" class="thumb-link" title="Shutterbug" data-size="1050x700">
-                                            <img src="/static/casting/img/poster.jpg"
-                                                 srcset="/static/casting/img/poster.jpg 1x, /static/casting/img/poster.jpg 2x" alt="">
-                                        </a>
-                                    </div>
-
-                                    <div class="item-folio__text">
-                                        <h3 class="item-folio__title">
-                                            Casting
-                                        </h3>
-                                        <p class="item-folio__cat">
-                                            Casting
-                                        </p>
-                                    </div>
-
-                                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
-                                        <i class="icon-link"></i>
-                                    </a>
-
-                                    <div class="item-folio__caption">
-                                        <p>Vero molestiae sed aut natus excepturi. Et tempora numquam. Temporibus iusto quo.Unde dolorem corrupti neque nisi.</p>
-                                    </div>
-
-                                </div>
-                            </div> <!-- end masonry__brick -->
-
-                        </div> <!-- end masonry -->
-                    </div> <!-- end col-full -->
-                </div> <!-- end photos-content -->
+                <div class="photo-prev swiper-button-prev"></div>
+                <div class="photo-next swiper-button-next"></div>
 
             </section> <!-- end s-photos -->
         </div>
 
-        <!-- signup
+        <!-- subscribe
         ================================================== -->
-        <div data-section="sign_up">
-            <section class="s-contact">
+        <div data-section="subscribe">
+            <section class="s-subscribe">
 
                 <div class="row section-header" data-aos="fade-up">
                     <div class="col-full">
-                        <h3 class="subhead">Sign up</h3>
                         <h1 class="display-2 display-2--light">Subscribe us</h1>
                     </div>
                 </div> <!-- end section-header -->
@@ -683,47 +542,58 @@
                 <div class="row clients-outer" data-aos="fade-up">
 
                     <div class="col-full">
+                        <div class="subscribe-form">
+                            <form name="mailForm" id="mailForm" method="POST" data-url="{% url 'subscribe' %}">
+                                {% csrf_token %}
+                                <div class="form-field input-group input-group-icon">
+                                    <input name="subscribe-email" type="email" id="subscribe-email" placeholder="Your Email" class="full-width" required>
+                                    <div class="input-icon"><i class="fa fa-envelope"></i></div>
+                                </div>
+                                <button class="full-width btn--primary">Submit</button>
+                                <div class="sub-mail submit-loader">
+                                        <div class="text-loader">Sending...</div>
+                                        <div class="s-loader">
+                                            <div class="bounce1"></div>
+                                            <div class="bounce2"></div>
+                                            <div class="bounce3"></div>
+                                        </div>
+                                </div>
+                            </form>
 
-                        <p>Quia quo qui sed odit. Quaerat voluptas autem necessitatibus vitae aut non alias sed quia. Ut itaque enim optio ut excepturi deserunt iusto porro.</p>
-                        <div class="footer-subscribe">
-                            <div class="subscribe-form">
-                                <form id="mc-form" class="group" novalidate="true">
-                                    <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
-                                    <input type="button" name="subscribe" value="Subscribe">
-                                    <label for="mc-email" class="subscribe-message"></label>
-                                </form>
-                            </div>
+                        <!-- casting-warning -->
+                        <div class="sub-mail message-warning">
+                            Что-то пошло не так...
+                        </div>
+
+                        <!-- casting-success -->
+                        <div class="sub-mail message-success">
+                            Подписка оформлена<br>
+                        </div>
+
                         </div>
                     </div>
+                </div>
 
-                </div> <!-- end footer-main -->
-
-            </section> <!-- end s-signup -->
+            </section> <!-- end s-subscribe -->
         </div>
 
         <!-- social updates
         ================================================== -->
         <div data-section="social">
-            <section class="s-about">
+            <section class="s-social">
 
-                <div class="row section-header has-bottom-sep" data-aos="fade-up">
-                    <div class="col-full">
-                        <h3 class="subhead subhead--dark">Social updates</h3>
-                    </div>
-                </div> <!-- end section-header -->
+                <div class="intro-wrap">
 
-                <div class="row about-stats stats block-1-4 block-m-1-2 block-mob-full">
-                    <div class="col-block" data-aos="fade-up">
-                        <blockquote class="twitter-tweet" data-lang="ru"><p lang="en" dir="ltr">Hands up if the villainous Lord Nooth is your favourite <a href="https://twitter.com/hashtag/EarlyMan?src=hash&amp;ref_src=twsrc%5Etfw">#EarlyMan</a> character! 🙋 If you have&#39;t met him yet, here&#39;s Tom Hiddleston (the voice of Nooth) to introduce you… <a href="https://t.co/vApWNnqVld">pic.twitter.com/vApWNnqVld</a></p>&mdash; Early Man (@earlymanmovie) <a href="https://twitter.com/earlymanmovie/status/967733175064576005?ref_src=twsrc%5Etfw">25 февраля 2018 г.</a></blockquote>
-                    </div>
-                    <div class="col-block" data-aos="fade-up">
-                        <blockquote class="twitter-tweet" data-lang="ru"><p lang="cs" dir="ltr">Т​​⁣o​‍‌ ​‍‌ｓ​‌⁢ｕ​‌⁡r​‌⁢v​‍­i​​⁣ⅴ​‍⁤e​‌⁢,​‍‍ ​‍‌ｔ‍⁡ｈ​‌⁢ｅ​‍⁣y‍⁡ ​‌⁡ｍ​‌‌u​‍⁢s​‌‌ｔ fighｔ <a href="https://twitter.com/hashtag/WhatsInside?src=hash&amp;ref_src=twsrc%5Etfw">#WhatsInside</a>． Get ｔｉϲｋｅｔｓ: <a href="https://t.co/oPDAK5GXMD">https://t.co/oPDAK5GXMD</a> <a href="https://t.co/6eFgFxSmdk">pic.twitter.com/6eFgFxSmdk</a></p>&mdash; Annihilation (@AnnihilationMov) <a href="https://twitter.com/AnnihilationMov/status/967051447392116736?ref_src=twsrc%5Etfw">23 февраля 2018 г.</a></blockquote>
-                    </div>
-                    <div class="col-block" data-aos="fade-up">
-                        <blockquote class="twitter-tweet" data-lang="ru"><p lang="en" dir="ltr">Ｉ​​⁣ｎ​‍⁢ ​‌‌ｔ‍⁡w​⁠⁠o​‍‍ ​⁠­d‍⁡a​‍⁢ｙ​‌‌ｓ​​⁣，​‌​ ​⁠⁠w⁣­e faｃｅ <a href="https://twitter.com/hashtag/Annihilation?src=hash&amp;ref_src=twsrc%5Etfw">#Annihilation</a>． Ｇｅt ｔⅰϲkｅｔｓ：<a href="https://t.co/oPDAK5GXMD">https://t.co/oPDAK5GXMD</a> <a href="https://twitter.com/hashtag/WhatsInside?src=hash&amp;ref_src=twsrc%5Etfw">#WhatsInside</a> <a href="https://t.co/RUqmHfanQ9">pic.twitter.com/RUqmHfanQ9</a></p>&mdash; Annihilation (@AnnihilationMov) <a href="https://twitter.com/AnnihilationMov/status/966408129700249600?ref_src=twsrc%5Etfw">21 февраля 2018 г.</a></blockquote>
-                    </div>
-                    <div class="col-block" data-aos="fade-up">
-                        <blockquote class="twitter-tweet" data-lang="ru"><p lang="und" dir="ltr">⚡️ “<a href="https://twitter.com/hashtag/TombRaider?src=hash&amp;ref_src=twsrc%5Etfw">#TombRaider</a>&#39;s Alicia Vikander describes Lara Croft in 3 words” <a href="https://twitter.com/TombRaiderMovie?ref_src=twsrc%5Etfw">@TombRaiderMovie</a><a href="https://t.co/b9jWcnKoEA">https://t.co/b9jWcnKoEA</a></p>&mdash; GameSpot (@gamespot) <a href="https://twitter.com/gamespot/status/967319476411580416?ref_src=twsrc%5Etfw">24 февраля 2018 г.</a></blockquote>
+                    <div class="row section-header has-bottom-sep" data-aos="fade-up">
+                        <div class="col-full">
+                            <h1 class="display-2 display-2--light">Social updates</h1>
+                        </div>
+                    </div> <!-- end section-header -->
+
+                    <div class="row container social-twit">
+                        <div class="col-block" data-aos="fade-up">
+                            <a class="twitter-grid" href="https://twitter.com/TwitterDev/timelines/539487832448843776">National Park Tweets</a>
+                        </div>
                     </div>
                 </div>
 
@@ -766,64 +636,36 @@
         <!-- footer
         ================================================== -->
         <footer>
-
-            <div class="row footer-bottom">
-
-                <div class="col-twelve">
-                    <div class="copyright">
-                        <span>© Copyright 2018</span>
-                        <span>Site Created by <a href="https://www.linkedin.com/in/shevchenko-vlad/">Shevchenko Vlad</a></span>
-                    </div>
-
-                    <div class="go-top">
-                        <a href="#" data-nav-section="home" title="Back to Top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
-                    </div>
+            <div class="container">
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="#" data-nav-section="home">Home</a></li>
+                        <li><a href="#" data-nav-section="about">About</a></li>
+                        <li><a href="#" data-nav-section="crew">Crew</a></li>
+                        <li><a href="#" data-nav-section="casting">Casting</a></li>
+                        <li><a href="#" data-nav-section="videos">Videos</a></li>
+                        <li><a href="#" data-nav-section="photos">Photos</a></li>
+                        <li><a href="#" data-nav-section="subscribe">Subscribe</a></li>
+                        <li><a href="#" data-nav-section="social">Social updates</a></li>
+                        <li><a href="#" data-nav-section="partners">Partners</a></li>
+                    </ul>
                 </div>
-
-            </div> <!-- end footer-bottom -->
-
-        </footer> <!-- end footer -->
+                <div class="text-center">
+                    <ul class="footer-social">
+                        <li><a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
+                        <li><a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a></li>
+                        <li><a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a></li>
+                        <li><a href="#0"><i class="fa fa-youtube" aria-hidden="true"></i><span>YouTube</span></a></li>
+                    </ul>
+                    <p>Copyright 2018. All Rights Reserved. <br>Made with <i class="fa fa-heart"></i> by <a href="https://www.linkedin.com/in/shevchenko-vlad/" target="_blank">Shevchenko Vlad</a></p>
+                </div>
+                <div class="go-top">
+                    <a href="#" data-nav-section="home" title="Back to Top"><i class="icon-arrow-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+		</footer>
 
     </div> <!-- end page -->
-
-    <!-- photoswipe background
-    ================================================== -->
-    <div aria-hidden="true" class="pswp" role="dialog" tabindex="-1">
-
-        <div class="pswp__bg"></div>
-        <div class="pswp__scroll-wrap">
-
-            <div class="pswp__container">
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-            </div>
-
-            <div class="pswp__ui pswp__ui--hidden">
-                <div class="pswp__top-bar">
-                    <div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button> <button class="pswp__button pswp__button--share" title=
-                    "Share"></button> <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button> <button class="pswp__button pswp__button--zoom" title=
-                    "Zoom in/out"></button>
-                    <div class="pswp__preloader">
-                        <div class="pswp__preloader__icn">
-                            <div class="pswp__preloader__cut">
-                                <div class="pswp__preloader__donut"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                    <div class="pswp__share-tooltip"></div>
-                </div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button> <button class="pswp__button pswp__button--arrow--right" title=
-                "Next (arrow right)"></button>
-                <div class="pswp__caption">
-                    <div class="pswp__caption__center"></div>
-                </div>
-            </div>
-
-        </div>
-
-    </div> <!-- end photoSwipe background -->
 
 
     <!-- preloader
@@ -857,40 +699,43 @@
     <script src="/static/casting/js/plugins.js"></script>
     <script src="/static/casting/js/main.js"></script>
     <script src="/static/casting/js/nav.js"></script>
-
+    <script src="/static/casting/js/swiper.min.js"></script>
     <script async src="/static/casting/js/twitter.js"></script>
+    <script src="https://apis.google.com/js/platform.js"></script>
 
     <script>
-        var slideIndex = 1;
-        showDivs(slideIndex);
-
-        function plusDivs(n) {
-            showDivs(slideIndex += n);
-        }
-
-        function currentDiv(n) {
-            showDivs(slideIndex = n);
-        }
-
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("demo");
-            if (n > x.length) {
-                slideIndex = 1
+        var swiperVideo = new Swiper('.video-cont.swiper-container', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            navigation: {
+                nextEl: '.video-next.swiper-button-next',
+                prevEl: '.video-prev.swiper-button-prev'
             }
-            if (n < 1) {
-                slideIndex = x.length
+        });
+        var swiperPhoto = new Swiper('.photo-cont.swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            coverflowEffect: {
+                rotate: 50,
+                stretch: 0,
+                depth: 100,
+                modifier: 1,
+                slideShadows: true
+            },
+            slidesPerView: 3,
+            spaceBetween: 30,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            navigation: {
+                nextEl: '.photo-next.swiper-button-next',
+                prevEl: '.photo-prev.swiper-button-prev'
             }
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-            }
-            x[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " w3-opacity-off";
-        }
+        })
     </script>
 
 </body>
