@@ -10,6 +10,4 @@ else
     python3 src/manage.py loaddata src/casting/fixtures/*.json
 fi
 
-sudo python3 src/manage.py collectstatic --noinput
-
-uwsgi --ini uwsgi/production.ini
+sudo systemctl restart apache2
