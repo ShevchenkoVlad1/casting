@@ -4,26 +4,40 @@ from django.forms import modelformset_factory
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.template.loader import render_to_string
+from django.utils.translation import get_language
 
 from casting.forms import PersonForm, ImageForm
 from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, Poster, \
-    FilmPhoto
+    FilmPhoto, Partner, Social
 
 
 def home(request):
+    current_lang = get_language()
+
     person_list = Person.objects.filter(is_main=1).order_by('-created_date')
     youtube_list = YoutubeVideo.objects.all()
-    crew_list = Worker.objects.all()
-    poster = Poster.objects.order_by('-id')[:1]
+
+    crew_list = Worker.objects.filter(languages=current_lang)
+    poster = Poster.objects.filter(languages=current_lang).order_by('-id')[:1]
     film_photo_list = FilmPhoto.objects.all()
+    partner_list = Partner.objects.all()
+    # social
+    twitter = Social.objects.filter(title="Twitter").get()
+    instagram = Social.objects.filter(title="Instagram").get()
+    youtube = Social.objects.filter(title="YouTube").get()
+    facebook = Social.objects.filter(title="Facebook").get()
 
     context = {
         'person_list': person_list,
         'youtube_list': youtube_list,
         'crew_list': crew_list,
         'poster': poster,
-        'film_photo_list': film_photo_list
-
+        'film_photo_list': film_photo_list,
+        'twitter': twitter,
+        'instagram': instagram,
+        'youtube': youtube,
+        'facebook': facebook,
+        'partner_list': partner_list,
     }
 
     return render(request, 'casting/index.html', context)
@@ -71,7 +85,8 @@ def subscribe(request):
 
         email_title = 'Title'
         context = {}
-        email_message = render_to_string('casting/email_subscribe.html', context)
+        email_message = render_to_string('casting/email_subscribe.html',
+                                         context)
         to_email = '{}'.format(email)
 
         if settings.EMAIL_FAKE == 'yes':

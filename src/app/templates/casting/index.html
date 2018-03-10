@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load i18n %}
 <!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
@@ -10,13 +11,19 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Casting</title>
+    <title>{% trans "Casting" %}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- mobile specific metas
     ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url"                content="" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="" />
+    <meta property="og:description"        content="" />
+    <meta property="og:image"              content="" />
 
     <!-- CSS
     ================================================== -->
@@ -57,15 +64,35 @@
             <nav class="cast-nav" role="navigation">
                 <div id="navbar" class="text-center menu-1 menu-wrap">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="#" data-nav-section="home">Home</a></li>
-                        <li><a href="#" data-nav-section="about">About</a></li>
-                        <li><a href="#" data-nav-section="crew">Crew</a></li>
-                        <li><a href="#" data-nav-section="casting">Casting</a></li>
-                        <li><a href="#" data-nav-section="videos">Videos</a></li>
-                        <li><a href="#" data-nav-section="photos">Photos</a></li>
-                        <li><a href="#" data-nav-section="subscribe">Subscribe</a></li>
-                        <li><a href="#" data-nav-section="social">Social updates</a></li>
-                        <li><a href="#" data-nav-section="partners">Partners</a></li>
+                        <li class="active"><a href="#" data-nav-section="home">{% trans "Home" %}</a></li>
+                        <li><a href="#" data-nav-section="about">{% trans "About" %}</a></li>
+                        <li><a href="#" data-nav-section="crew">{% trans "Crew" %}</a></li>
+                        <li><a href="#" data-nav-section="casting">{% trans "Casting" %}</a></li>
+                        <li><a href="#" data-nav-section="videos">{% trans "Videos" %}</a></li>
+                        <li><a href="#" data-nav-section="photos">{% trans "Photos" %}</a></li>
+                        <li><a href="#" data-nav-section="subscribe">{% trans "Subscribe" %}</a></li>
+                        <li><a href="#" data-nav-section="social">{% trans "Social updates" %}</a></li>
+                        <li><a href="#" data-nav-section="partners">{% trans "Partners" %}</a></li>
+                        <li class="li-lang">
+                            <form action="{% url 'set_language' %}" method="post" class="header_language" >
+                                {% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}" />
+                                <div class="select1">
+                                    <select name="language" class="header_language_select">>
+                                        {% get_current_language as LANGUAGE_CODE %}
+                                        {% get_available_languages as LANGUAGES %}
+                                        {% for lang in LANGUAGES %}
+                                            <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                                                {{ lang.1 }} ({{ lang.0 }})
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div >
+                                    <input class="language_select_btn" type="submit" value="Go" hidden>
+                                </div>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -86,7 +113,7 @@
                                 <div class="col-md-3 home-casting">
                                     <div class="home-content__buttons">
                                         <a href="#" data-nav-section="casting" class="btn btn--stroke">
-                                            Go to the casting
+                                            {% trans "Go to the casting" %}
                                         </a>
                                     </div>
                                 </div>
@@ -94,7 +121,7 @@
                                 <div class="col-md-3 home-news">
                                     <div class="home-content__buttons">
                                         <a href="#" data-nav-section="social" class="btn btn--stroke">
-                                            News
+                                            {% trans "News" %}
                                         </a>
                                     </div>
                                 </div>
@@ -104,7 +131,7 @@
 
                     <div class="home-content__scroll">
                         <a href="#" data-nav-section="about">
-                            <span>Scroll Down</span>
+                            <span>{% trans "Scroll Down" %}</span>
                         </a>
                     </div>
 
@@ -112,10 +139,10 @@
 
 
                 <ul class="home-social">
-                    <li><a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
-                    <li><a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a></li>
-                    <li><a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a></li>
-                    <li><a href="#0"><i class="fa fa-youtube" aria-hidden="true"></i><span>YouTube</span></a></li>
+                    <li><a href="{{ facebook.social_url }}"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
+                    <li><a href="{{ twitter.social_url }}"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a></li>
+                    <li><a href="{{ instagram.social_url }}"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a></li>
+                    <li><a href="{{ youtube.social_url }}"><i class="fa fa-youtube" aria-hidden="true"></i><span>YouTube</span></a></li>
                 </ul>
                 <!-- end home-social -->
 
@@ -156,7 +183,7 @@
                     <div class="about-title container" data-aos="fade-up">
                         <div class="section-header">
                             <div class="col-full">
-                                <p>Title</p>
+                                <p>{% trans "Title" %}</p>
                             </div>
                         </div> <!-- end section-header -->
                     </div>
@@ -168,7 +195,7 @@
 
                             <div class="about-desc">
                                 <div class="col-full">
-                                    <p>Text</p>
+                                    <p>{% trans "Text" %}</p>
                                 </div>
                             </div>
                         </div>
@@ -185,8 +212,8 @@
 
                 <div class="container section-header" data-aos="fade-up">
                     <div class="col-full">
-                        <h3 class="subhead">Our crew</h3>
-                        <h1 class="display-2">We work only with highly qualified crew</h1>
+                        <h3 class="subhead">{% trans "Our crew" %}</h3>
+                        <h1 class="display-2">{% trans "We work only with highly qualified crew" %}</h1>
                     </div>
                 </div> <!-- end section-header -->
 
@@ -211,9 +238,9 @@
                                <img src="/media/photos/noimage.png" alt="">
                             </div>
                             <div class="crew-text">
-                                <div class="crew-position">Position</div>
+                                <div class="crew-position">{% trans "Position" %}</div>
                                 <div class="crew-info">
-                                    Text
+                                    {% trans "Text" %}
                                 </div>
                             </div>
                         </div>
@@ -234,7 +261,7 @@
 
                     <div class="container section-header" data-aos="fade-up">
                         <div class="col-full">
-                            <h1 class="display-2 display-2--light">Sign up for the casting</h1>
+                            <h1 class="display-2 display-2--light">{% trans "Sign up for the casting" %}</h1>
                         </div>
                     </div>
 
@@ -242,38 +269,38 @@
 
                         <div class="casting-contact">
 
-                            <h3 class="h6">Sign up form</h3>
+                            <h3 class="h6">{% trans "Sign up form" %}</h3>
 
                             <form name="contactForm" id="contactForm" method="POST" data-url="{% url 'casting' %}" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <fieldset>
                                     <div class="casting-row">
                                         <div class="form-field input-group input-group-icon">
-                                            <input name="first_name" type="text" id="first_name" placeholder="Your First Name" minlength="2" class="full-width" required>
+                                            <input name="first_name" type="text" id="first_name" placeholder="{% trans 'Your First Name' %}" minlength="2" class="full-width" required>
                                             <div class="input-icon"><i class="fa fa-user"></i></div>
                                         </div>
                                         <div class="form-field input-group input-group-icon">
-                                            <input name="second_name" type="text" id="second_name" placeholder="Your Second Name" minlength="2"class="full-width" required>
+                                            <input name="second_name" type="text" id="second_name" placeholder="{% trans 'Your Second Name' %}" minlength="2"class="full-width" required>
                                             <div class="input-icon"><i class="fa fa-user"></i></div>
                                         </div>
                                     </div>
                                     <div class="casting-row">
                                         <div class="form-field input-group input-group-icon">
-                                            <input name="email" type="email" id="email" placeholder="Your Email" class="full-width" required>
+                                            <input name="email" type="email" id="email" placeholder="{% trans 'Your Email' %}" class="full-width" required>
                                             <div class="input-icon"><i class="fa fa-envelope"></i></div>
                                         </div>
                                         <div class="form-field input-group input-group-icon">
-                                            <input name="phone" type="text" id="phone" placeholder="Your Phone Number" class="full-width" required>
+                                            <input name="phone" type="text" id="phone" placeholder="{% trans 'Your Phone Number' %}" class="full-width" required>
                                             <div class="input-icon"><i class="fa fa-phone"></i></div>
                                         </div>
                                     </div>
                                     <div class="casting-row">
                                         <div class="form-field input-group input-group-icon">
-                                            <input name="age" type="date" id="age" placeholder="Your Date Of Birth" class="full-width" required>
+                                            <input name="age" type="date" id="age" placeholder="{% trans 'Your Date Of Birth' %}" class="full-width" required>
                                             <div class="input-icon"><i class="fa fa-calendar"></i></div>
                                         </div>
                                         <div class="form-field input-group input-group-icon">
-                                            <input name="city" type="text" id="city" placeholder="Your City" class="full-width" required>
+                                            <input name="city" type="text" id="city" placeholder="{% trans 'Your City' %}" class="full-width" required>
                                             <div class="input-icon"><i class="fa fa-home"></i></div>
                                         </div>
                                     </div>
@@ -281,46 +308,46 @@
                                         <div class="casting-row-group">
                                             <div class="input-group">
                                                 <input type="radio" name="gender" value="male" id="gender-male" checked>
-                                                <label for="gender-male">Male</label>
+                                                <label for="gender-male">{% trans 'Male' %}</label>
                                                 <input type="radio" name="gender" value="female" id="gender-female">
-                                                <label for="gender-female">Female</label>
+                                                <label for="gender-female">{% trans 'Female' %}</label>
                                             </div>
                                         </div>
                                         <div class="casting-row-group">
                                             <div class="input-group">
                                                 <input type="radio" name="prof" value="amateur" id="amateur" checked>
-                                                <label for="amateur">Amateur</label>
+                                                <label for="amateur">{% trans 'Amateur' %}</label>
                                                 <input type="radio" name="prof" value="professional" id="professional">
-                                                <label for="professional">Professional</label>
+                                                <label for="professional">{% trans 'Professional' %}</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-field input-group input-group-icon">
-                                        <textarea name="experience" id="experience" placeholder="Your Experience" rows="10" cols="50" class="full-width"></textarea>
+                                        <textarea name="experience" id="experience" placeholder="{% trans 'Your Experience' %}" rows="10" cols="50" class="full-width"></textarea>
                                         <div class="input-icon"><i class="fa fa-align-justify"></i></div>
                                     </div>
                                     <div class="casting-row-inline">
                                         <div class="casting-row-group">
                                             <div class="input-group">
-                                                <p class="full-width">Grouping</p>
+                                                <p class="full-width">{% trans 'Grouping' %}</p>
                                                 <input type="radio" name="grouping" value="True" id="grouping_yes" checked>
-                                                <label for="grouping_yes">Yes</label>
+                                                <label for="grouping_yes">{% trans 'Yes' %}</label>
                                                 <input type="radio" name="grouping" value="False" id="grouping_no">
-                                                <label for="grouping_no">No</label>
+                                                <label for="grouping_no">{% trans 'No' %}</label>
                                             </div>
                                         </div>
                                         <div class="casting-row-group">
                                             <div class="input-group">
-                                                <p class="full-width">Crowd Scene</p>
+                                                <p class="full-width">{% trans 'Crowd Scene' %}</p>
                                                 <input type="radio" name="crowd_scene" value="True" id="crowd_scene_yes" checked>
-                                                <label for="crowd_scene_yes">Yes</label>
+                                                <label for="crowd_scene_yes">{% trans 'Yes' %}</label>
                                                 <input type="radio" name="crowd_scene" value="False" id="crowd_scene_no">
-                                                <label for="crowd_scene_no">No</label>
+                                                <label for="crowd_scene_no">{% trans 'No' %}</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-field input-group input-group-icon">
-                                        <textarea name="about_info" id="about_info" placeholder="About you" rows="10" cols="50" class="full-width"></textarea>
+                                        <textarea name="about_info" id="about_info" placeholder="{% trans 'About you' %}" rows="10" cols="50" class="full-width"></textarea>
                                         <div class="input-icon"><i class="fa fa-align-justify"></i></div>
                                     </div>
                                     <!--<div class="form-field input-group">-->
@@ -328,13 +355,13 @@
                                         <!--<input name="contact_image" type="file" id="contact_image" accept="image/*" class="full-width" multiple required>-->
                                     <!--</div>-->
                                     <div class="form-field input-group input-group-icon">
-                                        <input name="video_url" type="url" id="video_url" placeholder="Url On Your Video" class="full-width">
+                                        <input name="video_url" type="url" id="video_url" placeholder="{% trans 'Url On Your Video' %}" class="full-width">
                                         <div class="input-icon"><i class="fa fa-link"></i></div>
                                     </div>
                                     <div class="form-field">
-                                        <button class="full-width btn--primary">Submit</button>
+                                        <button class="full-width btn--primary">{% trans 'Submit' %}</button>
                                         <div class="cast-form submit-loader">
-                                            <div class="text-loader">Sending...</div>
+                                            <div class="text-loader">{% trans 'Sending' %}...</div>
                                             <div class="s-loader">
                                                 <div class="bounce1"></div>
                                                 <div class="bounce2"></div>
@@ -348,12 +375,12 @@
 
                             <!-- casting-warning -->
                             <div class="cast-form message-warning">
-                                Что-то пошло не так...
+                                {% trans 'Что-то пошло не так' %}...
                             </div>
 
                             <!-- casting-success -->
                             <div class="cast-form message-success">
-                                Ваша анкета принята на рассмотрение, после проверки модератором она будет отображена на сайте<br>
+                                {% trans 'Ваша анкета принята на рассмотрение, после проверки модератором она будет отображена на сайте' %}<br>
                             </div>
 
                         </div> <!-- end casting-primary -->
@@ -361,7 +388,7 @@
                         <div class="casting-table">
                             <div class="contact-info">
 
-                                <h3 class="h6 hide-on-fullwidth">List users who've already signed up</h3>
+                                <h3 class="h6 hide-on-fullwidth">{% trans 'List users who`ve already signed up' %}</h3>
                                     <div class="cast-table">
                                         <table id="get-all-info">
                                             <tbody>
@@ -392,18 +419,18 @@
                                             </div>
                                         </div>
                                         <div class="person-info">
-                                            <p>{{ _('ФИО:') }} <span class="person-first_name"></span> <span class="person-second_name"></span></p>
-                                            <p>{{ _('Email:') }} <span class="person-email"></span></p>
-                                            <p>{{ _('Phone:') }} <span class="person-phone"></span></p>
-                                            <p>{{ _('Date of birth:') }} <span class="person-age"></span></p>
-                                            <p>{{ _('City:') }} <span class="person-city"></span></p>
-                                            <p>{{ _('Gender:') }} <span class="person-gender"></span></p>
-                                            <p>{{ _('Prof:') }} <span class="person-prof"></span></p>
-                                            <p>{{ _('Experience:') }} <span class="person-experience"></span></p>
-                                            <p>{{ _('Crowd scene:') }} <span class="person-crowd_scene"></span></p>
-                                            <p>{{ _('Grouping:') }} <span class="person-grouping"></span></p>
-                                            <p>{{ _('About info:') }} <span class="person-about_info"></span></p>
-                                            <p>{{ _('Video url:') }} <span class="person-video_url"></span></p>
+                                            <p>{% trans 'ФИО' %}: <span class="person-first_name"></span> <span class="person-second_name"></span></p>
+                                            <p>{% trans 'Email' %}: <span class="person-email"></span></p>
+                                            <p>{% trans 'Phone' %}: <span class="person-phone"></span></p>
+                                            <p>{% trans 'Date of birth' %}: <span class="person-age"></span></p>
+                                            <p>{% trans 'City' %}: <span class="person-city"></span></p>
+                                            <p>{% trans 'Gender' %}: <span class="person-gender"></span></p>
+                                            <p>{% trans 'Prof' %}: <span class="person-prof"></span></p>
+                                            <p>{% trans 'Experience' %}: <span class="person-experience"></span></p>
+                                            <p>{% trans 'Crowd scene' %}: <span class="person-crowd_scene"></span></p>
+                                            <p>{% trans 'Grouping' %}: <span class="person-grouping"></span></p>
+                                            <p>{% trans 'About info' %}: <span class="person-about_info"></span></p>
+                                            <p>{% trans 'Video url' %}: <span class="person-video_url"></span></p>
                                         </div>
                                     </div>
                                 </div>
@@ -424,7 +451,7 @@
 
                     <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
                         <div class="col-full">
-                            <h1 class="display-2">Videos</h1>
+                            <h1 class="display-2">{% trans 'Videos' %}</h1>
                         </div>
                     </div> <!-- end section-header -->
 
@@ -434,15 +461,16 @@
                             <iframe class="main-youtube" data-youtube-id="" src="https://www.youtube.com/embed/qylb0dvPOf8?autoplay=0&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media"></iframe>
                         </div>
                         <div class="videos_social social-buttons">
-                            <a id="facebook_share" href="" data-type="facebook" class="btn btn--facebook exit" data-share-type="facebook" target="_blank">
+                            <div class="fb-share-button" data-href="https://www.your-domain.com/your-page.html" data-layout="button_count"></div>
+                            <a id="facebook_share" href="{{ facebook.social_url }}" data-type="facebook" class="btn btn--facebook exit" data-share-type="facebook" target="_blank">
                                 <span class="btn--left">
-                                    <i class="fa fa-facebook"></i>Share
+                                    <i class="fa fa-facebook"></i>{% trans 'Share' %}
                                 </span>
                             </a>
                             <div class="youtube-style">
-                                <div class="g-ytsubscribe" data-channelid="UC6zZubfeysFoOGaqx9mG6ng" data-layout="default" data-count="default"></div>
+                                <div class="g-ytsubscribe" data-channelid="{{ youtube.social_id }}" data-layout="default" data-count="default"></div>
                             </div>
-                            <a id="twitter_share" href="" data-type="twitter" class="btn btn--twitter exit" data-share-type="twitter" target="_blank">
+                            <a id="twitter_share" href="{{ twitter.social_url }}" data-type="twitter" class="btn btn--twitter exit" data-share-type="twitter" target="_blank">
                                 <span class="btn--left">
                                     <i class="fa fa-twitter"></i>Tweet
                                 </span>
@@ -492,7 +520,7 @@
 
                     <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
                         <div class="col-full">
-                            <h1 class="display-2 display-2--light">Photos</h1>
+                            <h1 class="display-2 display-2--light">{% trans 'Photos' %}</h1>
                         </div>
                     </div> <!-- end section-header -->
 
@@ -534,7 +562,7 @@
 
                 <div class="row section-header" data-aos="fade-up">
                     <div class="col-full">
-                        <h1 class="display-2 display-2--light">Subscribe us</h1>
+                        <h1 class="display-2 display-2--light">{% trans 'Subscribe us' %}</h1>
                     </div>
                 </div> <!-- end section-header -->
 
@@ -546,12 +574,12 @@
                             <form name="mailForm" id="mailForm" method="POST" data-url="{% url 'subscribe' %}">
                                 {% csrf_token %}
                                 <div class="form-field input-group input-group-icon">
-                                    <input name="subscribe-email" type="email" id="subscribe-email" placeholder="Your Email" class="full-width" required>
+                                    <input name="subscribe-email" type="email" id="subscribe-email" placeholder="{% trans 'Your Email' %}" class="full-width" required>
                                     <div class="input-icon"><i class="fa fa-envelope"></i></div>
                                 </div>
-                                <button class="full-width btn--primary">Submit</button>
+                                <button class="full-width btn--primary">{% trans 'Submit' %}</button>
                                 <div class="sub-mail submit-loader">
-                                        <div class="text-loader">Sending...</div>
+                                        <div class="text-loader">{% trans 'Sending' %}...</div>
                                         <div class="s-loader">
                                             <div class="bounce1"></div>
                                             <div class="bounce2"></div>
@@ -562,12 +590,12 @@
 
                         <!-- casting-warning -->
                         <div class="sub-mail message-warning">
-                            Что-то пошло не так...
+                            {% trans 'Что-то пошло не так' %}...
                         </div>
 
                         <!-- casting-success -->
                         <div class="sub-mail message-success">
-                            Подписка оформлена<br>
+                            {% trans 'Подписка оформлена' %}<br>
                         </div>
 
                         </div>
@@ -586,13 +614,13 @@
 
                     <div class="row section-header has-bottom-sep" data-aos="fade-up">
                         <div class="col-full">
-                            <h1 class="display-2 display-2--light">Social updates</h1>
+                            <h1 class="display-2 display-2--light">{% trans 'Social updates' %}</h1>
                         </div>
                     </div> <!-- end section-header -->
 
                     <div class="row container social-twit">
                         <div class="col-block" data-aos="fade-up">
-                            <a class="twitter-grid" href="https://twitter.com/TwitterDev/timelines/539487832448843776">National Park Tweets</a>
+                            <a class="twitter-grid" href="https://twitter.com/TwitterDev/timelines/539487832448843776"></a>
                         </div>
                     </div>
                 </div>
@@ -607,24 +635,19 @@
 
                 <div class="row section-header" data-aos="fade-up">
                     <div class="col-full">
-                        <h3 class="subhead">Our Partners</h3>
-                        <h1 class="display-2">We are glad to cooperate with all worthy companies.</h1>
+                        <h3 class="subhead">{% trans 'Our Partners' %}</h3>
+                        <h1 class="display-2">{% trans 'We are glad to cooperate with all worthy companies' %}.</h1>
                     </div>
                 </div> <!-- end section-header -->
 
                 <div class="row clients-outer" data-aos="fade-up">
                     <div class="col-full">
                         <div class="clients">
-
-                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/apple.png" /></a>
-                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/atom.png" /></a>
-                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/blackberry.png" /></a>
-                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/dropbox.png" /></a>
-                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/envato.png" /></a>
-                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/firefox.png" /></a>
-                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/joomla.png" /></a>
-                            <a href="#0" title="" class="clients__slide"><img src="/static/casting/img/clients/magento.png" /></a>
-
+                            {% for partner in partner_list %}
+                                <a href="{{ partner.partner_url }}" title="{{ partner.title }}" class="clients__slide"><img src="/media/{{ partner.photo }}" /></a>
+                            {% empty %}
+                                <a href="#" title="" class="clients__slide"><img src="/media/photos/noimage.png" /></a>
+                            {% endfor %}
                         </div> <!-- end partners -->
                     </div> <!-- end col-full -->
                 </div> <!-- end clients-outer -->
@@ -639,23 +662,23 @@
             <div class="container">
                 <div class="footer-links">
                     <ul>
-                        <li><a href="#" data-nav-section="home">Home</a></li>
-                        <li><a href="#" data-nav-section="about">About</a></li>
-                        <li><a href="#" data-nav-section="crew">Crew</a></li>
-                        <li><a href="#" data-nav-section="casting">Casting</a></li>
-                        <li><a href="#" data-nav-section="videos">Videos</a></li>
-                        <li><a href="#" data-nav-section="photos">Photos</a></li>
-                        <li><a href="#" data-nav-section="subscribe">Subscribe</a></li>
-                        <li><a href="#" data-nav-section="social">Social updates</a></li>
-                        <li><a href="#" data-nav-section="partners">Partners</a></li>
+                        <li><a href="#" data-nav-section="home">{% trans "Home" %}</a></li>
+                        <li><a href="#" data-nav-section="about">{% trans "About" %}</a></li>
+                        <li><a href="#" data-nav-section="crew">{% trans "Crew" %}</a></li>
+                        <li><a href="#" data-nav-section="casting">{% trans "Casting" %}</a></li>
+                        <li><a href="#" data-nav-section="videos">{% trans "Videos" %}</a></li>
+                        <li><a href="#" data-nav-section="photos">{% trans "Photos" %}</a></li>
+                        <li><a href="#" data-nav-section="subscribe">{% trans "Subscribe" %}</a></li>
+                        <li><a href="#" data-nav-section="social">{% trans "Social updates" %}</a></li>
+                        <li><a href="#" data-nav-section="partners">{% trans "Partners" %}</a></li>
                     </ul>
                 </div>
                 <div class="text-center">
                     <ul class="footer-social">
-                        <li><a href="#0"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
-                        <li><a href="#0"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a></li>
-                        <li><a href="#0"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a></li>
-                        <li><a href="#0"><i class="fa fa-youtube" aria-hidden="true"></i><span>YouTube</span></a></li>
+                        <li><a href="{{ facebook.social_url }}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="{{ twitter.social_url }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="{{ instagram.social_url }}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li><a href="{{ youtube.social_url }}"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
                     </ul>
                     <p>Copyright 2018. All Rights Reserved. <br>Made with <i class="fa fa-heart"></i> by <a href="https://www.linkedin.com/in/shevchenko-vlad/" target="_blank">Shevchenko Vlad</a></p>
                 </div>

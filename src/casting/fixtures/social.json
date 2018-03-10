@@ -1,0 +1,34 @@
+[
+  {
+    "model": "casting.social",
+    "pk": 1,
+    "fields": {
+      "title": "Facebook",
+      "social_url": ""
+    }
+  },
+  {
+    "model": "casting.social",
+    "pk": 2,
+    "fields": {
+      "title": "Twitter",
+      "social_url": ""
+    }
+  },
+  {
+    "model": "casting.social",
+    "pk": 3,
+    "fields": {
+      "title": "Instagram",
+      "social_url": ""
+    }
+  },
+  {
+    "model": "casting.social",
+    "pk": 4,
+    "fields": {
+      "title": "YouTube",
+      "social_url": ""
+    }
+  }
+]

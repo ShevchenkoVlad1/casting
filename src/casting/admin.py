@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, Poster, \
-    FilmPhoto
+    FilmPhoto, Partner, Social
 
 
 @admin.register(Person)
@@ -41,11 +41,24 @@ class FilmPhotoAdmin(admin.ModelAdmin):
 
 @admin.register(Worker)
 class WorkerAdmin(admin.ModelAdmin):
-    list_display = ('position', 'about_info', 'photo',)
-    fields = ('position', 'about_info', 'photo',)
+    list_display = ('position', 'about_info', 'photo', 'languages',)
+    fields = ('position', 'about_info', 'photo', 'languages',)
 
 
 @admin.register(Poster)
 class PosterAdmin(admin.ModelAdmin):
-    list_display = ('title', 'about_info', 'photo',)
-    fields = ('title', 'about_info', 'photo',)
+    list_display = ('title', 'about_info', 'photo', 'languages',)
+    fields = ('title', 'about_info', 'photo', 'languages',)
+
+
+@admin.register(Partner)
+class PartnerAdmin(admin.ModelAdmin):
+    list_display = ('title', 'partner_url', 'photo',)
+    fields = ('title', 'partner_url', 'photo',)
+
+
+@admin.register(Social)
+class SocialAdmin(admin.ModelAdmin):
+    list_display = ('title', 'social_id', 'social_url',)
+    fields = ('title', 'social_id', 'social_url',)
+    readonly_fields = ('title',)

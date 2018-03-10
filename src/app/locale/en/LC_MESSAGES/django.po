@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-26 14:52+0200\n"
+"POT-Creation-Date: 2018-03-10 16:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,275 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/app/admin_dashboard.py:12
-msgid "Users"
-msgstr ""
+#: src/app/admin_dashboard.py:12 src/app/templates/casting/index.html:14
+#: src/app/templates/casting/index.html:64
+#: src/app/templates/casting/index.html:661
+msgid "Casting"
+msgstr "Casting"
 
 #: src/app/admin_dashboard.py:21
+msgid "Applications"
+msgstr "Applications"
+
+#: src/app/admin_dashboard.py:29
 msgid "Recent Actions"
-msgstr ""
+msgstr "Recent Actions"
 
-#: src/app/base_settings.py:129
+#: src/app/base_settings.py:122
 msgid "Russian"
-msgstr ""
+msgstr "Russian"
 
-#: src/app/base_settings.py:130
+#: src/app/base_settings.py:123
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukrainian"
 
-#: src/app/base_settings.py:131
+#: src/app/base_settings.py:124
 msgid "English"
+msgstr "English"
+
+#: src/app/templates/casting/index.html:61
+#: src/app/templates/casting/index.html:658
+msgid "Home"
+msgstr "Home"
+
+#: src/app/templates/casting/index.html:62
+#: src/app/templates/casting/index.html:659
+msgid "About"
+msgstr "About"
+
+#: src/app/templates/casting/index.html:63
+#: src/app/templates/casting/index.html:660
+msgid "Crew"
+msgstr "Crew"
+
+#: src/app/templates/casting/index.html:65
+#: src/app/templates/casting/index.html:448
+#: src/app/templates/casting/index.html:662
+msgid "Videos"
+msgstr "Videos"
+
+#: src/app/templates/casting/index.html:66
+#: src/app/templates/casting/index.html:516
+#: src/app/templates/casting/index.html:663
+msgid "Photos"
+msgstr "Photos"
+
+#: src/app/templates/casting/index.html:67
+#: src/app/templates/casting/index.html:664
+msgid "Subscribe"
+msgstr "Subscribe"
+
+#: src/app/templates/casting/index.html:68
+#: src/app/templates/casting/index.html:610
+#: src/app/templates/casting/index.html:665
+msgid "Social updates"
+msgstr "Social updates"
+
+#: src/app/templates/casting/index.html:69
+#: src/app/templates/casting/index.html:666
+msgid "Partners"
+msgstr "Partners"
+
+#: src/app/templates/casting/index.html:110
+msgid "Go to the casting"
+msgstr "Go to the casting"
+
+#: src/app/templates/casting/index.html:118
+msgid "News"
+msgstr "News"
+
+#: src/app/templates/casting/index.html:128
+msgid "Scroll Down"
+msgstr "Scroll Down"
+
+#: src/app/templates/casting/index.html:180
+msgid "Title"
+msgstr "Title"
+
+#: src/app/templates/casting/index.html:192
+#: src/app/templates/casting/index.html:237
+msgid "Text"
+msgstr "Text"
+
+#: src/app/templates/casting/index.html:209
+msgid "Our crew"
+msgstr "Our crew"
+
+#: src/app/templates/casting/index.html:210
+msgid "We work only with highly qualified crew"
+msgstr "We work only with highly qualified crew"
+
+#: src/app/templates/casting/index.html:235
+msgid "Position"
+msgstr "Position"
+
+#: src/app/templates/casting/index.html:258
+msgid "Sign up for the casting"
+msgstr "Sign up for the casting"
+
+#: src/app/templates/casting/index.html:266
+msgid "Sign up form"
+msgstr "Sign up form"
+
+#: src/app/templates/casting/index.html:273
+msgid "Your First Name"
+msgstr "Your First Name"
+
+#: src/app/templates/casting/index.html:277
+msgid "Your Second Name"
+msgstr "Your Second Name"
+
+#: src/app/templates/casting/index.html:283
+#: src/app/templates/casting/index.html:570
+msgid "Your Email"
+msgstr "Your Email"
+
+#: src/app/templates/casting/index.html:287
+msgid "Your Phone Number"
+msgstr "Your Phone Number"
+
+#: src/app/templates/casting/index.html:293
+msgid "Your Date Of Birth"
+msgstr "Your Date Of Birth"
+
+#: src/app/templates/casting/index.html:297
+msgid "Your City"
+msgstr "Your City"
+
+#: src/app/templates/casting/index.html:305
+msgid "Male"
+msgstr "Male"
+
+#: src/app/templates/casting/index.html:307
+msgid "Female"
+msgstr "Female"
+
+#: src/app/templates/casting/index.html:313
+msgid "Amateur"
+msgstr "Amateur"
+
+#: src/app/templates/casting/index.html:315
+msgid "Professional"
+msgstr "Professional"
+
+#: src/app/templates/casting/index.html:320
+msgid "Your Experience"
+msgstr "Your Experience"
+
+#: src/app/templates/casting/index.html:326
+#: src/app/templates/casting/index.html:425
+msgid "Grouping"
+msgstr "Grouping"
+
+#: src/app/templates/casting/index.html:328
+#: src/app/templates/casting/index.html:337
+msgid "Yes"
+msgstr "Yes"
+
+#: src/app/templates/casting/index.html:330
+#: src/app/templates/casting/index.html:339
+msgid "No"
+msgstr "No"
+
+#: src/app/templates/casting/index.html:335
+msgid "Crowd Scene"
+msgstr "Crowd Scene"
+
+#: src/app/templates/casting/index.html:344
+msgid "About you"
+msgstr "About you"
+
+#: src/app/templates/casting/index.html:352
+msgid "Url On Your Video"
+msgstr "Url On Your Video"
+
+#: src/app/templates/casting/index.html:356
+#: src/app/templates/casting/index.html:573
+msgid "Submit"
+msgstr "Submit"
+
+#: src/app/templates/casting/index.html:358
+#: src/app/templates/casting/index.html:575
+msgid "Sending"
+msgstr "Sending"
+
+#: src/app/templates/casting/index.html:372
+#: src/app/templates/casting/index.html:586
+msgid "Что-то пошло не так"
+msgstr "Something went wrong"
+
+#: src/app/templates/casting/index.html:377
+msgid ""
+"Ваша анкета принята на рассмотрение, после проверки модератором она будет "
+"отображена на сайте"
 msgstr ""
+"Your application is pending, after verification by the moderator it will be "
+"displayed on the website"
+
+#: src/app/templates/casting/index.html:385
+msgid "List users who`ve already signed up"
+msgstr "List users who`ve already signed up"
+
+#: src/app/templates/casting/index.html:416
+msgid "ФИО"
+msgstr "Full name"
+
+#: src/app/templates/casting/index.html:417
+msgid "Email"
+msgstr "Email"
+
+#: src/app/templates/casting/index.html:418
+msgid "Phone"
+msgstr "Phone"
+
+#: src/app/templates/casting/index.html:419
+msgid "Date of birth"
+msgstr "Date of birth"
+
+#: src/app/templates/casting/index.html:420
+msgid "City"
+msgstr "City"
+
+#: src/app/templates/casting/index.html:421
+msgid "Gender"
+msgstr "Gender"
+
+#: src/app/templates/casting/index.html:422
+msgid "Prof"
+msgstr "Prof"
+
+#: src/app/templates/casting/index.html:423
+msgid "Experience"
+msgstr "Experience"
+
+#: src/app/templates/casting/index.html:424
+msgid "Crowd scene"
+msgstr "Crowd scene"
+
+#: src/app/templates/casting/index.html:426
+msgid "About info"
+msgstr "About info"
+
+#: src/app/templates/casting/index.html:427
+msgid "Video url"
+msgstr "Video url"
+
+#: src/app/templates/casting/index.html:460
+msgid "Share"
+msgstr "Share"
+
+#: src/app/templates/casting/index.html:558
+msgid "Subscribe us"
+msgstr "Subscribe us"
+
+#: src/app/templates/casting/index.html:591
+msgid "Подписка оформлена"
+msgstr "Subscribed"
+
+#: src/app/templates/casting/index.html:631
+msgid "Our Partners"
+msgstr "Our Partners"
+
+#: src/app/templates/casting/index.html:632
+msgid "We are glad to cooperate with all worthy companies"
+msgstr "We are glad to cooperate with all worthy companies"

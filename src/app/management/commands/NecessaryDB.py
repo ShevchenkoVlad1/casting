@@ -1,5 +1,4 @@
 import pprint
-from datetime import datetime
 
 from django.contrib.auth.models import User
 from django.core.management import BaseCommand
@@ -12,14 +11,6 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if not User.objects.filter(pk=1).exists():
-            self.write('Table "user" does not exist.')
-            return False
+            return "False"
         else:
-            self.write('Table "user" already exists.')
-            return True
-
-    def write(self, string):
-        self.stdout.write("[%s] %s" % (
-            datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f"),
-            string,
-        ))
+            return "True"

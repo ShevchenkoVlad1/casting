@@ -120,7 +120,7 @@ from django.utils.translation import ugettext_lazy as _
 
 LANGUAGES = (
     ('ru', _('Russian')),
-    ('uk', _('Ukrainian')),
+    ('ua', _('Ukrainian')),
     ('en', _('English')),
 )
 
