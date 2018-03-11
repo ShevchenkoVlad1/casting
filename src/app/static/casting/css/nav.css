@@ -58,7 +58,7 @@
 }
 
 .cast-nav #cast-logo a span {
-    color: #feb47b;
+    color: #730606;
 }
 
 @media screen and (max-width: 1000px) {
@@ -135,7 +135,7 @@
     top: 40px;
     left: 0;
     text-align: left;
-    background: #feb47b;
+    background: #730606;
     padding: 20px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -155,7 +155,7 @@
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-bottom-color: #feb47b;
+    border-bottom-color: #730606;
     border-width: 8px;
     margin-left: -8px;
 }
@@ -208,7 +208,7 @@
     content: '';
     width: 30px;
     height: 2px;
-    background: #feb47b;
+    background: #730606;
     margin: 0 auto;
 }
 
@@ -254,11 +254,11 @@
 
 .cast-nav-toggle.cast-nav-white > i {
     color: #fff;
-    background: #feb47b;
+    background: #730606;
 }
 
 .cast-nav-toggle.cast-nav-white > i::before, .cast-nav-toggle.cast-nav-white > i::after {
-    background: #feb47b;
+    background: #730606;
 }
 
 .cast-nav-toggle i::before {

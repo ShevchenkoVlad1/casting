@@ -308,6 +308,7 @@
 
             $.get(link, { person_id: person_id })
                 .done(function(data) {
+                    $('.person-id').html(data.id);
                     $('.person-first_name').html(data.first_name);
                     $('.person-second_name').html(data.second_name);
                     $('.person-email').html(data.email);

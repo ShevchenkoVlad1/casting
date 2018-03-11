@@ -104,6 +104,7 @@ def person_list(request):
         person = Person.objects.filter(id=person_id).get()
         contact_image = 'photos/noimage.png'
         data = {
+            'id': person.id,
             'first_name': person.first_name,
             'second_name': person.second_name,
             'email': person.email,
