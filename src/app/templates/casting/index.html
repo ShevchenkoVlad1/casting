@@ -307,8 +307,13 @@
                                     <!-- Likes in person info -->
                                     <div class="w3-content">
                                         <span class="like-system">
-                                            <i class="fa fa-heart hvr-bounce"></i>
-                                            <span class="person-likes"></span>
+                                            <span class="person-likes">
+
+                                                <div class="like-vote" data-link="{% url 'person_like' pk=1 %}" data-id="" data-type="person" data-action="like" title="{% trans 'Like' %}">
+                                                    <i class="fa"></i>
+                                                    <span class="like-count" data-count="like"></span>
+                                                </div>
+                                            </span>
                                         </span>
                                     </div>
 
@@ -467,7 +472,7 @@
                                                     <td class="cast-td">
                                                         <span class="cast-name">{{ person.first_name }}</span>
                                                         <img src="/media/photos/noimage.png" alt="" class="hvr-grow">
-                                                        <span class="cast-likes"></span>
+                                                        <span data-link="{% url 'cast_likes' %}" class="cast-likes" data-id="{{ person.id }}">{{ person.votes.sum_rating }}</span>
                                                     </td>
                                                 </tr>
                                             {% endfor %}

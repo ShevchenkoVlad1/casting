@@ -1,52 +1,75 @@
+import json
+from datetime import datetime
+
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.core.mail import EmailMessage
 from django.forms import modelformset_factory
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 from django.utils.translation import get_language
+from django.views import View
 from django.views.decorators.http import require_POST, require_GET
 
 from casting.forms import PersonForm, ImageForm
 from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, \
-    Film_about, FilmPhoto, Partner, Social
+    Film_about, FilmPhoto, Partner, Social, UserIP, LikeDislike
 
 
-def home(request):
-    current_lang = get_language()
+class HomeView(View):
+    def get(self, request):
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
 
-    person_list = Person.objects.filter(is_main=1).order_by('-created_date')
-    youtube_list = YoutubeVideo.objects.all()
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[-1].strip()
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+        if not UserIP.objects.filter(ip=ip).exists():
+            get_user_data = request.META.get('HTTP_USER_AGENT')
 
-    crew_list = Worker.objects.filter(languages=current_lang)
-    main_in_crew = crew_list.filter(is_main=1)
-    crew = crew_list.filter(is_main=0)
+            user = UserIP()
+            user.ip = ip
+            user.created_date = datetime.now()
+            user.user_data = get_user_data
+            user.save()
 
-    film_about = Film_about.objects.filter(languages=current_lang).order_by(
-        '-id')[:1]
-    film_photo_list = FilmPhoto.objects.all()
-    partner_list = Partner.objects.all()
-    # social
-    twitter = Social.objects.filter(title="Twitter").get()
-    instagram = Social.objects.filter(title="Instagram").get()
-    youtube = Social.objects.filter(title="YouTube").get()
-    facebook = Social.objects.filter(title="Facebook").get()
+        current_lang = get_language()
 
-    context = {
-        'person_list': person_list,
-        'youtube_list': youtube_list,
-        'main_in_crew': main_in_crew,
-        'crew': crew,
-        'film_about': film_about,
-        'film_photo_list': film_photo_list,
-        'twitter': twitter,
-        'instagram': instagram,
-        'youtube': youtube,
-        'facebook': facebook,
-        'partner_list': partner_list,
-    }
+        person_list = sorted(Person.objects.filter(is_main=1),
+                             key=lambda p: p.votes.sum_rating(), reverse=True)
+        youtube_list = YoutubeVideo.objects.all()
 
-    return render(request, 'casting/index.html', context)
+        crew_list = Worker.objects.filter(languages=current_lang)
+        main_in_crew = crew_list.filter(is_main=1)
+        crew = crew_list.filter(is_main=0)
+
+        film_about = Film_about.objects.filter(languages=current_lang
+                                               ).order_by('-id')[:1]
+        film_photo_list = FilmPhoto.objects.all()
+        partner_list = Partner.objects.all()
+        # social
+        twitter = Social.objects.filter(title="Twitter").get()
+        instagram = Social.objects.filter(title="Instagram").get()
+        youtube = Social.objects.filter(title="YouTube").get()
+        facebook = Social.objects.filter(title="Facebook").get()
+
+        context = {
+            'person_list': person_list,
+            'youtube_list': youtube_list,
+            'main_in_crew': main_in_crew,
+            'crew': crew,
+            'film_about': film_about,
+            'film_photo_list': film_photo_list,
+            'twitter': twitter,
+            'instagram': instagram,
+            'youtube': youtube,
+            'facebook': facebook,
+            'partner_list': partner_list
+        }
+
+        return render(request, 'casting/index.html', context)
 
 
 @require_POST
@@ -57,7 +80,7 @@ def casting(request):
         person_form = PersonForm(request.POST)
         formset = ImageFormSet(request.POST, request.FILES,
                                queryset=PersonPhoto.objects.none())
-        print(person_form.is_valid())
+
         if person_form.is_valid():
             person = Person()
             person.first_name = request.POST['first_name']
@@ -126,6 +149,59 @@ def person_list(request):
             'grouping': person.grouping,
             'about_info': person.about_info,
             'contact_image': contact_image,
-            'video_url': person.video_url
+            'video_url': person.video_url,
+            'like_count': person.votes.likes().count(),
+            'like_sum': person.votes.sum_rating()
+        }
+        return JsonResponse(data)
+
+
+class VotesView(View):
+    model = None
+    vote_type = None
+
+    def post(self, request, pk):
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[-1].strip()
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+
+        userip = get_object_or_404(UserIP, ip=ip)
+        obj = self.model.objects.get(pk=pk)
+        try:
+            likedislike = LikeDislike.objects.get(
+                content_type=ContentType.objects.get_for_model(obj),
+                object_id=obj.id, user=userip)
+            if likedislike.vote is not self.vote_type:
+                likedislike.vote = self.vote_type
+                likedislike.save(update_fields=['vote'])
+                result = True
+            else:
+                likedislike.delete()
+                result = False
+        except LikeDislike.DoesNotExist:
+            obj.votes.create(user=userip, vote=self.vote_type)
+            result = True
+
+        return HttpResponse(
+            json.dumps({
+                "result": result,
+                "like_count": obj.votes.likes().count(),
+                "sum_rating": obj.votes.sum_rating()
+            }),
+            content_type="application/json"
+        )
+
+
+@require_GET
+def cast_likes(request):
+    if request.method == 'GET':
+        person_id = request.GET.get('person_id', None)
+        person = Person.objects.filter(id=person_id).get()
+        data = {
+            'id': person.id,
+            'cast_likes': person.votes.sum_rating()
         }
         return JsonResponse(data)

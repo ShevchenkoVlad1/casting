@@ -229,6 +229,11 @@
         });
 
     };
+    // Language
+
+    $('.header_language_select').on('change', function (e) {
+        $('.language_select_btn').click();
+    });
 
     /* Initialize
      * ------------------------------------------------------ */

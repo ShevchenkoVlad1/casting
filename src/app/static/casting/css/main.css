@@ -3392,30 +3392,58 @@ select option {
     height: auto;
 }
 
-.casting-person-info .person-avatar .like-system {
+.casting-person-info .person-avatar .like-vote {
     display: flex;
     margin: 3rem 1rem;
 }
 
-.casting-person-info .person-avatar .like-system button {
-    margin: 0;
-    padding: 0;
-    border: none;
-    background: transparent;
-}
-
-.casting-person-info .person-avatar .like-system button i {
+.casting-person-info .person-avatar .like-vote  i {
+    content:"\f08a";
+    color: #730606;
     font-size: 5rem;
 }
-
-.casting-person-info .person-avatar .like-system button i:hover, i:after {
-    color: #730606;
+/* Icon Bounce */
+.casting-person-info .person-avatar .like-vote  i {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px transparent;
+  position: relative;
+  padding-right: 2.2em;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+.casting-person-info .person-avatar .like-vote  i:before {
+  content: "\f08a";
+  position: absolute;
+  right: 1em;
+  padding: 0 1px;
+  font-family: FontAwesome;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.casting-person-info .person-avatar .like-vote  i:hover:before,
+.casting-person-info .person-avatar .like-vote  i:focus:before,
+.casting-person-info .person-avatar .like-vote  i:active:before {
+   content: "\f004";
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  -webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
 }
 
-.casting-person-info .person-avatar .like-system span {
+.casting-person-info .person-avatar .like-vote  span {
     display: flex;
     align-items: center;
     color: #FFFFFF;
+    margin: 0 2rem;
 }
 
 .casting-person-info .person-info {
