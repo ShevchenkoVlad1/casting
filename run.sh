@@ -10,7 +10,7 @@ else
     python3 src/manage.py loaddata src/casting/fixtures/*.json
 fi
 
-python3 /src/manage.py collectstatic --noinput
-python3 /src/manage.py compilemessages
+python3 src/manage.py collectstatic --noinput
+python3 src/manage.py compilemessages
 
 sudo systemctl restart apache2
