@@ -1,23 +1,37 @@
 from django.contrib import admin
 
 from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, \
-    Film_about, FilmPhoto, Partner, Social
+    Film_about, FilmPhoto, Partner, Social, UserIP
 
 
 @admin.register(Person)
-class ReviewAdmin(admin.ModelAdmin):
+class PersonAdmin(admin.ModelAdmin):
+
+    @staticmethod
+    def Likes(obj):
+        return '{}'.format(obj.votes.sum_rating())
+
     list_display = ('first_name', 'second_name', 'email', 'phone', 'age',
                     'city', 'gender', 'prof', 'experience', 'grouping',
-                    'crowd_scene', 'about_info', 'video_url',
+                    'crowd_scene', 'about_info', 'video_url', 'Likes',
                     'is_main',)
 
     list_filter = ['city', 'gender', 'prof', 'grouping', 'crowd_scene']
 
     search_fields = ['experience', 'about_info', 'is_main']
 
+    readonly_fields = ('Likes',)
+
     fields = ('first_name', 'second_name', 'email', 'phone', 'age',
               'city', 'gender', 'prof', 'experience', 'grouping',
-              'crowd_scene', 'about_info', 'video_url', 'is_main',)
+              'crowd_scene', 'about_info', 'video_url', 'Likes', 'is_main',)
+
+
+@admin.register(UserIP)
+class UserIPAdmin(admin.ModelAdmin):
+    list_display = ('ip', 'user_data', 'created_date',)
+    readonly_fields = ('ip', 'user_data', 'created_date',)
+    fields = ('ip', 'user_data', 'created_date',)
 
 
 @admin.register(PersonPhoto)
