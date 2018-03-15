@@ -274,7 +274,7 @@
 
     var SubscribeForm = function () {
         $('#mailForm').submit(function (e) {
-            console.log('here');
+
             var sLoader = $('.sub-mail.submit-loader');
             sLoader.slideDown("slow");
 
@@ -295,19 +295,28 @@
         });
     };
 
-    function PersoneInfoClose(){
-        $('#person-close').on("click", function(){
+    function PersoneInfoClose() {
+        $('.casting-person-info-overlay').on("click", function (e) {
+            $('.casting-person-info-overlay').fadeOut("slow");
             $('.casting-person-info').fadeOut("slow");
+            $('.casting-content').fadeIn("slow");
+        });
+
+        $('#person-close').on("click", function (e) {
+            $('.casting-person-info-overlay').fadeOut("slow");
+            $('.casting-person-info').fadeOut("slow");
+            $('.casting-content').fadeIn("slow");
         });
     }
 
     function GetAllInfo() {
-        $('*[data-link]').on("click", function() {
+        $('.cast-table *[data-link]').on("click", function () {
             var link = $(this).data('link');
             var person_id = $(this).data('id');
 
-            $.get(link, { person_id: person_id })
-                .done(function(data) {
+            $.get(link, {person_id: person_id})
+                .done(function (data) {
+
                     $('.person-id').html(data.id);
                     $('.person-first_name').html(data.first_name);
                     $('.person-second_name').html(data.second_name);
@@ -322,8 +331,12 @@
                     $('.person-grouping').html(data.grouping);
                     $('.person-about_info').html(data.about_info);
                     $('.person-video_url').html(data.video_url);
-                    $('.person-contact_image').attr("src" , "/media/photos/noimage.png");
+                    var video_id = data.video_url.split("v=")[1].split("?")[0];
+                    $('.person-video-iframe').attr("src", 'https://www.youtube.com/embed/' + video_id + '?autoplay=0&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1');
+                    $('.person-contact_image').attr("src", data.contact_image);
+                    $('.casting-person-info-overlay').fadeIn("slow");
                     $('.casting-person-info').fadeIn("slow");
+                    $('.casting-content').fadeOut("slow");
                 });
 
 
@@ -334,60 +347,62 @@
     }
 
     function youtubeNext() {
-        $('li.youtube-child').on("click", function(e) {
+        $('li.youtube-child').on("click", function (e) {
             var youtube_id = $(this).data('youtube-id');
-            $('iframe.main-youtube').attr("src" , 'https://www.youtube.com/embed/' + youtube_id + '?autoplay=1&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1');
-            $('iframe.main-youtube').attr("data-youtube-id" , youtube_id);
+            $('iframe.main-youtube').attr("src", 'https://www.youtube.com/embed/' + youtube_id + '?autoplay=1&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1');
+            $('iframe.main-youtube').attr("data-youtube-id", youtube_id);
             e.stopPropagation();
         })
     }
 
     function facebookShare() {
-        $('#facebook_share').on("click", function(e) {
+        $('#facebook_share').on("click", function (e) {
             var youtube_id = $('iframe.main-youtube').attr("data-youtube-id");
-            $(this).attr("href" , 'https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v=' + youtube_id)
+            $(this).attr("href", 'https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch?v=' + youtube_id)
         })
     }
 
     function twitterShare() {
-        $('#twitter_share').on("click", function(e) {
+        $('#twitter_share').on("click", function (e) {
             var youtube_id = $('iframe.main-youtube').attr("data-youtube-id");
-            $(this).attr("href" , 'https://twitter.com/home?status=https://www.youtube.com/watch?v=' + youtube_id)
+            $(this).attr("href", 'https://twitter.com/home?status=https://www.youtube.com/watch?v=' + youtube_id)
         })
     }
 
     // Reflect scrolling in navigation
-	var navActive = function(section) {
-		var $el = $('#navbar > ul');
-		$el.find('li').removeClass('active');
-		$el.each(function(){
-			$(this).find('a[data-nav-section="'+section+'"]').closest('li').addClass('active');
-		});
+    var navActive = function (section) {
+        var $el = $('#navbar > ul');
+        $el.find('li').removeClass('active');
+        $el.each(function () {
+            $(this).find('a[data-nav-section="' + section + '"]').closest('li').addClass('active');
+        });
 
-	};
+    };
 
 
-	var navigationSection = function() {
+    var navigationSection = function () {
 
-		var $section = $('div[data-section]');
-		$section.waypoint(function(direction) {
-		  	if (direction === 'down') {
-		    	navActive($(this.element).data('section'));
+        var $section = $('div[data-section]');
+        $section.waypoint(function (direction) {
+            if (direction === 'down') {
+                navActive($(this.element).data('section'));
 
-		  	}
-		}, {
-		  	offset: '150px'
-		});
+            }
+        }, {
+            offset: '150px'
+        });
 
-		$section.waypoint(function(direction) {
-		  	if (direction === 'up') {
-		    	navActive($(this.element).data('section'));
-		  	}
-		}, {
-		  	offset: function() { return -$(this.element).height() + 155; }
-		});
+        $section.waypoint(function (direction) {
+            if (direction === 'up') {
+                navActive($(this.element).data('section'));
+            }
+        }, {
+            offset: function () {
+                return -$(this.element).height() + 155;
+            }
+        });
 
-	};
+    };
 
     /* Initialize
      * ------------------------------------------------------ */

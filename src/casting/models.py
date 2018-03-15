@@ -23,7 +23,7 @@ def get_partner_photo_path(instance, filename):
     return os.path.join('partner_photos', str(instance.title), filename)
 
 
-class Poster(models.Model):
+class Film_about(models.Model):
     title = models.CharField(max_length=250, null=True)
     photo = models.ImageField(upload_to=get_poster_photo_path, blank=True,
                               null=True)
@@ -47,6 +47,7 @@ class Worker(models.Model):
                                      ('ua', _('Ukrainian')),
                                      ('en', _('English')),
                                  ), default=('ru', _('Russian')))
+    is_main = models.BooleanField(default=False)
 
 
 class Person(models.Model):

@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="/static/casting/css/nav.css">
     <link rel="stylesheet" href="/static/casting/css/animate.min.css">
     <link rel="stylesheet" href="/static/casting/css/swiper.min.css">
+    <link rel="stylesheet" href="/static/casting/css/hover.css">
 
     <!-- script
     ================================================== -->
@@ -64,6 +65,23 @@
             <nav class="cast-nav" role="navigation">
                 <div id="navbar" class="text-center menu-1 menu-wrap">
                     <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <form action="{% url 'set_language' %}" method="post" class="header_language" >
+                                {% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}" />
+                                <div class="lang_buttons">
+                                    <div class="header_language">
+                                        {% get_current_language as LANGUAGE_CODE %}
+                                        {% get_available_languages as LANGUAGES %}
+                                        {% for lang in LANGUAGES %}
+                                            <button type="submit" class="language_select_btn {% if lang.0 == LANGUAGE_CODE %} active{% endif %}" value="{{ lang.0 }}" name="language">
+                                                {{ lang.0 }}
+                                            </button>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
                         <li class="active"><a href="#" data-nav-section="home">{% trans "Home" %}</a></li>
                         <li><a href="#" data-nav-section="about">{% trans "About" %}</a></li>
                         <li><a href="#" data-nav-section="crew">{% trans "Crew" %}</a></li>
@@ -73,25 +91,13 @@
                         <li><a href="#" data-nav-section="subscribe">{% trans "Subscribe" %}</a></li>
                         <li><a href="#" data-nav-section="social">{% trans "Social updates" %}</a></li>
                         <li><a href="#" data-nav-section="partners">{% trans "Partners" %}</a></li>
-                        <li class="li-lang">
-                            <form action="{% url 'set_language' %}" method="post" class="header_language" >
-                                {% csrf_token %}
-                                <input name="next" type="hidden" value="{{ redirect_to }}" />
-                                <div class="select1">
-                                    <select name="language" class="header_language_select">>
-                                        {% get_current_language as LANGUAGE_CODE %}
-                                        {% get_available_languages as LANGUAGES %}
-                                        {% for lang in LANGUAGES %}
-                                            <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %} selected="selected"{% endif %}>
-                                                {{ lang.1 }} ({{ lang.0 }})
-                                            </option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                                <div >
-                                    <input class="language_select_btn" type="submit" value="Go" hidden>
-                                </div>
-                            </form>
+                        <li>
+                            <ul class="home-social">
+                                <li><a href="{{ facebook.social_url }}"><i class="fa fa-facebook hvr-pulse-shrink" aria-hidden="true"></i></a></li>
+                                <li><a href="{{ twitter.social_url }}"><i class="fa fa-twitter hvr-pulse-shrink" aria-hidden="true"></i></a></li>
+                                <li><a href="{{ instagram.social_url }}"><i class="fa fa-instagram hvr-pulse-shrink" aria-hidden="true"></i></a></li>
+                                <li><a href="{{ youtube.social_url }}"><i class="fa fa-youtube hvr-pulse-shrink" aria-hidden="true"></i></a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -112,7 +118,7 @@
                             <div class="row">
                                 <div class="col-md-3 home-casting">
                                     <div class="home-content__buttons">
-                                        <a href="#" data-nav-section="casting" class="btn btn--stroke">
+                                        <a href="#" data-nav-section="casting" class="btn btn--stroke hvr-float-shadow">
                                             {% trans "Go to the casting" %}
                                         </a>
                                     </div>
@@ -120,7 +126,7 @@
 
                                 <div class="col-md-3 home-news">
                                     <div class="home-content__buttons">
-                                        <a href="#" data-nav-section="social" class="btn btn--stroke">
+                                        <a href="#" data-nav-section="social" class="btn btn--stroke hvr-float-shadow">
                                             {% trans "News" %}
                                         </a>
                                     </div>
@@ -136,14 +142,6 @@
                     </div>
 
                 </div> <!-- end home-content -->
-
-
-                <ul class="home-social">
-                    <li><a href="{{ facebook.social_url }}"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
-                    <li><a href="{{ twitter.social_url }}"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twiiter</span></a></li>
-                    <li><a href="{{ instagram.social_url }}"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a></li>
-                    <li><a href="{{ youtube.social_url }}"><i class="fa fa-youtube" aria-hidden="true"></i><span>YouTube</span></a></li>
-                </ul>
                 <!-- end home-social -->
 
             </section> <!-- end s-home -->
@@ -153,14 +151,14 @@
         <!-- about
         ================================================== -->
         <div data-section="about">
-            <section class="s-about">
+            <section class="s-about" data-parallax="scroll" data-image-src="/static/casting/img/red_bg.jpg" data-position-y=center>
 
                 <div class="overlay"></div>
-                {% for post in poster %}
+                {% for post in film_about %}
                     <div class="about-title container" data-aos="fade-up">
                         <div class="section-header">
                             <div class="col-full">
-                                <p>{{ post.title }}</p>
+                                <h1 class="display-2 display-2--light">{{ post.title }}</h1>
                             </div>
                         </div> <!-- end section-header -->
                     </div>
@@ -207,17 +205,44 @@
         <!-- crew
         ================================================== -->
         <div data-section="crew">
-            <section class="s-crew">
+            <section class="s-crew" data-parallax="scroll" data-image-src="/static/casting/img/about_bg.jpg" data-position-y=top>
 
                 <div class="container section-header" data-aos="fade-up">
                     <div class="col-full">
-                        <h1 class="subhead">{% trans "Our crew" %}</h1>
-                        <h3 class="display-2">{% trans "We work only with highly qualified crew" %}</h3>
+                        <h1 class="display-2 display-2--light">{% trans "Our crew" %}</h1>
                     </div>
                 </div> <!-- end section-header -->
-
+                <div class="crew-list main-in-crew block-1-2 block-tab-full">
+                    {% for main_worker in main_in_crew %}
+                        <div class="crew-item" data-aos="fade-up">
+                            <div class="crew-image">
+                               <img src="/media/{{ main_worker.photo }}" alt="">
+                            </div>
+                            <div class="crew-text">
+                                <div class="crew-position">
+                                    {{ main_worker.position }}
+                                </div>
+                                <div class="crew-info">
+                                    {{ main_worker.about_info }}
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="crew-item" data-aos="fade-up">
+                            <div class="crew-image">
+                               <img src="/media/photos/noimage.png" alt="">
+                            </div>
+                            <div class="crew-text">
+                                <div class="crew-position">{% trans "Position" %}</div>
+                                <div class="crew-info">
+                                    {% trans "Text" %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
                 <div class="crew-list block-1-2 block-tab-full">
-                    {% for worker in crew_list %}
+                    {% for worker in crew %}
                         <div class="crew-item" data-aos="fade-up">
                             <div class="crew-image">
                                <img src="/media/{{ worker.photo }}" alt="">
@@ -256,11 +281,56 @@
             <section class="s-casting" data-parallax="scroll" data-image-src="/static/casting/img/grey_bg.png" data-position-y=top>
 
                 <div class="overlay"></div>
+
                 <div class="intro-wrap">
 
                     <div class="container section-header" data-aos="fade-up">
                         <div class="col-full">
                             <h1 class="display-2 display-2--light">{% trans "Sign up for the casting" %}</h1>
+                        </div>
+                    </div>
+
+                    <div class="casting-container">
+
+                        <div class="casting-person-info-overlay"></div>
+
+                        <div class="casting-person-info">
+                            <span id='person-close'>x</span>
+                            <span id="person-id">{% trans 'ID' %}: <span class="person-id"></span></span>
+                            <div class="person-block">
+                                <div class="person-avatar">
+                                    <div class="w3-content">
+                                        <img class="mySlides person-contact_image" src="">
+                                    </div>
+
+
+                                    <!-- Likes in person info -->
+                                    <div class="w3-content">
+                                        <span class="like-system">
+                                            <i class="fa fa-heart hvr-bounce"></i>
+                                            <span class="person-likes"></span>
+                                        </span>
+                                    </div>
+
+                                    <div class="w3-content">
+                                        <iframe src="" class="person-video-iframe" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media"></iframe>
+                                    </div>
+                                </div>
+                                <div class="person-info">
+                                    <p>{% trans 'ФИО' %}: <span class="person-first_name"></span> <span class="person-second_name"></span></p>
+                                    <p>{% trans 'Email' %}: <span class="person-email"></span></p>
+                                    <p>{% trans 'Phone' %}: <span class="person-phone"></span></p>
+                                    <p>{% trans 'Date of birth' %}: <span class="person-age"></span></p>
+                                    <p>{% trans 'City' %}: <span class="person-city"></span></p>
+                                    <p>{% trans 'Gender' %}: <span class="person-gender"></span></p>
+                                    <p>{% trans 'Prof' %}: <span class="person-prof"></span></p>
+                                    <p>{% trans 'Experience' %}: <span class="person-experience"></span></p>
+                                    <p>{% trans 'Crowd scene' %}: <span class="person-crowd_scene"></span></p>
+                                    <p>{% trans 'Grouping' %}: <span class="person-grouping"></span></p>
+                                    <p>{% trans 'About info' %}: <span class="person-about_info"></span></p>
+                                    <p>{% trans 'Video url' %}: <span class="person-video_url"></span></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -388,54 +458,26 @@
                             <div class="contact-info">
 
                                 <h3 class="h6 hide-on-fullwidth">{% trans 'List users who`ve already signed up' %}</h3>
-                                    <div class="cast-table">
-                                        <table id="get-all-info">
-                                            <tbody>
-                                                {% for person in person_list %}
-                                                    <tr data-link="{% url 'person_list' %}" data-id="{{ person.id }}">
-                                                        <td class="cast-td">
-                                                            <img src="/media/photos/noimage.png" alt="">
-                                                        </td>
-                                                        <td class="cast-td">{{ person.first_name }}</td>
-                                                        <td class="cast-td">{{ person.second_name }}</td>
-                                                        <td class="cast-td">{{ person.city }}</td>
-                                                    </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
+
+                                <div class="cast-table">
+                                    <table id="get-all-info">
+                                        <tbody>
+                                            {% for person in person_list %}
+                                                <tr data-link="{% url 'person_list' %}" data-id="{{ person.id }}">
+                                                    <td class="cast-td">
+                                                        <span class="cast-name">{{ person.first_name }}</span>
+                                                        <img src="/media/photos/noimage.png" alt="" class="hvr-grow">
+                                                        <span class="cast-likes"></span>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
 
                             </div> <!-- end casting-info -->
                         </div> <!-- end casting-secondary -->
-                        <div class="casting-container">
-                            <div class="casting-person-info">
-                                <span id='person-close'>x</span>
-                                <div class="person-block">
-                                    <div class="row__divide-3">
-                                        <div class="person-avatar">
-                                            <div class="w3-content">
-                                                <img class="mySlides person-contact_image" src="">
-                                            </div>
-                                        </div>
-                                        <div class="person-info">
-                                            <p>{% trans 'ID' %}: <span class="person-id"></span></p>
-                                            <p>{% trans 'ФИО' %}: <span class="person-first_name"></span> <span class="person-second_name"></span></p>
-                                            <p>{% trans 'Email' %}: <span class="person-email"></span></p>
-                                            <p>{% trans 'Phone' %}: <span class="person-phone"></span></p>
-                                            <p>{% trans 'Date of birth' %}: <span class="person-age"></span></p>
-                                            <p>{% trans 'City' %}: <span class="person-city"></span></p>
-                                            <p>{% trans 'Gender' %}: <span class="person-gender"></span></p>
-                                            <p>{% trans 'Prof' %}: <span class="person-prof"></span></p>
-                                            <p>{% trans 'Experience' %}: <span class="person-experience"></span></p>
-                                            <p>{% trans 'Crowd scene' %}: <span class="person-crowd_scene"></span></p>
-                                            <p>{% trans 'Grouping' %}: <span class="person-grouping"></span></p>
-                                            <p>{% trans 'About info' %}: <span class="person-about_info"></span></p>
-                                            <p>{% trans 'Video url' %}: <span class="person-video_url"></span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div> <!-- end casting-content -->
 
                 </div>
@@ -445,7 +487,7 @@
         <!-- videos
         ================================================== -->
         <div data-section="videos">
-            <section class="s-videos">
+            <section class="s-videos" data-parallax="scroll" data-image-src="/static/casting/img/red_bg.jpg" data-position-y=center>
                 <div class="overlay"></div>
 
                 <div class="intro-wrap">
@@ -461,6 +503,7 @@
                         <div class="col-block video-main">
                             <iframe class="main-youtube" data-youtube-id="" src="https://www.youtube.com/embed/qylb0dvPOf8?autoplay=0&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media"></iframe>
                         </div>
+
                         <div class="videos_social social-buttons">
                             <div class="fb-share-button" data-href="https://www.your-domain.com/your-page.html" data-layout="button_count"></div>
                             <a id="facebook_share" href="{{ facebook.social_url }}" data-type="facebook" class="btn btn--facebook exit" data-share-type="facebook" target="_blank">
@@ -503,11 +546,14 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-                            <div class="video-prev swiper-button-prev"></div>
-                            <div class="video-next swiper-button-next"></div>
+
                         </div>
                     </div>
                 </div> <!-- end intro-wrap -->
+                <div class="video-arrows">
+                    <div class="video-prev swiper-button-prev"><i class="fa fa-chevron-circle-left hvr-icon-back"></i></div>
+                    <div class="video-next swiper-button-next"><i class="fa fa-chevron-circle-right hvr-icon-forward"></i></div>
+                </div>
 
             </section> <!-- end s-videos -->
         </div>
@@ -550,8 +596,11 @@
                             </div>
                     </div> <!-- end photos-content -->
                 </div> <!-- end intro-wrap -->
-                <div class="photo-prev swiper-button-prev"></div>
-                <div class="photo-next swiper-button-next"></div>
+
+                <div class="photo-arrows">
+                    <div class="photo-prev swiper-button-prev"><i class="fa fa-chevron-circle-left hvr-icon-back"></i></div>
+                    <div class="photo-next swiper-button-next"><i class="fa fa-chevron-circle-right hvr-icon-forward"></i></div>
+                </div>
 
             </section> <!-- end s-photos -->
         </div>
@@ -560,7 +609,6 @@
         ================================================== -->
         <div data-section="subscribe">
             <section class="s-subscribe">
-
                 <div class="row section-header" data-aos="fade-up">
                     <div class="col-full">
                         <h1 class="display-2 display-2--light">{% trans 'Subscribe us' %}</h1>
@@ -609,6 +657,7 @@
         <!-- social updates
         ================================================== -->
         <div data-section="social">
+            <!--<section class="s-social" data-parallax="scroll" data-image-src="/static/casting/img/red_bg.jpg" data-position-y=center>-->
             <section class="s-social">
 
                 <div class="intro-wrap">
@@ -632,12 +681,12 @@
         <!-- partners
         ================================================== -->
         <div data-section="partners">
+            <!--<section class="s-clients" data-parallax="scroll" data-image-src="/static/casting/img/grey_bg.png" data-position-y=top>-->
             <section class="s-clients">
 
                 <div class="row section-header" data-aos="fade-up">
                     <div class="col-full">
-                        <h3 class="subhead">{% trans 'Our Partners' %}</h3>
-                        <h1 class="display-2">{% trans 'We are glad to cooperate with all worthy companies' %}.</h1>
+                        <h1 class="display-2">{% trans 'Our Partners' %}</h1>
                     </div>
                 </div> <!-- end section-header -->
 

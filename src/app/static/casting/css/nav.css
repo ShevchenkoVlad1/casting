@@ -378,14 +378,12 @@
 }
 
 #cast-offcanvas ul li {
-    padding: 0;
     margin: 0;
     list-style: none;
 }
 
 #cast-offcanvas ul li > ul {
     padding-left: 20px;
-    display: none;
 }
 
 #cast-offcanvas ul li.offcanvas-has-dropdown > a {
@@ -422,118 +420,98 @@
     transform: rotate(-180deg);
 }
 
-#navbar .header_language_select {
-    background: #182737;
-}
-
-#navbar .li-lang {
-    margin: 0;
-}
-
-#navbar .header_language_select:hover {
-    background: transparent;
-    cursor: pointer;
-}
-
-/* Select */
+/* Language */
 #navbar .header_language {
-    display: initial;
+    display: flex;
     width: 100%;
+    margin: 0;
 }
 
-#navbar .language_select_btn {
-    display: none;
-}
-
-#navbar .select1 {
+#navbar .lang_buttons {
     font-size: 16px;
     position: relative;
     display: inline-flex;
+    float: left;
+}
+
+#navbar .lang_buttons button {
+    border-radius: 5px;
+    line-height: normal;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0.3rem;
+    width: 3rem;
+    padding: 0;
+    height: 2.4rem;
+    border-color: #730606;
+    color: #FFFFFF;
+    letter-spacing: .25rem;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+#navbar .lang_buttons .active {
+    background-color: rgba(255, 7, 7, 0.35);
+}
+
+#navbar .lang_buttons button:hover,
+#navbar .lang_buttons button:focus {
+    background: #730606 !important;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 1200px) {
-    #navbar .select1 {
+    #navbar .lang_buttons {
         font-size: 1.5rem;
     }
 }
 
-#navbar .select1 select {
-    outline: none;
-    -webkit-appearance: none;
-    display: block;
-    padding: 0px 26px 0 16px;
-    margin: 0;
-
-    transition: border-color 0.2s;
-    border: 3px solid #182737;
-    border-radius: 5px;
-    color: #fff;
-    line-height: normal;
-    font-family: inherit;
-    font-size: inherit;
-    width: 100%;
-}
-
-#navbar .select1 select option {
-    background-color: #182737;
-    color: #fff;
-    cursor: pointer;
-}
-
-#cast-offcanvas .header_language_select {
-    background: #182737;
-}
-
-#cast-offcanvas .li-lang {
-    margin: 0;
-}
-
-#cast-offcanvas .header_language_select:hover {
-    background: transparent;
-    cursor: pointer;
-}
-
-/* Select */
+/* Language mobile */
 #cast-offcanvas .header_language {
-    display: initial;
+    display: flex;
     width: 100%;
+    margin: 0;
 }
 
-#cast-offcanvas .language_select_btn {
-    display: none;
-}
-
-#cast-offcanvas .select1 {
+#cast-offcanvas .lang_buttons {
     font-size: 16px;
     position: relative;
     display: inline-flex;
+    float: left;
+}
+
+#cast-offcanvas .lang_buttons button {
+    border-radius: 5px;
+    line-height: normal;
+    font-family: inherit;
+    font-size: 1rem;
+    background-color: transparent;
+    cursor: pointer;
+    margin: 0.3rem;
+    width: 3rem;
+    padding: 0;
+    height: 2.4rem;
+    border-color: #730606;
+    color: #FFFFFF;
+    letter-spacing: .25rem;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+#cast-offcanvas .lang_buttons .active {
+    background-color: rgba(255, 7, 7, 0.35);
+}
+
+#cast-offcanvas .lang_buttons button:hover,
+#cast-offcanvas .lang_buttons button:focus {
+    background: #730606 !important;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 1200px) {
-    #cast-offcanvas .select1 {
+    #cast-offcanvas .lang_buttons {
         font-size: 1.5rem;
     }
-}
-
-#cast-offcanvas .select1 select {
-    outline: none;
-    -webkit-appearance: none;
-    display: block;
-    padding: 0px 26px 0 16px;
-    margin: 0;
-
-    transition: border-color 0.2s;
-    border: 3px solid #182737;
-    border-radius: 5px;
-    color: #fff;
-    line-height: normal;
-    font-family: inherit;
-    font-size: inherit;
-    width: 100%;
-}
-
-#cast-offcanvas .select1 select option {
-    background-color: #182737;
-    color: #fff;
-    cursor: pointer;
 }

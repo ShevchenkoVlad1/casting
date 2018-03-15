@@ -2,13 +2,14 @@ from django.conf import settings
 from django.core.mail import EmailMessage
 from django.forms import modelformset_factory
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 from django.utils.translation import get_language
+from django.views.decorators.http import require_POST, require_GET
 
 from casting.forms import PersonForm, ImageForm
-from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, Poster, \
-    FilmPhoto, Partner, Social
+from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, \
+    Film_about, FilmPhoto, Partner, Social
 
 
 def home(request):
@@ -18,7 +19,11 @@ def home(request):
     youtube_list = YoutubeVideo.objects.all()
 
     crew_list = Worker.objects.filter(languages=current_lang)
-    poster = Poster.objects.filter(languages=current_lang).order_by('-id')[:1]
+    main_in_crew = crew_list.filter(is_main=1)
+    crew = crew_list.filter(is_main=0)
+
+    film_about = Film_about.objects.filter(languages=current_lang).order_by(
+        '-id')[:1]
     film_photo_list = FilmPhoto.objects.all()
     partner_list = Partner.objects.all()
     # social
@@ -30,8 +35,9 @@ def home(request):
     context = {
         'person_list': person_list,
         'youtube_list': youtube_list,
-        'crew_list': crew_list,
-        'poster': poster,
+        'main_in_crew': main_in_crew,
+        'crew': crew,
+        'film_about': film_about,
         'film_photo_list': film_photo_list,
         'twitter': twitter,
         'instagram': instagram,
@@ -43,6 +49,7 @@ def home(request):
     return render(request, 'casting/index.html', context)
 
 
+@require_POST
 def casting(request):
     ImageFormSet = modelformset_factory(PersonPhoto,
                                         form=ImageForm, extra=3)
@@ -78,10 +85,10 @@ def casting(request):
     return HttpResponse()
 
 
+@require_POST
 def subscribe(request):
     if request.method == 'POST':
         email = request.POST['subscribe-email']
-        print('here')
 
         email_title = 'Title'
         context = {}
@@ -98,11 +105,12 @@ def subscribe(request):
     return HttpResponse()
 
 
+@require_GET
 def person_list(request):
     if request.method == 'GET':
         person_id = request.GET.get('person_id', None)
         person = Person.objects.filter(id=person_id).get()
-        contact_image = 'photos/noimage.png'
+        contact_image = '/media/photos/noimage.png'
         data = {
             'id': person.id,
             'first_name': person.first_name,
