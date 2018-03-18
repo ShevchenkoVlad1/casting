@@ -22,11 +22,12 @@ class PersonAdmin(admin.ModelAdmin):
 
     search_fields = ['experience', 'about_info', 'is_main']
 
-    readonly_fields = ('Likes',)
+    readonly_fields = ('Likes', 'images',)
 
     fields = ('first_name', 'second_name', 'email', 'phone', 'age',
               'city', 'gender', 'prof', 'experience', 'grouping',
-              'crowd_scene', 'about_info', 'video_url', 'Likes', 'is_main',)
+              'crowd_scene', 'about_info', 'video_url', 'images', 'Likes',
+              'is_main',)
 
 
 @admin.register(UserIP)

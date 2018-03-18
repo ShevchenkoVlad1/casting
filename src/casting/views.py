@@ -112,14 +112,19 @@ def casting(request):
             person.grouping = request.POST['grouping']
             person.about_info = request.POST['about_info']
             person.video_url = request.POST['video_url']
-            person.save()
 
+            images = ''
+            person.save()
             for image in request.FILES.getlist('contact_image'):
                 save_file(image)
                 photo = PersonPhoto(
                     person=person,
                     photo='person_photos/%s' % image._get_name())
+                images += '/media/person_photos/%s\n' % image._get_name()
+
                 photo.save()
+            person.images = images
+            person.save()
 
     return HttpResponse()
 
@@ -149,7 +154,12 @@ def person_list(request):
     if request.method == 'GET':
         person_id = request.GET.get('person_id', None)
         person = Person.objects.filter(id=person_id).get()
-        contact_image = '/media/photos/noimage.png'
+        if person.photos.all:
+            contact_image = ''
+            for photo in person.photos.all():
+                contact_image += '%s\n' % photo
+        else:
+            contact_image = '/media/photos/noimage.png'
         data = {
             'id': person.id,
             'first_name': person.first_name,

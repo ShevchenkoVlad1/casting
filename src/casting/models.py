@@ -114,15 +114,20 @@ class Person(models.Model):
     about_info = models.TextField(max_length=1000, blank=True)
     video_url = models.CharField(max_length=150, blank=True)
     votes = GenericRelation(LikeDislike, related_query_name='persons')
-
+    images = models.CharField(max_length=150, default=None, null=True,
+                              blank=True)
     is_main = models.BooleanField(default=False)
     created_date = models.DateTimeField(auto_now_add=True)
 
 
 class PersonPhoto(models.Model):
-    person = models.ForeignKey(Person, default=None, on_delete=None, unique=False)
+    person = models.ForeignKey(Person, default=None, on_delete=None,
+                               unique=False, related_name='photos')
     photo = models.ImageField(upload_to=get_person_photo_path, blank=True,
                               null=True)
+
+    def __str__(self):
+        return str(self.photo)
 
 
 class YoutubeVideo(models.Model):
