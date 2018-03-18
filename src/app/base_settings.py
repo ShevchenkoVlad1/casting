@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'django_summernote',
+
     'app',
     'casting'
 ]
@@ -162,3 +164,7 @@ JET_THEMES = [
         'title': 'Light Gray'
     }
 ]
+
+SUMMERNOTE_CONFIG = {
+    'disable_upload': True,
+}

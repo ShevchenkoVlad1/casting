@@ -26,7 +26,6 @@ class PersonForm(forms.ModelForm):
 
 
 class ImageForm(forms.ModelForm):
-    image = forms.ImageField(label='Image')
 
     class Meta:
         model = PersonPhoto

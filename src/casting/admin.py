@@ -1,7 +1,9 @@
 from django.contrib import admin
 
 from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, \
-    Film_about, FilmPhoto, Partner, Social, UserIP
+    FilmAbout, FilmPhoto, Partner, Social, UserIP
+
+from django_summernote.admin import SummernoteModelAdmin
 
 
 @admin.register(Person)
@@ -29,9 +31,9 @@ class PersonAdmin(admin.ModelAdmin):
 
 @admin.register(UserIP)
 class UserIPAdmin(admin.ModelAdmin):
-    list_display = ('ip', 'user_data', 'created_date',)
-    readonly_fields = ('ip', 'user_data', 'created_date',)
-    fields = ('ip', 'user_data', 'created_date',)
+    list_display = ('ip', 'user_data', 'last_login', 'created_date',)
+    readonly_fields = ('ip', 'user_data', 'last_login', 'created_date',)
+    fields = ('ip', 'user_data', 'last_login', 'created_date',)
 
 
 @admin.register(PersonPhoto)
@@ -54,13 +56,15 @@ class FilmPhotoAdmin(admin.ModelAdmin):
 
 
 @admin.register(Worker)
-class WorkerAdmin(admin.ModelAdmin):
+class WorkerAdmin(SummernoteModelAdmin):
+    summernote_fields = ('about_info',)
     list_display = ('position', 'about_info', 'photo', 'languages', 'is_main',)
     fields = ('position', 'about_info', 'photo', 'languages', 'is_main',)
 
 
-@admin.register(Film_about)
-class FilmAboutAdmin(admin.ModelAdmin):
+@admin.register(FilmAbout)
+class FilmAboutAdmin(SummernoteModelAdmin):
+    summernote_fields = ('about_info',)
     list_display = ('title', 'about_info', 'photo', 'languages',)
     fields = ('title', 'about_info', 'photo', 'languages',)
 

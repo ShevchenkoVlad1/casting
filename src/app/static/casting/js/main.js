@@ -1,8 +1,3 @@
-/* ===================================================================
- * Glint - Main JS
- *
- * ------------------------------------------------------------------- */
-
 (function ($) {
 
     "use strict";
@@ -280,21 +275,43 @@
             sLoader.slideDown("slow");
 
             var form = $(this).closest("form");
-            $.post(form.attr("data-url"), $(this).serialize())
-                .done(function () {
-                    sLoader.slideUp("slow");
-                    $('.cast-form.message-warning').fadeOut();
-                    $('#contactForm').fadeOut();
-                    $('.cast-form.message-success').fadeIn();
-                })
-                .fail(function () {
-                    sLoader.slideUp("slow");
-                    $('.cast-form.message-warning').html("Something went wrong. Please try again.");
-                    $('.cast-form.message-warning').slideDown("slow");
-                });
+
+            var images = $('#contact_image');
+
+            var input = document.querySelector('input[type=file]'),
+                file = input.files[0];
+            var formData = new FormData(document.querySelector("#contactForm"));
+
+            formData.append('photos', file);
+
+            $.ajax({
+                url: form.attr("data-url"),
+                type: "POST",
+                processData: false,
+                contentType: false,
+                mimeType: 'multipart/form-data',
+                data: formData,
+                    beforeSend: function () {
+                        sLoader.slideDown("slow");
+                    },
+                    success: function () {
+                            sLoader.slideUp("slow");
+                            $('.cast-form.message-warning').fadeOut();
+                            $('#contactForm').fadeOut();
+                            $('.cast-form.message-success').fadeIn();
+                    },
+                    error: function () {
+                        sLoader.slideUp("slow");
+                        $('.cast-form.message-warning').html("Something went wrong. Please try again.");
+                        $('.cast-form.message-warning').slideDown("slow");
+
+                    }
+            });
+
             e.preventDefault();
         });
     };
+
 
     var SubscribeForm = function () {
         $('#mailForm').submit(function (e) {

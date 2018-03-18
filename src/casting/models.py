@@ -28,7 +28,7 @@ def get_partner_photo_path(instance, filename):
     return os.path.join('partner_photos', str(instance.title), filename)
 
 
-class Film_about(models.Model):
+class FilmAbout(models.Model):
     title = models.CharField(max_length=250, null=True)
     photo = models.ImageField(upload_to=get_poster_photo_path, blank=True,
                               null=True)
@@ -57,8 +57,9 @@ class Worker(models.Model):
 
 class UserIP(models.Model):
     ip = models.GenericIPAddressField(unique=True)
-    created_date = models.DateTimeField(auto_now_add=True)
     user_data = models.CharField(max_length=255)
+    created_date = models.DateTimeField(auto_now_add=True)
+    last_login = models.DateTimeField(null=True, blank=True)
 
 
 class LikeDislikeManager(models.Manager):
@@ -119,7 +120,7 @@ class Person(models.Model):
 
 
 class PersonPhoto(models.Model):
-    person = models.ForeignKey(Person, default=None, on_delete=None)
+    person = models.ForeignKey(Person, default=None, on_delete=None, unique=False)
     photo = models.ImageField(upload_to=get_person_photo_path, blank=True,
                               null=True)
 

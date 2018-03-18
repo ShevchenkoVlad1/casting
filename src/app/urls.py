@@ -19,9 +19,7 @@ urlpatterns += i18n_patterns(
     path('jet/', include('jet.urls', 'jet')),
     path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
     path('_adm1n_/', admin.site.urls),
-
-    # translate
-    path('_translation_/', include('rosetta.urls')),
+    path('summernote/', include('django_summernote.urls')),
 )
 
 if settings.DEBUG:

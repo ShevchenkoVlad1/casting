@@ -1,10 +1,10 @@
 import json
+import os
 from datetime import datetime
 
 from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.core.mail import EmailMessage
-from django.forms import modelformset_factory
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
@@ -15,7 +15,7 @@ from django.views.decorators.http import require_POST, require_GET
 
 from casting.forms import PersonForm, ImageForm
 from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, \
-    Film_about, FilmPhoto, Partner, Social, UserIP, LikeDislike
+    FilmAbout, FilmPhoto, Partner, Social, UserIP, LikeDislike
 
 
 class HomeView(View):
@@ -32,8 +32,11 @@ class HomeView(View):
             user = UserIP()
             user.ip = ip
             user.created_date = datetime.now()
+            user.last_login = datetime.now()
             user.user_data = get_user_data
             user.save()
+        else:
+            UserIP.objects.filter(ip=ip).update(last_login=datetime.now())
 
         current_lang = get_language()
 
@@ -45,15 +48,20 @@ class HomeView(View):
         main_in_crew = crew_list.filter(is_main=1)
         crew = crew_list.filter(is_main=0)
 
-        film_about = Film_about.objects.filter(languages=current_lang
-                                               ).order_by('-id')[:1]
+        film_about = FilmAbout.objects.filter(languages=current_lang
+                                              ).order_by('-id')[:1]
         film_photo_list = FilmPhoto.objects.all()
         partner_list = Partner.objects.all()
+
+        image_form = ImageForm
+
         # social
         twitter = Social.objects.filter(title="Twitter").get()
         instagram = Social.objects.filter(title="Instagram").get()
         youtube = Social.objects.filter(title="YouTube").get()
         facebook = Social.objects.filter(title="Facebook").get()
+        imdb = Social.objects.filter(title="Imdb").get()
+        wikipedia = Social.objects.filter(title="Wikipedia").get()
 
         context = {
             'person_list': person_list,
@@ -66,20 +74,28 @@ class HomeView(View):
             'instagram': instagram,
             'youtube': youtube,
             'facebook': facebook,
-            'partner_list': partner_list
+            'imdb': imdb,
+            'wikipedia': wikipedia,
+            'partner_list': partner_list,
+            'image_form': image_form
         }
 
         return render(request, 'casting/index.html', context)
 
 
+def save_file(file):
+    filename = file._get_name()
+    fd = open('%s' % (os.path.join(settings.MEDIA_ROOT,
+                                   'person_photos', str(filename))), 'wb')
+    for chunk in file.chunks():
+        fd.write(chunk)
+    fd.close()
+
+
 @require_POST
 def casting(request):
-    ImageFormSet = modelformset_factory(PersonPhoto,
-                                        form=ImageForm, extra=3)
     if request.method == 'POST':
         person_form = PersonForm(request.POST)
-        formset = ImageFormSet(request.POST, request.FILES,
-                               queryset=PersonPhoto.objects.none())
 
         if person_form.is_valid():
             person = Person()
@@ -98,13 +114,13 @@ def casting(request):
             person.video_url = request.POST['video_url']
             person.save()
 
-            # for form in formset.cleaned_data:
-            #     image = form['image']
-            #     photo = Images(person=person_form, image=image)
-            #     photo.save()
-            # images = Images()
-            #
-            # images.save()
+            for image in request.FILES.getlist('contact_image'):
+                save_file(image)
+                photo = PersonPhoto(
+                    person=person,
+                    photo='person_photos/%s' % image._get_name())
+                photo.save()
+
     return HttpResponse()
 
 
