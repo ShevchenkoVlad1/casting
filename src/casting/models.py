@@ -32,7 +32,7 @@ class FilmAbout(models.Model):
     title = models.CharField(max_length=250, null=True)
     photo = models.ImageField(upload_to=get_poster_photo_path, blank=True,
                               null=True)
-    about_info = models.TextField(max_length=1000, blank=True)
+    about_info = models.TextField(max_length=8000, blank=True)
     languages = models.CharField(max_length=128, unique=False,
                                  choices=(
                                      ('ru', _('Russian')),
@@ -43,7 +43,7 @@ class FilmAbout(models.Model):
 
 class Worker(models.Model):
     position = models.CharField(max_length=250)
-    about_info = models.TextField(max_length=1000, blank=True)
+    about_info = models.TextField(max_length=8000, blank=True)
     photo = models.ImageField(upload_to=get_worker_photo_path, blank=True,
                               null=True)
     languages = models.CharField(max_length=128, unique=False,
@@ -108,10 +108,10 @@ class Person(models.Model):
     city = models.CharField(max_length=70)
     gender = models.CharField(max_length=70)
     prof = models.CharField(max_length=70)
-    experience = models.TextField(max_length=1000, blank=True)
+    experience = models.TextField(max_length=8000, blank=True)
     grouping = models.BooleanField(default=False)
     crowd_scene = models.BooleanField(default=False)
-    about_info = models.TextField(max_length=1000, blank=True)
+    about_info = models.TextField(max_length=8000, blank=True)
     video_url = models.CharField(max_length=150, blank=True)
     votes = GenericRelation(LikeDislike, related_query_name='persons')
     images = models.CharField(max_length=150, default=None, null=True,
