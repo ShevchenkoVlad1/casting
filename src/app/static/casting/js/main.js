@@ -13,7 +13,6 @@
     var doc = document.documentElement;
     doc.setAttribute('data-useragent', navigator.userAgent);
 
-    // Получение переменной cookie по имени
     function getCookie(name) {
         var cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -30,10 +29,9 @@
         return cookieValue;
     }
 
-    // Настройка AJAX
     $(function () {
         $.ajaxSetup({
-            headers: { "X-CSRFToken": getCookie("csrftoken") }
+            headers: {"X-CSRFToken": getCookie("csrftoken")}
         });
     });
 
@@ -291,21 +289,21 @@
                 contentType: false,
                 mimeType: 'multipart/form-data',
                 data: formData,
-                    beforeSend: function () {
-                        sLoader.slideDown("slow");
-                    },
-                    success: function () {
-                            sLoader.slideUp("slow");
-                            $('.cast-form.message-warning').fadeOut();
-                            $('#contactForm').fadeOut();
-                            $('.cast-form.message-success').fadeIn();
-                    },
-                    error: function () {
-                        sLoader.slideUp("slow");
-                        $('.cast-form.message-warning').html("Something went wrong. Please try again.");
-                        $('.cast-form.message-warning').slideDown("slow");
+                beforeSend: function () {
+                    sLoader.slideDown("slow");
+                },
+                success: function () {
+                    sLoader.slideUp("slow");
+                    $('.cast-form.message-warning').fadeOut();
+                    $('#contactForm').fadeOut();
+                    $('.cast-form.message-success').fadeIn();
+                },
+                error: function () {
+                    sLoader.slideUp("slow");
+                    $('.cast-form.message-warning').html("Something went wrong. Please try again.");
+                    $('.cast-form.message-warning').slideDown("slow");
 
-                    }
+                }
             });
 
             e.preventDefault();
@@ -375,12 +373,12 @@
                     $('.person-about_info').html(data.about_info);
                     $('.person-video_url').html(data.video_url);
                     console.log(data.video);
-                    if (data.video !== '' ){
+                    if (data.video !== '') {
                         var video_id = data.video_url.split("v=")[1].split("?")[0];
                         $('.person-video-iframe').attr("src", 'https://www.youtube.com/embed/' + video_id + '?autoplay=0&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1');
                     }
 
-                    if (data.contact_image !== '' ) {
+                    if (data.contact_image !== '') {
                         var img_arr = data.contact_image.split("\n");
                         $.each(img_arr, function (index, img_url) {
                             if (img_url !== '') {
@@ -511,11 +509,11 @@
         CastingForm();
         GetAllInfo();
         PersoneInfoClose();
-		navigationSection();
-		youtubeNext();
-		facebookShare();
-		twitterShare();
-		SubscribeForm();
+        navigationSection();
+        youtubeNext();
+        facebookShare();
+        twitterShare();
+        SubscribeForm();
 
     })();
 

@@ -422,16 +422,15 @@
 
 /* Language */
 #navbar .header_language {
-    display: flex;
     width: 100%;
     margin: 0;
 }
 
 #navbar .lang_buttons {
     font-size: 16px;
-    position: relative;
-    display: inline-flex;
-    float: left;
+    width: 20%;
+    position: absolute;
+    margin: 0 auto;
 }
 
 #navbar .lang_buttons button {

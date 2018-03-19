@@ -462,6 +462,39 @@ form,
 }
 
 /* ===================================================================
+ * # background matrix
+ *
+ * ------------------------------------------------------------------- */
+
+#about-canvas {
+    display: block;
+    margin: auto;
+    position: absolute;
+    z-index: 1;
+}
+
+#crew-canvas {
+    display: block;
+    margin: auto;
+    position: absolute;
+    z-index: 1;
+}
+
+#casting-canvas {
+    display: block;
+    margin: auto;
+    position: absolute;
+    z-index: 1;
+}
+
+#subscribe-canvas {
+    display: block;
+    margin: auto;
+    position: absolute;
+    z-index: 1;
+}
+
+/* ===================================================================
  * # preloader
  *
  * ------------------------------------------------------------------- */
@@ -2433,31 +2466,8 @@ html.no-csstransitions .home-content__main {
     -moz-box-shadow: inset 0 0 10px #000000;
     -webkit-box-shadow: inset 0 0 10px #000000;
     box-shadow: inset 0 0 10px #000000;
-    height: 100%;
-}
-
-.s-about .shadow-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: .4;
-    background: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-    background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#cc000000', GradientType=0);
-}
-
-.s-about .overlay {
-    z-index: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: .6;
-    background-color: #000000;
+    height: 100vh;
+    z-index: 1;
 }
 
 .about-title {
@@ -2933,6 +2943,7 @@ html.no-csstransitions .home-content__main {
     height: 100%;
     background: transparent;
     position: relative;
+    z-index: 1;
 }
 
 .no-js .s-casting {
@@ -3621,14 +3632,14 @@ select option {
 
 .casting-contact {
     width: calc((100% - 5%) * .45);
-    background: rgba(0, 0, 0, 0.8) repeat;
+    background: rgba(0, 0, 0, 0.5) repeat;
     border-right: 2px solid rgba(0, 0, 0, 0.1);
     padding: 2rem;
 }
 
 .casting-table {
     width: calc((100% - 5%) * .6);
-    background: rgba(0, 0, 0, 0.8) repeat;
+    background: rgba(0, 0, 0, 0.5) repeat;
     border-left: 2px solid rgba(0, 0, 0, 0.1);
     padding: 2rem;
 }
@@ -4611,12 +4622,11 @@ html.no-csstransitions .casting-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-photos {
-    background: url("/static/casting/img/grey_bg.png") center center;
-    background-size: cover;
+    background: transparent;
     padding: 0;
     min-height: 800px;
     position: relative;
-    height: 100%;
+    height: 100vh;
 }
 
 .s-photos .intro-wrap {
@@ -5060,11 +5070,11 @@ html.no-csstransitions .casting-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-subscribe {
-    background: url("/static/casting/img/dark_bg.png") center center;
-    background-size: cover;
+    background: transparent;
     color: rgba(255, 255, 255, 0.5);
     padding: 7rem 0 10rem;
     position: relative;
+    z-index: 1;
 }
 
 .s-subscribe .overlay {
@@ -5544,8 +5554,7 @@ html.no-csstransitions .casting-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-social {
-    background: url("/static/casting/img/red_bg.jpg") center center;
-    background-size: cover;
+    background: transparent;
     padding: 0;
     min-height: 800px;
     position: relative;

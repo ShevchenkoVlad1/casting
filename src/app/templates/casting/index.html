@@ -151,10 +151,11 @@
 
         <!-- about
         ================================================== -->
-        <div data-section="about">
-            <section class="s-about" data-parallax="scroll" data-image-src="/static/casting/img/red_bg.jpg" data-position-y=center>
-
-                <div class="overlay"></div>
+        <div class="matrix">
+            <canvas id="about-canvas"></canvas>
+        </div>
+        <div data-section="about" id="about-bg">
+            <section class="s-about">
 
                 {% for post in film_about %}
                 <div class="about-title container" data-aos="fade-up">
@@ -294,10 +295,12 @@
 
         <!-- casting
         ================================================== -->
-        <div data-section="casting">
-            <section class="s-casting" data-parallax="scroll" data-image-src="/static/casting/img/grey_bg.png" data-position-y=top>
+        <div class="matrix">
+            <canvas id="casting-canvas"></canvas>
+        </div>
+        <div data-section="casting" id="casting-bg">
+            <section class="s-casting">
 
-                <div class="overlay"></div>
                 <div class="casting-block">
 
                     <div class="container section-header" data-aos="fade-up">
@@ -595,7 +598,7 @@
         <!-- photos
         ================================================== -->
         <div data-section="photos">
-            <section class="s-photos">
+            <section class="s-photos" data-parallax="scroll" data-image-src="/static/casting/img/code_bg.jpg" data-position-y=center>
 
                 <div class="intro-wrap">
 
@@ -642,7 +645,10 @@
 
         <!-- subscribe
         ================================================== -->
-        <div data-section="subscribe">
+        <div class="matrix">
+            <canvas id="subscribe-canvas"></canvas>
+        </div>
+        <div data-section="subscribe" id="subscribe-bg">
             <section class="s-subscribe">
                 <div class="row section-header" data-aos="fade-up">
                     <div class="col-full">
@@ -692,8 +698,7 @@
         <!-- social updates
         ================================================== -->
         <div data-section="social">
-            <!--<section class="s-social" data-parallax="scroll" data-image-src="/static/casting/img/red_bg.jpg" data-position-y=center>-->
-            <section class="s-social">
+            <section class="s-social" data-parallax="scroll" data-image-src="/static/casting/img/network-neural-bg.jpg" data-position-y=center>>
 
                 <div class="intro-wrap">
 
@@ -814,6 +819,7 @@
 
     <script src="/static/casting/js/plugins.js"></script>
     <script src="/static/casting/js/main.js"></script>
+    <script src="/static/casting/js/bg-matrix.js"></script>
     <script src="/static/casting/js/nav.js"></script>
     <script src="/static/casting/js/swiper.min.js"></script>
     <script async src="/static/casting/js/twitter.js"></script>
