@@ -2466,7 +2466,7 @@ html.no-csstransitions .home-content__main {
     -moz-box-shadow: inset 0 0 10px #000000;
     -webkit-box-shadow: inset 0 0 10px #000000;
     box-shadow: inset 0 0 10px #000000;
-    height: 100vh;
+    height: 100%;
     z-index: 1;
 }
 
