@@ -218,7 +218,7 @@
         <!-- crew
         ================================================== -->
         <div data-section="crew">
-            <section class="s-crew" data-parallax="scroll" data-image-src="/static/casting/img/about_bg.jpg" data-position-y=top>
+            <section class="s-crew" data-parallax="scroll" data-image-src="/static/casting/img/hero-bg.jpg" data-position-y=top>
 
                 <div class="container section-header" data-aos="fade-up">
                     <div class="col-full">
@@ -598,7 +598,7 @@
         <!-- photos
         ================================================== -->
         <div data-section="photos">
-            <section class="s-photos" data-parallax="scroll" data-image-src="/static/casting/img/code_bg.jpg" data-position-y=center>
+            <section class="s-photos" data-parallax="scroll" data-image-src="/static/casting/img/code_bg.png" data-position-y=center>
 
                 <div class="intro-wrap">
 
@@ -802,6 +802,141 @@
             </div>
         </div>
     </div>
+
+    <!-- Welcome
+    ================================================== -->
+    {% if is_welcome == True %}
+    <div class="welcome-section content-hidden">
+        <div class="content-wrap">
+            {% if LANGUAGE_CODE == 'ru' %}
+            <ul class="fly-in-text">
+                <li>Г</li>
+                <li>О</li>
+                <li>Т</li>
+                <li>О</li>
+                <li>В</li>
+                <li> </li>
+                <li>Л</li>
+                <li>И</li>
+                <li> </li>
+                <li>Т</li>
+                <li>Ы</li>
+            </ul>
+            <ul class="fly-in-text">
+                <li>У</li>
+                <li>М</li>
+                <li>Е</li>
+                <li>Р</li>
+                <li>Е</li>
+                <li>Т</li>
+                <li>Ь</li>
+                <li> </li>
+                <li>Р</li>
+                <li>А</li>
+                <li>Д</li>
+                <li>И</li>
+            </ul>
+            <ul class="fly-in-text">
+                <li>П</li>
+                <li>Р</li>
+                <li>А</li>
+                <li>В</li>
+                <li>Д</li>
+                <li>Ы</li>
+                <li> </li>
+                <li>?</li>
+            </ul>
+            <a href="#" class="enter-button">Перейти</a>
+            {% elif LANGUAGE_CODE == 'ua' %}
+            <ul class="fly-in-text">
+                <li>Ч</li>
+                <li>И</li>
+                <li> </li>
+                <li>Г</li>
+                <li>О</li>
+                <li>Т</li>
+                <li>О</li>
+                <li>В</li>
+                <li>И</li>
+                <li>Й</li>
+                <li> </li>
+                <li>Т</li>
+                <li>И</li>
+            </ul>
+            <ul class="fly-in-text">
+                <li>П</li>
+                <li>О</li>
+                <li>М</li>
+                <li>Е</li>
+                <li>Р</li>
+                <li>Т</li>
+                <li>И</li>
+                <li> </li>
+                <li>З</li>
+                <li>А</li>
+                <li>Р</li>
+                <li>А</li>
+                <li>Д</li>
+                <li>И</li>
+            </ul>
+            <ul class="fly-in-text">
+                <li>П</li>
+                <li>Р</li>
+                <li>А</li>
+                <li>В</li>
+                <li>Д</li>
+                <li>И</li>
+                <li> </li>
+                <li>?</li>
+            </ul>
+            <a href="#" class="enter-button">Перейти</a>
+            {% elif LANGUAGE_CODE == 'en' %}
+            <ul class="fly-in-text">
+                <li>A</li>
+                <li>R</li>
+                <li>E</li>
+                <li> </li>
+                <li>Y</li>
+                <li>O</li>
+                <li>U</li>
+                <li> </li>
+                <li>R</li>
+                <li>E</li>
+                <li>A</li>
+                <li>D</li>
+                <li>Y</li>
+            </ul>
+            <ul class="fly-in-text">
+                <li>T</li>
+                <li>O</li>
+                <li> </li>
+                <li>D</li>
+                <li>I</li>
+                <li>E</li>
+                <li> </li>
+                <li>F</li>
+                <li>O</li>
+                <li>R</li>
+                <li> </li>
+                <li>T</li>
+                <li>H</li>
+                <li>E</li>
+            </ul>
+            <ul class="fly-in-text">
+                <li>T</li>
+                <li>R</li>
+                <li>U</li>
+                <li>T</li>
+                <li>H</li>
+                <li> </li>
+                <li>?</li>
+            </ul>
+            <a href="#" class="enter-button">ENTER</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
 
 
 

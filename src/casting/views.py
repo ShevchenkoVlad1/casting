@@ -35,8 +35,10 @@ class HomeView(View):
             user.last_login = datetime.now()
             user.user_data = get_user_data
             user.save()
+            is_welcome = True
         else:
             UserIP.objects.filter(ip=ip).update(last_login=datetime.now())
+            is_welcome = False
 
         current_lang = get_language()
 
@@ -77,7 +79,8 @@ class HomeView(View):
             'imdb': imdb,
             'wikipedia': wikipedia,
             'partner_list': partner_list,
-            'image_form': image_form
+            'image_form': image_form,
+            'is_welcome': is_welcome
         }
 
         return render(request, 'casting/index.html', context)
