@@ -12,6 +12,10 @@
     // will be used for IE10 detection (Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0))
     var doc = document.documentElement;
     doc.setAttribute('data-useragent', navigator.userAgent);
+    $('.instagram-news').contents().find($('#editMe.design_2')).remove();
+    $('.instagram-news').contents().find($('.powrMark')).remove();
+    $('.facebook-news').contents().find($('#editMe.design_2')).remove();
+    $('.facebook-news').contents().find($('.powrMark')).remove();
 
     function getCookie(name) {
         var cookieValue = null;
