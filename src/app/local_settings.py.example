@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from .base_settings import *
 
 TEMPLATES[0]['DIRS'].append("./src/app/templates")

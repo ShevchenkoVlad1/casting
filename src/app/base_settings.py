@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -119,7 +120,6 @@ EMAIL_USE_TLS = True
 from django.utils.translation import ugettext_lazy as _
 
 LANGUAGES = (
-    ('ru', _('Russian')),
     ('ua', _('Ukrainian')),
     ('en', _('English')),
 )
@@ -137,26 +137,6 @@ JET_THEMES = [
         'theme': 'default',  # theme folder name
         'color': '#47bac1',  # color of the theme's button in user menu
         'title': 'Default'  # theme title
-    },
-    {
-        'theme': 'green',
-        'color': '#44b78b',
-        'title': 'Green'
-    },
-    {
-        'theme': 'light-green',
-        'color': '#2faa60',
-        'title': 'Light Green'
-    },
-    {
-        'theme': 'light-violet',
-        'color': '#a464c4',
-        'title': 'Light Violet'
-    },
-    {
-        'theme': 'light-blue',
-        'color': '#5EADDE',
-        'title': 'Light Blue'
     },
     {
         'theme': 'light-gray',

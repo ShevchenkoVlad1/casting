@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 
 from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, \
@@ -59,8 +60,10 @@ class FilmPhotoAdmin(admin.ModelAdmin):
 @admin.register(Worker)
 class WorkerAdmin(SummernoteModelAdmin):
     summernote_fields = ('about_info',)
-    list_display = ('position', 'about_info', 'photo', 'languages', 'is_main',)
-    fields = ('position', 'about_info', 'photo', 'languages', 'is_main',)
+    list_display = ('position', 'name', 'about_info', 'photo', 'languages',
+                    'is_main',)
+    fields = ('position', 'name', 'about_info', 'photo', 'languages',
+              'is_main',)
 
 
 @admin.register(FilmAbout)

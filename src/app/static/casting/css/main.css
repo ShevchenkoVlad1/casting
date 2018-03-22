@@ -608,7 +608,7 @@ form,
     z-index: 800;
     height: 100%;
     width: 100%;
-    display: none;
+    display: table;
 }
 
 .no-js #preloader, .oldie #preloader {

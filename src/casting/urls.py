@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.urls import path
 
 from casting.models import Person, LikeDislike

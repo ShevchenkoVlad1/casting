@@ -67,7 +67,26 @@
     }
 }
 
-.cast-nav ul {
+.nav-inline-block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.language-block {
+    flex-grow: 1;
+}
+
+.cast-nav ul.nav {
+    justify-content: flex-start;
+    display: flex;
+    flex-grow: 1;
+    padding: 0;
+    margin: 5px 0 0 0;
+}
+
+.cast-nav ul.home-social {
     padding: 0;
     margin: 5px 0 0 0;
 }
@@ -428,9 +447,9 @@
 
 #navbar .lang_buttons {
     font-size: 16px;
-    width: 20%;
-    position: absolute;
+    position: relative;
     margin: 0 auto;
+    display: flex;
 }
 
 #navbar .lang_buttons button {

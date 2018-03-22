@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 
 from django.contrib.contenttypes.fields import GenericForeignKey, \
@@ -43,6 +44,7 @@ class FilmAbout(models.Model):
 
 class Worker(models.Model):
     position = models.CharField(max_length=250)
+    name = models.CharField(max_length=250)
     about_info = models.TextField(max_length=8000, blank=True)
     photo = models.ImageField(upload_to=get_worker_photo_path, blank=True,
                               null=True)
