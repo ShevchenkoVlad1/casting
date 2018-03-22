@@ -36,10 +36,9 @@ class FilmAbout(models.Model):
     about_info = models.TextField(max_length=8000, blank=True)
     languages = models.CharField(max_length=128, unique=False,
                                  choices=(
-                                     ('ru', _('Russian')),
                                      ('ua', _('Ukrainian')),
                                      ('en', _('English')),
-                                 ), default=('ru', _('Russian')))
+                                 ), default=('ua', _('Ukrainian')))
 
 
 class Worker(models.Model):
@@ -50,10 +49,9 @@ class Worker(models.Model):
                               null=True)
     languages = models.CharField(max_length=128, unique=False,
                                  choices=(
-                                     ('ru', _('Russian')),
                                      ('ua', _('Ukrainian')),
                                      ('en', _('English')),
-                                 ), default=('ru', _('Russian')))
+                                 ), default=('ua', _('Ukrainian')))
     is_main = models.BooleanField(default=False)
 
 
@@ -90,8 +88,8 @@ class LikeDislike(models.Model):
         (LIKE, _("Like"))
     )
 
-    vote = models.SmallIntegerField(verbose_name=_("Голос"), choices=VOTES)
-    user = models.ForeignKey(UserIP, verbose_name=_("Пользователь"),
+    vote = models.SmallIntegerField(verbose_name=_("Vote"), choices=VOTES)
+    user = models.ForeignKey(UserIP, verbose_name=_("User"),
                              on_delete=models.CASCADE)
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
