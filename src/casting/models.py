@@ -7,26 +7,29 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.db.models import Sum
 from django.utils.translation import ugettext_lazy as _
+from datetime import datetime
+
+time_as_folder = datetime.now().strftime('%Y/%m/%d')
 
 
 def get_person_photo_path(instance, filename):
-    return os.path.join('person_photos', str(instance.person_id), filename)
+    return os.path.join('person_photos', time_as_folder, filename)
 
 
 def get_worker_photo_path(instance, filename):
-    return os.path.join('worker_photos', str(instance.position), filename)
+    return os.path.join('worker_photos', time_as_folder, filename)
 
 
 def get_poster_photo_path(instance, filename):
-    return os.path.join('poster_photos', str(instance.title), filename)
+    return os.path.join('poster_photos', time_as_folder, filename)
 
 
 def get_film_photo_path(instance, filename):
-    return os.path.join('film_photos', str(instance.title), filename)
+    return os.path.join('film_photos', time_as_folder, filename)
 
 
 def get_partner_photo_path(instance, filename):
-    return os.path.join('partner_photos', str(instance.title), filename)
+    return os.path.join('partner_photos', time_as_folder, filename)
 
 
 class FilmAbout(models.Model):
