@@ -1,5 +1,10 @@
 /* >2000px */
 @media only screen and (min-width: 2000px) {
+    /* Main */
+    .container {
+        width: 1170px;
+    }
+
     /* Home */
     .home-buttons {
         position: relative;
@@ -31,6 +36,11 @@
 
 /* 2000px - 1501px */
 @media only screen and (max-width: 2000px) {
+    /* Main */
+    .container {
+        width: 1170px;
+    }
+
     /* Home */
     .home-buttons {
         position: relative;
@@ -119,17 +129,16 @@
 /* 1200 - 1001px */
 @media only screen and (max-width: 1200px) {
     /* Main */
+    .container {
+        width: 970px;
+    }
+
     .display-1 {
         font-size: 7.2rem;
     }
 
     .display-2 {
         font-size: 4.4rem;
-    }
-
-    /* Header */
-    .section-header {
-        max-width: 800px;
     }
 
     /* Home */
@@ -288,7 +297,7 @@
 @media only screen and (max-width: 1000px) {
     /* Main */
     .container {
-        width: 970px;
+        width: 90%;
     }
 
     /* Home */
@@ -434,11 +443,6 @@
 
 /* 900px - 801px */
 @media only screen and (max-width: 900px) {
-    /* Header */
-    .section-header {
-        max-width: 700px;
-    }
-
     /* Footer */
     .footer-main .left {
         padding-right: 20px;
@@ -466,7 +470,7 @@
     }
 
     .container {
-        width: 750px;
+        width: 90%;
     }
 
     /* Header */
@@ -518,8 +522,16 @@
 
     /* About */
     .about-desc {
-        font-size: 2rem;
         max-width: 600px;
+    }
+
+    .about-info p {
+        font-size: 10pt;
+        margin: 0 auto 1rem;
+    }
+
+    .about-info h2 {
+        font-size: 11pt;
     }
 
     /* Crew */
@@ -882,8 +894,11 @@
 
     /* About */
     .about-poster {
-        margin-left: 16.5%;
-        width: 100%;
+        width: 50%;
+    }
+
+    .about-title {
+        margin: 0 auto;
     }
 
     .about-title p {
@@ -892,8 +907,12 @@
     }
 
     .about-info p {
-        font-size: 1.6rem;
+        font-size: 9pt;
         text-align: justify;
+    }
+
+    .about-info h2 {
+        font-size: 10pt;
     }
 
     .s-about {
@@ -901,12 +920,16 @@
     }
 
     .about-desc {
-        max-width: 300px;
-        margin: 3rem auto 0;
+        width: 100%;
+        margin: 0 auto;
     }
 
     .about__line {
         height: 7.2rem;
+    }
+
+    .about-restricted {
+        width: 40%;
     }
 
     /* Crew */
@@ -1308,16 +1331,6 @@
     .home-content__main {
         padding-top: 16.2rem;
         width: auto;
-    }
-
-    /* About */
-    .about-desc {
-        font-size: 1.8rem;
-        margin: auto;
-    }
-
-    .about-poster {
-        margin-left: 4rem;
     }
 
     /* Crew */

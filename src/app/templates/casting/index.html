@@ -65,9 +65,9 @@
         <header class="s-header">
             <nav class="cast-nav" role="navigation">
                 <div id="navbar" class="text-center menu-1 menu-wrap">
-                    <div class="nav-inline-block">
-                        <div class="language-block">
-                            <form action="{% url 'set_language' %}" method="post" class="header_language" >
+                    <ul class="header_language">
+                        <li>
+                            <form action="{% url 'set_language' %}" method="post">
                                 {% csrf_token %}
                                 <input name="next" type="hidden" value="{{ redirect_to }}" />
                                 <div class="lang_buttons">
@@ -82,19 +82,19 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="#" data-nav-section="home">{% trans "Home" %}</a></li>
-                            <li><a href="#" data-nav-section="about">{% trans "About" %}</a></li>
-                            <li><a href="#" data-nav-section="crew">{% trans "Crew" %}</a></li>
-                            <li><a href="#" data-nav-section="casting">{% trans "Casting" %}</a></li>
-                            <li><a href="#" data-nav-section="videos">{% trans "Videos" %}</a></li>
-                            <li><a href="#" data-nav-section="photos">{% trans "Photos" %}</a></li>
-                            <li><a href="#" data-nav-section="subscribe">{% trans "Subscribe" %}</a></li>
-                            <li><a href="#" data-nav-section="social">{% trans "Social updates" %}</a></li>
-                            <li><a href="#" data-nav-section="partners">{% trans "Partners" %}</a></li>
-                        </ul>
-                    </div>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="#" data-nav-section="home">{% trans "Home" %}</a></li>
+                        <li><a href="#" data-nav-section="about">{% trans "About" %}</a></li>
+                        <li><a href="#" data-nav-section="crew">{% trans "Crew" %}</a></li>
+                        <li><a href="#" data-nav-section="casting">{% trans "Casting" %}</a></li>
+                        <li><a href="#" data-nav-section="videos">{% trans "Videos" %}</a></li>
+                        <li><a href="#" data-nav-section="photos">{% trans "Photos" %}</a></li>
+                        <li><a href="#" data-nav-section="subscribe">{% trans "Subscribe" %}</a></li>
+                        <li><a href="#" data-nav-section="social">{% trans "Social updates" %}</a></li>
+                        <li><a href="#" data-nav-section="partners">{% trans "Partners" %}</a></li>
+                    </ul>
                     <ul class="home-social">
                         <li><a href="{{ facebook.social_url }}"><i class="fa fa-facebook hvr-pulse-shrink" aria-hidden="true"></i></a></li>
                         <li><a href="{{ twitter.social_url }}"><i class="fa fa-twitter hvr-pulse-shrink" aria-hidden="true"></i></a></li>
@@ -159,7 +159,7 @@
             <section class="s-about">
 
                 {% for post in film_about %}
-                <div class="about-title container" data-aos="fade-up">
+                <div class="about-title" data-aos="fade-up">
                     <div class="section-header">
                         <div class="col-full">
                             <h1 class="display-2 display-2--light">{{ post.title }}</h1>
@@ -187,6 +187,9 @@
                             <div class="col-full">
                                 {{ post.about_info|safe }}
                             </div>
+                            <div class="about-restricted">
+                                <img src="/static/casting/img/restricted.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -207,6 +210,9 @@
                         <div class="about-desc">
                             <div class="col-full">
                                 <p>{% trans "Text" %}</p>
+                            </div>
+                            <div class="about-restricted">
+                                <img src="/static/casting/img/restricted.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -274,6 +280,9 @@
                             <div class="crew-position">
                                 {{ worker.position }}
                             </div>
+                            <div class="crew-name">
+                                {{ main_worker.name }}
+                            </div>
                             <div class="crew-info">
                                 {{ worker.about_info|safe }}
                             </div>
@@ -287,6 +296,9 @@
                         <div class="crew-text">
                             <div class="crew-position">
                                 {% trans "Position" %}
+                            </div>
+                            <div class="crew-name">
+                                {% trans "Name" %}
                             </div>
                             <div class="crew-info">
                                 {% trans "Text" %}
