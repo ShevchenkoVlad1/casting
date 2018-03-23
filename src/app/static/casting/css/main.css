@@ -2291,42 +2291,67 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-crew {
-    padding: 7rem 0 10rem;
     background: transparent;
-    color: #757575;
+    padding: 7rem 0 10rem;
+    color: #FFFFFF;
     position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
 }
 
 /* -------------------------------------------------------------------
  * ## crew list
  * ------------------------------------------------------------------- */
+.s-crew .section-header .display-2 {
+    font-family: 'WarIsOver', sans-serif;
+    font-size: 28pt;
+}
+
 .crew-list {
-    margin: 6rem;
-    overflow: hidden;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
 }
 
 .main-in-crew {
     justify-content: center;
 }
 
-.crew-list .crew-item {
-    margin: .9rem .9rem 7rem;
+.crew-item-main {
+    margin: .9rem;
+    width: calc((100% - 5%) * .45);
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    background: rgba(115, 6, 6, 0.4);
+    border-radius: 1rem;
+    border: 2px solid #000000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.crew-item-main:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.crew-item {
+    margin: .9rem;
     width: calc((100% - 5%) * .33333333);
     overflow: hidden;
     display: -webkit-box;
     display: -ms-flexbox;
+    background: rgba(115, 6, 6, 0.4);
+    border-radius: 1rem;
+    border: 2px solid #000000;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.crew-list .crew-item .crew-image {
+.crew-item:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.crew-image {
+    padding: 1.5rem;
     margin: 0;
     max-width: 190px;
     width: calc((100% - 5%) * .33333333);
@@ -2334,28 +2359,54 @@ html.no-csstransitions .home-content__main {
     height: auto;
 }
 
-.crew-list .crew-item .crew-text {
+.crew-image img {
+    border-radius: 1rem;
+}
+
+.crew-text {
     width: calc((100% - 5%) * .66666667);
     margin-top: 0;
     margin-right: 0;
-    font-size: 2.4rem;
-    line-height: 1.75;
     max-width: 1024px;
     padding-left: 20px;
 }
 
-.crew-list .crew-item .crew-text .crew-position {
-    font-size: 3rem;
-    line-height: 1.3;
-    margin-top: 2rem;
-    margin-bottom: 1.8rem;
-    color: #555555;
+.crew-text h2 {
+    margin: 0;
+    color: #FFFFFF;
+    font-size: 19pt;
+    line-height: 1.4;
     font-style: normal;
     font-weight: normal;
     text-rendering: optimizeLegibility;
 }
 
-.crew-list .crew-item .crew-text .crew-info {
+.crew-text p {
+    font-size: 12pt;
+    text-shadow: 0 0 3px #000000;
+}
+
+.crew-text h2, p {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.crew-position h2 {
+    font-family: 'RUSCheap', sans-serif;
+    margin: 0;
+    color: #FFFFFF;
+    font-size: 27pt;
+    line-height: 1.4;
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+
+}
+
+.crew-name {
+    margin-bottom: 1.8rem;
+}
+
+.crew-text .crew-info {
     margin-top: 0;
     font-size: 1.6rem;
 }

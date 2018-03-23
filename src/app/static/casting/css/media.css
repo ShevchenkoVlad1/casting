@@ -190,10 +190,15 @@
     /* Crew */
     .crew-list {
         max-width: 1000px;
+        margin: 0 auto;
     }
 
     .crew-list .crew-item {
-        width: calc((100% - 5%) * .5);
+        width: 50%;
+    }
+
+    .crew-list .crew-item-main {
+        width: 100%;
     }
 
     .crew-list .crew-item .crew-text .crew-info {
@@ -547,10 +552,6 @@
         margin: 2rem;
     }
 
-    .crew-list .crew-item {
-        margin: .9rem .8rem 7rem;
-    }
-
     .crew-list .crew-item .crew-text .crew-info {
         font-size: 15px;
     }
@@ -564,7 +565,20 @@
     }
 
     .crew-list .crew-text {
+        padding-left: 0;
         margin-left: 0;
+    }
+
+    .crew-text h2 {
+        font-size: 14pt;
+    }
+
+    .crew-position h2 {
+        font-size: 21pt;
+    }
+
+    .crew-text p {
+        font-size: 11.5pt;
     }
 
     .crew-list .crew-icon {
@@ -959,12 +973,34 @@
         padding: 3rem 0 0;
     }
 
+    .crew-list {
+        flex-direction: column;
+        margin: 1rem;
+    }
+
     .crew-list .crew-item {
         width: 100%;
+        margin: auto;
+    }
+
+    .crew-list .crew-item-main {
+        margin: auto;
     }
 
     .crew-list h3 {
         font-size: 2.5rem;
+    }
+
+    .crew-text h2 {
+        font-size: 14pt;
+    }
+
+    .crew-position h2 {
+        font-size: 19pt;
+    }
+
+    .crew-text p {
+        font-size: 11.5pt;
     }
 
     /* Casting */
@@ -1367,6 +1403,26 @@
     /* Crew */
     .crew-list h3 {
         font-size: 2.5rem;
+    }
+
+    .crew-list .crew-item-main, .crew-item {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .crew-text {
+        width: 90%;
+    }
+
+    .crew-image {
+        padding: 1.5rem 0 0;
+    }
+
+    .crew-text p {
+        font-size: 10.5pt;
     }
 
     /* Casting */
