@@ -103,6 +103,12 @@
                     </ul>
                 </div>
             </nav>
+            <ul class="home-social social-mobile">
+                <li><a href="{{ facebook.social_url }}"><i class="fa fa-facebook hvr-pulse-shrink" aria-hidden="true"></i></a></li>
+                <li><a href="{{ twitter.social_url }}"><i class="fa fa-twitter hvr-pulse-shrink" aria-hidden="true"></i></a></li>
+                <li><a href="{{ instagram.social_url }}"><i class="fa fa-instagram hvr-pulse-shrink" aria-hidden="true"></i></a></li>
+                <li><a href="{{ youtube.social_url }}"><i class="fa fa-youtube hvr-pulse-shrink" aria-hidden="true"></i></a></li>
+            </ul>
         </header>
 
         <!-- home
@@ -159,31 +165,31 @@
             <section class="s-about">
 
                 {% for post in film_about %}
-                <div class="about-title" data-aos="fade-up">
-                    <div class="section-header">
-                        <div class="col-full">
-                            <h1 class="display-2 display-2--light">{{ post.title }}</h1>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="about-info container" data-aos="fade-up">
                     <div class="row__divide-3">
                         <div class="about-poster">
-                            <div class="about-photo effect2">
+                            <div class="about-photo">
                                 <img src="/media/{{ post.photo }}" alt="">
                             </div>
                             <div class="poster-social-links">
-                                <a href="{{ imdb.social_url }}"class="btn hvr-pulse-shrink" data-type="imdb" data-share-type="imdb" target="_blank">
-                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iOTYiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDk2IDk2IiB3aWR0aD0iOTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik01Ni4yNTIgMzZoLTYuMjUydjI0aDYuMjUyYzAuOTY4IDAgMS43NTItMC43OCAxLjc1Mi0xLjc1MnYtMjAuNDk2Yy0wLjAwNC0wLjk3Mi0wLjc4NC0xLjc1Mi0xLjc1Mi0xLjc1MnoiIGZpbGw9IiMwMDAwMDAiLz48cGF0aCBkPSJNNzYuMjUyIDQ0aC02LjI1MnYxNmg2LjI1MmMwLjk2OCAwIDEuNzUyLTAuNzggMS43NTItMS43NTJ2LTEyLjVjLTAuMDA0LTAuOTY4LTAuNzg0LTEuNzQ4LTEuNzUyLTEuNzQ4eiIgZmlsbD0iIzAwMDAwMCIvPjxwYXRoIGQ9Ik04OCAyMGgtODBjLTMuMzA4IDAtNiAyLjY5Mi02IDZ2NDRjMCAzLjMwOCAyLjY5MiA2IDYgNmg4MGMzLjMwOCAwIDYtMi42OTIgNi02di00NGMwLTMuMzA4LTIuNjkyLTYtNi02ek0xOCA2Mi4yNTJjMCAxLjEwNC0wLjg5NiAyLTIgMnMtMi0wLjg5Ni0yLTJ2LTI4LjA4NGMwLTEuMTA0IDAuODk2LTIgMi0yczIgMC44OTYgMiAydjI4LjA4NHpNNDIgNjJjMCAxLjEtMC44OTYgMi0yIDJzLTItMC45LTItMnYtMTMuMjkybC0zLjk0OCAxMy45NTZjLTAuMjQgMC44Ni0xLjAyNCAxLjMzNi0xLjkxNiAxLjMzNiAwIDAtMC4wMDQgMC0wLjAwOCAwLTAuODg4IDAtMS42NzItMC40Ni0xLjkyLTEuMzJsLTQuMjM2LTE0LjQ2IDEuMDI4IDEzLjc0YzAgMS4xMDgtMSAyLjAyNC0xIDIuMDI0bC00IDAuMDA4YzAgMC0xLTAuODkyLTEtMS45OTJsMC40MzYtMjcuODMyYzAtMC45OTYgMC45NzYtMS44NDQgMS45NjQtMS45ODQgMC45NzYtMC4xMzYgMi4wNTIgMC40NjQgMi4zMzIgMS40MTZsNi4yOTIgMjEuMzc2IDYuMDE2LTIxLjM1MmMwLjI2OC0wLjk2OCAxLjIwOC0xLjU4NCAyLjIxNi0xLjQ0NCAwLjk5MiAwLjE0IDEuNzQ0IDAuOTg0IDEuNzQ0IDEuOTg0djI3LjgzNnpNNjIgNTguMjUyYzAgMy4xNzItMi41ODQgNS43NTItNS43NTIgNS43NTJoLTguMjUyYy0xLjEwNCAwLTItMC44OTYtMi0ydi0yOGMwLTEuMDk2IDAuODk2LTIgMi0yaDguMjUyYzMuMTY0IDAgNS43NTIgMi41ODQgNS43NTIgNS43NTJ2MjAuNDk2ek04MiA1OC4yNTJjMCAzLjE3Mi0yLjU4NCA1Ljc1Mi01Ljc1MiA1Ljc1MmgtOC4yNTJjLTEuMTA0IDAtMi0wLjg5Ni0yLTJ2LTI3LjgzNmMwLTEuMTA0IDAuODk2LTIgMi0yczIgMC44OTYgMiAydjUuODMyaDYuMjUyYzMuMTY0IDAgNS43NTIgMi41OCA1Ljc1MiA1Ljc1MnYxMi41eiIgZmlsbD0iIzAwMDAwMCIvPjwvc3ZnPg==" alt="">
+                                <a href="{{ imdb.social_url }}"class="btn hvr-pulse-shrink about-imdb" data-type="imdb" data-share-type="imdb" target="_blank">
+                                    <img src="/static/casting/img/IMDb-Icon.png" alt="">
                                 </a>
-                                <a href="{{ wikipedia.social_url }}" class="btn hvr-pulse-shrink" data-type="wikipedia" data-share-type="wikipedia" target="_blank">
-                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDI0IDI0IiBoZWlnaHQ9IjI0cHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAyNCAyNCIgd2lkdGg9IjI0cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik0yMywzLjRoLTIuOGMtMC4zLDAtMC41LDAuMi0wLjUsMC41YzAsMC4zLDAuMiwwLjUsMC41LDAuNWgwLjlsLTYsMTQuNmwtMi43LTYuNmwzLjMtOGgwLjhjMC4zLDAsMC41LTAuMiwwLjUtMC41ICBjMC0wLjMtMC4yLTAuNS0wLjUtMC41aC0yLjhjLTAuMywwLTAuNSwwLjItMC41LDAuNWMwLDAuMywwLjIsMC41LDAuNSwwLjVoMC45TDEyLDExLjFMOS4yLDQuM2gwLjljMC4zLDAsMC41LTAuMiwwLjUtMC41ICBjMC0wLjMtMC4yLTAuNS0wLjUtMC41SDcuNGMtMC4zLDAtMC41LDAuMi0wLjUsMC41YzAsMC4zLDAuMiwwLjUsMC41LDAuNWgwLjhsMy4zLDhsLTIuNyw2LjZsLTYtMTQuNmgwLjljMC4zLDAsMC41LTAuMiwwLjUtMC41ICBjMC0wLjMtMC4yLTAuNS0wLjUtMC41SDFjLTAuMywwLTAuNSwwLjItMC41LDAuNWMwLDAuMywwLjIsMC41LDAuNSwwLjVoMC44bDYuNiwxNmMwLjEsMC4yLDAuMiwwLjMsMC40LDAuM2MwLjIsMCwwLjQtMC4xLDAuNC0wLjMgIGwyLjgtNi43bDIuOCw2LjhjMC4xLDAuMiwwLjIsMC4zLDAuNCwwLjNjMC4yLDAsMC40LTAuMSwwLjQtMC4zbDYuNi0xNkgyM2MwLjMsMCwwLjUtMC4yLDAuNS0wLjVDMjMuNSwzLjYsMjMuMywzLjQsMjMsMy40eiIvPjwvc3ZnPg==" alt="">
+                                <a href="{{ wikipedia.social_url }}" class="btn hvr-pulse-shrink about-wiki" data-type="wikipedia" data-share-type="wikipedia" target="_blank">
+                                    <img src="/static/casting/img/Wikipedia-icon.png" alt="">
                                 </a>
                             </div>
                         </div>
 
-                        <div class="about-desc">
+                        <div class="about-desc" data-aos="fade-up">
+                            <div class="about-title">
+                                <div class="section-header">
+                                    <div class="col-full">
+                                        <h1 class="display-2 display-2--light">{{ post.title }}</h1>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-full">
                                 {{ post.about_info|safe }}
                             </div>

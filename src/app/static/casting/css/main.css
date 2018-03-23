@@ -1936,6 +1936,10 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     transform: translate3d(0, -50%, 0);
 }
 
+.social-mobile {
+    display: none;
+}
+
 .home-social a {
     color: white;
     -webkit-transition: all 0.5s ease-in-out;
@@ -2096,16 +2100,18 @@ html.no-csstransitions .home-content__main {
     position: relative;
 }
 
+.about-title .section-header {
+    text-align: left;
+}
+
 .about-title-headers {
     display: inline-block;
     margin-right: 190px;
 }
 
-.about-title p {
-    text-align: left;
-    font-size: 1.8rem;
-    position: relative;
-    color: rgb(255, 247, 232);
+.about-title h1 {
+    font-family: 'WarIsOver', sans-serif;
+    font-size: 28pt;
 }
 
 .about-info {
@@ -2141,13 +2147,14 @@ html.no-csstransitions .home-content__main {
     display: block;
     height: auto;
 }
+
 .about-restricted {
-    max-width: 260px;
+    max-width: 155px;
     width: 100%;
     display: block;
     height: auto;
     float: left;
-    margin: 1.5rem auto;
+    margin-bottom: 1.5rem;
 }
 
 .effect2 {
@@ -2185,15 +2192,27 @@ html.no-csstransitions .home-content__main {
 }
 
 .about-info img {
-    margin: 0;
-    max-width: 260px;
+    margin: 0 auto;
+    max-width: 230px;
     width: 100%;
     display: block;
     height: auto;
 }
 
+.about-info .about-imdb {
+    padding-right: 1rem;
+}
+
+.about-info .about-wiki {
+    padding-left: 1rem;
+}
+
+.about-info .about-wiki img {
+    min-height: 48px;
+}
+
 .poster-social-links {
-    margin: 0 auto;
+    margin: 1.5rem auto;
     max-width: 260px;
     width: 100%;
     display: flex;
@@ -2204,16 +2223,13 @@ html.no-csstransitions .home-content__main {
 .poster-social-links a {
     width: 100%;
     height: auto;
-    background: rgba(255, 247, 232, 0.1);
+    background: transparent;
     border: black;
+    margin: auto;
 }
 
-.poster-social-links a img {
-    box-shadow: 5px 5px 15px 5px #000000;
-}
-
-.poster-social-links a:hover {
-    background: rgba(255, 247, 232, 0.2);
+.poster-social-links a:hover, a:after {
+    background: transparent;
     border: black;
 }
 
@@ -2229,6 +2245,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .about-info p {
+    font-family: 'Source Sans Pro', sans-serif;
     text-align: left;
     font-size: 11pt;
     position: relative;
@@ -2237,6 +2254,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .about-info h2 {
+    font-family: 'Source Sans Pro', sans-serif;
     margin: 0;
     text-align: left;
     font-size: 12pt;

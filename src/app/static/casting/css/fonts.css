@@ -2,7 +2,25 @@
  * fonts.scss
  *
  * ------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=cyrillic');
 
+/*
+ * SonderSans
+================================================================================ */
+@font-face {
+    font-family: "Alpha Echo";
+    src: url("../fonts/alpha_echo.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "RUSCheap";
+    src: url("../fonts/RUSCheap.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "WarIsOver";
+    src: url("../fonts/WarIsOver.otf") format("opentype");
+}
 
 /*
  * lora
@@ -34,7 +52,6 @@
     font-style: normal;
     font-weight: normal;
 }
-
 
 /*
  * montserrat
@@ -101,6 +118,5 @@
     font-style: normal;
     font-weight: normal;
 }
-
 
 /*# sourceMappingURL=fonts.css.map */

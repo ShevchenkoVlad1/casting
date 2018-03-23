@@ -15,6 +15,10 @@
                 navbar.attr('aria-expanded', 'false');
                 $('.js-cast-nav-toggle').removeClass('active');
             }
+            $('#cast-offcanvas a').on('click', (function (event) {
+                $('body').removeClass('overflow offcanvas');
+                $('.js-cast-nav-toggle').removeClass('active');
+            }));
 
             event.preventDefault();
             return false;

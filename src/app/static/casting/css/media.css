@@ -300,6 +300,10 @@
         width: 90%;
     }
 
+    .social-mobile {
+        display: block;
+    }
+
     /* Home */
     .home-content h1 {
         font-size: 4.6rem;
@@ -532,6 +536,10 @@
 
     .about-info h2 {
         font-size: 11pt;
+    }
+
+    .about-info .about-wiki img {
+        min-height: 38px;
     }
 
     /* Crew */
@@ -894,6 +902,10 @@
 
     /* About */
     .about-poster {
+        width: 100%;
+    }
+
+    .about-photo {
         width: 50%;
     }
 
@@ -904,6 +916,12 @@
     .about-title p {
         text-align: center;
         font-size: 3.8rem;
+    }
+
+    .about-title h1 {
+
+        font-size: 19pt;
+        text-align: center;
     }
 
     .about-info p {
@@ -930,6 +948,10 @@
 
     .about-restricted {
         width: 40%;
+    }
+
+    .poster-social-links {
+        max-width: 224px;
     }
 
     /* Crew */
@@ -1176,6 +1198,15 @@
 
     .home-casting a {
         float: none;
+    }
+
+    /* About */
+    .about-title h1 {
+        font-size: 17pt;
+    }
+
+    .poster-social-links {
+        max-width: 200px;
     }
 
     /* Casting */
