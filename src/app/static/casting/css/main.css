@@ -476,6 +476,8 @@ form,
 .fly-in-text {
     list-style: none;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .fly-in-text li {

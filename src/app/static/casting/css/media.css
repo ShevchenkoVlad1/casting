@@ -1,5 +1,10 @@
 /* >2000px */
 @media only screen and (min-width: 2000px) {
+    /* Welcome */
+    .welcome-section .content-wrap {
+        width: 100%;
+    }
+
     /* Main */
     .container {
         width: 1170px;
@@ -128,6 +133,11 @@
 
 /* 1200 - 1001px */
 @media only screen and (max-width: 1200px) {
+    /* Welcome */
+    .welcome-section .content-wrap {
+        width: 100%;
+    }
+
     /* Main */
     .container {
         width: 970px;
@@ -808,6 +818,12 @@
 
 /* 600px - 501px */
 @media only screen and (max-width: 600px) {
+    /* Welcome */
+    .fly-in-text li {
+        margin-right: 10px;
+        font-size: 13pt;
+    }
+
     /* Main */
     h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
         margin-top: 5.1rem;
@@ -1360,6 +1376,12 @@
 
 /* <400px */
 @media only screen and (max-width: 400px) {
+    /* Welcome */
+    .fly-in-text li {
+        margin-right: 6px;
+        font-size: 7pt;
+    }
+
     /* Main */
     html {
         font-size: 9.411764705882353px;
