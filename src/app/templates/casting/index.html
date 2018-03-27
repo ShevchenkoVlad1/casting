@@ -91,8 +91,8 @@
                         <li><a href="#" data-nav-section="casting">{% trans "Casting" %}</a></li>
                         <li><a href="#" data-nav-section="videos">{% trans "Videos" %}</a></li>
                         <li><a href="#" data-nav-section="photos">{% trans "Photos" %}</a></li>
-                        <li><a href="#" data-nav-section="subscribe">{% trans "Subscribe" %}</a></li>
                         <li><a href="#" data-nav-section="social">{% trans "Social updates" %}</a></li>
+                        <li><a href="#" data-nav-section="subscribe">{% trans "Subscribe" %}</a></li>
                         <li><a href="#" data-nav-section="partners">{% trans "Partners" %}</a></li>
                     </ul>
                     <ul class="home-social">
@@ -174,10 +174,10 @@
                             </div>
                             <div class="poster-social-links">
                                 <a href="{{ imdb.social_url }}"class="btn hvr-pulse-shrink about-imdb" data-type="imdb" data-share-type="imdb" target="_blank">
-                                    <img src="/static/casting/img/IMDb-Icon.png" alt="">
+                                    <img src="/static/casting/img/icons/IMDb-icon.png" alt="">
                                 </a>
                                 <a href="{{ wikipedia.social_url }}" class="btn hvr-pulse-shrink about-wiki" data-type="wikipedia" data-share-type="wikipedia" target="_blank">
-                                    <img src="/static/casting/img/Wikipedia-icon.png" alt="">
+                                    <img src="/static/casting/img/icons/Wikipedia-icon.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -518,7 +518,7 @@
                                     <table id="get-all-info">
                                         <tbody>
                                             {% for person in person_list %}
-                                                <tr data-link="{% url 'person_list' %}" data-id="{{ person.id }}">
+                                                <tr data-link="{% url 'person_list' %}" data-id="{{ person.id }}" class="person-block">
                                                     <td class="cast-td">
                                                         <span class="cast-name">{{ person.first_name }}</span>
                                                         <img src="/media/{{ person.photos.all|first }}" alt="" class="hvr-grow">
@@ -570,14 +570,13 @@
                             </div>
 
                             <div class="videos_social social-buttons">
-                                <a id="facebook_share" href="{{ facebook.social_url }}" data-type="facebook" class="btn hvr-pulse-shrink" data-share-type="facebook" target="_blank">
-                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk2IDk2OyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgOTYgOTYiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik03MCw4Ni4xQzgzLjUsNzguNCw5Miw2My45LDkyLDQ4QzkyLDIzLjcsNzIuMyw0LDQ4LDRDMjMuNyw0LDQsMjMuNyw0LDQ4czE5LjcsNDQsNDQsNDRjMC43LDAsMS4zLDAsMiwwVjc1ICBjLTAuNywwLTEuMywwLTIsMGMtMy40LDAtNi0yLjYtNi02YzAtMi43LDAtNS4zLDAtOGMwLTMuNCwyLjYtNiw2LTZjMC43LDAsMS4zLDAsMiwwVjQ1YzAtOS4yLDYuOC0xNiwxNi0xNmM0LjcsMCw5LjMsMCwxNCwwICBjMy40LDAsNiwyLjYsNiw2YzAsMi43LDAsNS4zLDAsOGMwLDMuNC0yLjYsNi02LDZjLTMuMywwLTYuNywwLTEwLDBjMCwyLDAsNCwwLDZjMC43LDAsMS4zLDAsMiwwYzMuNCwwLDYsMi42LDYsNmMwLDIuNywwLDUuMywwLDggIGMwLDMuNC0yLjYsNi02LDZjLTAuNywwLTEuMywwLTIsMFY4Ni4xTDcwLDg2LjF6IE00OCwwYzI2LjUsMCw0OCwyMS41LDQ4LDQ4YzAsMjAuMS0xMi40LDM3LjQtMzAsNDQuNVY3NWMwLTIuMiwxLjgtNCw0LTQgIGMwLjcsMCwxLjMsMCwyLDBjMS4yLDAsMi0wLjgsMi0yYzAtMi43LDAtNS4zLDAtOGMwLTEuMi0wLjgtMi0yLTJjLTAuNywwLTEuMywwLTIsMGMtMi4yLDAtNC0xLjgtNC00YzAtMiwwLTQsMC02YzAtMi4yLDEuOC00LDQtNCAgYzMuMywwLDYuNywwLDEwLDBjMS4yLDAsMi0wLjgsMi0yYzAtMi43LDAtNS4zLDAtOGMwLTEuMi0wLjgtMi0yLTJjLTQuNywwLTkuMywwLTE0LDBjLTcsMC0xMiw1LTEyLDEydjEwYzAsMi4yLTEuOCw0LTQsNCAgYy0wLjcsMC0xLjMsMC0yLDBjLTEuMiwwLTIsMC44LTIsMmMwLDIuNywwLDUuMywwLDhjMCwxLjIsMC44LDIsMiwyYzAuNywwLDEuMywwLDIsMGMyLjIsMCw0LDEuOCw0LDR2MjAuNmMtMiwwLjItNCwwLjQtNiwwLjQgIEMyMS41LDk2LDAsNzQuNSwwLDQ4QzAsMjEuNSwyMS41LDAsNDgsMHoiLz48L3N2Zz4=" alt="">
-                                </a>
+                                <a id="facebook_share" href="{{ facebook.social_url }}" data-type="facebook" class="btn hvr-pulse-shrink video-facebook" data-share-type="facebook" target="_blank">
+                                    <img src="/static/casting/img/icons/facebook-icon.png" alt="">                                </a>
                                 <div class="youtube-style">
                                     <div class="g-ytsubscribe btn hvr-pulse-shrink" data-channelid="{{ youtube.social_id }}" data-layout="default" data-count="default"></div>
                                 </div>
-                                <a id="twitter_share" href="{{ twitter.social_url }}" data-type="twitter" class="btn hvr-pulse-shrink" data-share-type="twitter" target="_blank">
-                                    <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDk2IDk2OyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgOTYgOTYiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik00LjUsNzZjOC4yLDUuMSwxNy41LDcuNywyNy4xLDcuN2MxNC44LDAsMjguMy01LjYsMzguMS0xNi43Qzc4LDU3LjYsODMsNDQuOSw4MywzMi4zYzAtMC4xLDAtMC4zLDAtMC40bDAtMS45bDEuNS0xLjIgIGMyLjgtMi4zLDUuMy01LDcuNC04bC01LjItMC41bDIuMy01LjFjMC4yLTAuNCwwLjQtMC45LDAuNS0xLjRjLTIuOCwxLjYtNS45LDIuOS05LjEsMy43bC0yLDAuNWwtMS42LTEuNCAgYy0zLjMtMi44LTcuNC00LjQtMTEuOC00LjRjLTkuOSwwLTE3LjksOC0xOCwxNy44bDAsNC42TDQyLjQsMzRDMjkuNywzMi4yLDE4LjIsMjUuNywxMCwxNS43Yy0xLjUsMi43LTIuMyw1LjctMi4zLDguOCAgYzAsMi42LDAuNiw1LjIsMS43LDcuNmwxLjcsMy42bC0zLjYsMS42YzAsMCwwLDAuMSwwLDAuMWMwLDUsMi4xLDkuNyw1LjcsMTMuMWwyLjQsMi4zbC0xLjgsMi42YzEuNCw0LjUsNC42LDguMyw4LjgsMTAuNGw3LjUsMy45ICBsLTcuOCwzLjNjLTQuNSwxLjktOS40LDIuOS0xNC4zLDIuOUM2LjksNzYuMSw1LjcsNzYuMSw0LjUsNzZMNC41LDc2eiBNMjAuOSw2OS42Yy01LTIuNi05LTcuMS0xMC44LTEyLjhjLTAuNC0xLjEtMC4yLTIuMywwLjQtMy4yICBjLTQuMy00LTctOS44LTctMTZjMC0wLjEsMC0wLjIsMC0wLjJjMC0xLjQsMC43LTIuNiwxLjktMy4zYzAuMS0wLjEsMC4yLTAuMSwwLjMtMC4yYy0xLjMtMi45LTIuMS02LjEtMi4xLTkuM2MwLTMuOSwxLTcuNywzLTExICBjMC43LTEuMSwxLjctMS44LDMtMS45QzExLDExLjUsMTIuMSwxMiwxMywxM2M3LjYsOS4zLDE4LjMsMTUuNCwzMC4xLDE3LjFDNDMuMSwxOCw1Mi45LDguMyw2NSw4LjNjNS4zLDAsMTAuNCwxLjksMTQuNCw1LjQgIGMyLjktMC44LDUuOC0xLjksOC40LTMuNWMxLjQtMC44LDMuMS0wLjcsNC40LDAuM2MxLjMsMSwxLjgsMi42LDEuMyw0LjJjLTAuMiwwLjctMC41LDEuNS0wLjgsMi4yYzEsMC4xLDEuOSwwLjYsMi41LDEuNCAgYzEuMSwxLjMsMS4yLDMuMiwwLjMsNC42Yy0yLjMsMy40LTUuMSw2LjUtOC4zLDkuMWMwLDAuMiwwLDAuMywwLDAuNWMwLDEzLjUtNS4zLDI3LjItMTQuMiwzNy4zYy0xMC42LDEyLTI1LjIsMTguMS00MS4xLDE4LjEgIGMtMTAuNiwwLTIwLjktMy0yOS45LTguN2MtMS41LTEtMi4xLTIuOC0xLjUtNC41YzAuNi0xLjcsMi4zLTIuNyw0LTIuNWMxLjMsMC4xLDIuNiwwLjIsMy45LDAuMkMxMi42LDcyLjIsMTYuOSw3MS4zLDIwLjksNjkuNnoiLz48L3N2Zz4=" alt="">
+                                <a id="instagram_share" href="{{ instagram.social_url }}" data-type="instagram" class="btn hvr-pulse-shrink video-facebook" data-share-type="instagram" target="_blank">
+                                    <img src="/static/casting/img/icons/instagram-icon.png" alt="">
                                 </a>
                             </div>
                             <div class="block-tab-full video-slideshow padding-video">
@@ -668,6 +667,34 @@
             </section> <!-- end s-photos -->
         </div>
 
+        <!-- social updates
+        ================================================== -->
+        <div data-section="social">
+            <section class="s-social" data-parallax="scroll" data-image-src="/static/casting/img/network-neural-bg.jpg" data-position-y=center>>
+
+                <div class="intro-wrap">
+
+                    <div class="row section-header has-bottom-sep" data-aos="fade-up">
+                        <div class="col-full">
+                            <h1 class="display-2 display-2--light">{% trans 'Social updates' %}</h1>
+                        </div>
+                    </div> <!-- end section-header -->
+
+                    <div class="container">
+                        <div class="social-updates-links" data-aos="fade-up">
+                            <a href="{{ instagram.social_url }}" class="btn hvr-pulse-shrink" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i>Instagram</a>
+                            <a href="{{ facebook.social_url }}" class="btn hvr-pulse-shrink" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
+                        </div>
+                        <!--<div class="social-updates">-->
+                            <!--<iframe class="instagram-news" src="https://www.powr.io/plugins/social-feed/view?unique_label=f2386889_1521584497&external_type=iframe" height="100%" frameborder="0"></iframe>-->
+                            <!--<iframe class="facebook-news" src="https://www.powr.io/plugins/social-feed/view?unique_label=c482661a_1521585530&external_type=iframe" height="100%" frameborder="0"></iframe>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+
+            </section> <!-- end s-about -->
+        </div>
+
         <!-- subscribe
         ================================================== -->
         <div class="matrix">
@@ -720,34 +747,6 @@
             </section> <!-- end s-subscribe -->
         </div>
 
-        <!-- social updates
-        ================================================== -->
-        <div data-section="social">
-            <section class="s-social" data-parallax="scroll" data-image-src="/static/casting/img/network-neural-bg.jpg" data-position-y=center>>
-
-                <div class="intro-wrap">
-
-                    <div class="row section-header has-bottom-sep" data-aos="fade-up">
-                        <div class="col-full">
-                            <h1 class="display-2 display-2--light">{% trans 'Social updates' %}</h1>
-                        </div>
-                    </div> <!-- end section-header -->
-
-                    <div class="container">
-                        <div class="social-updates-links" data-aos="fade-up">
-                            <a href="{{ instagram.social_url }}" class="btn hvr-pulse-shrink" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i>Instagram</a>
-                            <a href="{{ facebook.social_url }}" class="btn hvr-pulse-shrink" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
-                        </div>
-                        <!--<div class="social-updates">-->
-                            <!--<iframe class="instagram-news" src="https://www.powr.io/plugins/social-feed/view?unique_label=f2386889_1521584497&external_type=iframe" height="100%" frameborder="0"></iframe>-->
-                            <!--<iframe class="facebook-news" src="https://www.powr.io/plugins/social-feed/view?unique_label=c482661a_1521585530&external_type=iframe" height="100%" frameborder="0"></iframe>-->
-                        <!--</div>-->
-                    </div>
-                </div>
-
-            </section> <!-- end s-about -->
-        </div>
-
         <!-- partners
         ================================================== -->
         <div data-section="partners">
@@ -787,8 +786,8 @@
                         <li><a href="#" data-nav-section="casting">{% trans "Casting" %}</a></li>
                         <li><a href="#" data-nav-section="videos">{% trans "Videos" %}</a></li>
                         <li><a href="#" data-nav-section="photos">{% trans "Photos" %}</a></li>
-                        <li><a href="#" data-nav-section="subscribe">{% trans "Subscribe" %}</a></li>
                         <li><a href="#" data-nav-section="social">{% trans "Social updates" %}</a></li>
+                        <li><a href="#" data-nav-section="subscribe">{% trans "Subscribe" %}</a></li>
                         <li><a href="#" data-nav-section="partners">{% trans "Partners" %}</a></li>
                     </ul>
                 </div>

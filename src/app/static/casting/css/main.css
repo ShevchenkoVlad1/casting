@@ -2249,7 +2249,7 @@ html.no-csstransitions .home-content__main {
 .about-info p {
     font-family: 'Source Sans Pro', sans-serif;
     text-align: left;
-    font-size: 11pt;
+    font-size: 14pt;
     position: relative;
     color: rgb(255, 247, 232);
     margin: 0 auto 2rem;
@@ -2314,6 +2314,7 @@ html.no-csstransitions .home-content__main {
 
 .crew-list {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .main-in-crew {
@@ -2362,7 +2363,12 @@ html.no-csstransitions .home-content__main {
 }
 
 .crew-image img {
+    margin: 0 auto;
+    display: block;
     border-radius: 1rem;
+    object-fit: cover;
+    width: 113px;
+    height: 113px;
 }
 
 .crew-text {
@@ -2866,18 +2872,7 @@ select option {
 }
 
 .casting-contact .form-field textarea {
-    min-height: 20rem;
-}
-
-.casting-content h3 {
-    margin-top: 0;
-    margin-bottom: 6.6rem;
-    color: #0C0C0C;
-}
-
-.casting-content h5 {
-    margin-top: 0;
-    color: #730606;
+    min-height: 13rem;
 }
 
 .file_upload {
@@ -3066,8 +3061,9 @@ select option {
     text-align: center;
     color: #555555;
     border: none;
-    margin: 1.5rem;
     padding: 0;
+    margin: 0 auto;
+    display: block;
 }
 
 .cast-td img {
@@ -3094,6 +3090,11 @@ select option {
 #get-all-info tbody {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#get-all-info .person-block {
+    width: 25%;
 }
 
 .casting-content__buttons {
@@ -3452,11 +3453,12 @@ html.no-csstransitions .casting-content__main {
     height: auto;
     background: none;
     border: black;
+    display: block;
+    margin: auto;
 }
 
 .social-buttons a img {
-    box-shadow: 6px 6px 15px 1px #000000;
-    width: 30%;
+    width: 50%;
     border-radius: 10%;
 }
 

@@ -11,7 +11,7 @@
     "model": "casting.social",
     "pk": 2,
     "fields": {
-      "title": "Twitter",
+      "title": "Instagram",
       "social_url": ""
     }
   },
@@ -19,7 +19,7 @@
     "model": "casting.social",
     "pk": 3,
     "fields": {
-      "title": "Instagram",
+      "title": "YouTube",
       "social_url": ""
     }
   },
@@ -27,21 +27,13 @@
     "model": "casting.social",
     "pk": 4,
     "fields": {
-      "title": "YouTube",
-      "social_url": ""
-    }
-  },
-  {
-    "model": "casting.social",
-    "pk": 5,
-    "fields": {
       "title": "Imdb",
       "social_url": ""
     }
   },
   {
     "model": "casting.social",
-    "pk": 6,
+    "pk": 5,
     "fields": {
       "title": "Wikipedia",
       "social_url": ""
