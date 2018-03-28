@@ -3072,11 +3072,11 @@ select option {
 
 .cast-td img {
     margin: 0 auto;
-    width: 110px;
-    height: 110px;
+    width: 130px;
+    height: 130px;
     display: block;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: .4rem;
 }
 
 .cast-likes {
