@@ -130,6 +130,24 @@ def casting(request):
             person.images = images
             person.save()
 
+            # Email sending
+            email = request.POST['email']
+
+            email_title = 'Casting | Registered'
+            context = {
+                'first_name': request.POST['first_name']
+            }
+            email_message = render_to_string('casting/email_registered.html',
+                                             context)
+            to_email = '{}'.format(email)
+
+            if settings.EMAIL_FAKE == 'yes':
+                print(email_message)
+            else:
+                email_sending = EmailMessage(email_title, email_message,
+                                             to=[to_email])
+                email_sending.send()
+
     return HttpResponse()
 
 
@@ -138,7 +156,7 @@ def subscribe(request):
     if request.method == 'POST':
         email = request.POST['subscribe-email']
 
-        email_title = 'Title'
+        email_title = 'Casting | subscribe'
         context = {}
         email_message = render_to_string('casting/email_subscribe.html',
                                          context)
