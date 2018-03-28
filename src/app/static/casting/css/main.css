@@ -2353,11 +2353,15 @@ html.no-csstransitions .home-content__main {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+.crew-item-main .crew-image img {
+    width: 150px;
+    height: 150px;
+}
+
 .crew-image {
-    padding: 1.5rem;
+    padding: 1.5rem 0 1.5rem 2rem;
     margin: 0;
     max-width: 190px;
-    width: calc((100% - 5%) * .33333333);
     display: block;
     height: auto;
 }
@@ -2365,10 +2369,10 @@ html.no-csstransitions .home-content__main {
 .crew-image img {
     margin: 0 auto;
     display: block;
-    border-radius: 1rem;
+    border-radius: .4rem;
     object-fit: cover;
-    width: 113px;
-    height: 113px;
+    width: 120px;
+    height: 120px;
 }
 
 .crew-text {
@@ -3068,8 +3072,8 @@ select option {
 
 .cast-td img {
     margin: 0 auto;
-    width: 70px;
-    height: 70px;
+    width: 110px;
+    height: 110px;
     display: block;
     object-fit: cover;
     border-radius: 10px;

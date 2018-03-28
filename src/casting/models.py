@@ -33,29 +33,42 @@ def get_partner_photo_path(instance, filename):
 
 
 class FilmAbout(models.Model):
-    title = models.CharField(max_length=250, null=True)
+    title = models.CharField(max_length=250, null=True,
+                             verbose_name=_('Title'))
     photo = models.ImageField(upload_to=get_poster_photo_path, blank=True,
-                              null=True)
-    about_info = models.TextField(max_length=8000, blank=True)
+                              null=True, verbose_name=_('Photo'))
+    about_info = models.TextField(max_length=8000, blank=True,
+                                  verbose_name=_('About info'))
     languages = models.CharField(max_length=128, unique=False,
                                  choices=(
                                      ('ua', _('Ukrainian')),
                                      ('en', _('English')),
-                                 ), default=('ua', _('Ukrainian')))
+                                 ), default=('ua', _('Ukrainian')),
+                                 verbose_name=_('languages'))
+
+    class Meta:
+        verbose_name = _('About film')
+        verbose_name_plural = _('About film')
 
 
 class Worker(models.Model):
-    position = models.CharField(max_length=250)
-    name = models.CharField(max_length=250)
-    about_info = models.TextField(max_length=8000, blank=True)
+    position = models.CharField(max_length=250, verbose_name=_('Position'))
+    name = models.CharField(max_length=250, verbose_name=_('Name'))
+    about_info = models.TextField(max_length=8000, blank=True,
+                                  verbose_name=_('About info'))
     photo = models.ImageField(upload_to=get_worker_photo_path, blank=True,
-                              null=True)
+                              null=True, verbose_name=_('Photo'))
     languages = models.CharField(max_length=128, unique=False,
                                  choices=(
                                      ('ua', _('Ukrainian')),
                                      ('en', _('English')),
-                                 ), default=('ua', _('Ukrainian')))
-    is_main = models.BooleanField(default=False)
+                                 ), default=('ua', _('Ukrainian')),
+                                 verbose_name=_('Languages'))
+    is_main = models.BooleanField(default=False, verbose_name=_('Is main'))
+
+    class Meta:
+        verbose_name = _('Workers')
+        verbose_name_plural = _('Workers')
 
 
 class UserIP(models.Model):
@@ -103,55 +116,95 @@ class LikeDislike(models.Model):
 
 
 class Person(models.Model):
-    first_name = models.CharField(max_length=70)
-    second_name = models.CharField(max_length=35)
+    first_name = models.CharField(max_length=70, verbose_name=_('First name'))
+    second_name = models.CharField(max_length=35,
+                                   verbose_name=_('Second name'))
     email = models.EmailField()
-    phone = models.CharField(max_length=20, default=None)
-    age = models.DateField(null=True, blank=True)
-    city = models.CharField(max_length=70)
-    gender = models.CharField(max_length=70)
-    prof = models.CharField(max_length=70)
-    experience = models.TextField(max_length=8000, blank=True)
-    grouping = models.BooleanField(default=False)
-    crowd_scene = models.BooleanField(default=False)
-    about_info = models.TextField(max_length=8000, blank=True)
-    video_url = models.CharField(max_length=150, blank=True)
-    votes = GenericRelation(LikeDislike, related_query_name='persons')
+    phone = models.CharField(max_length=20, default=None,
+                             verbose_name=_('Phone'))
+    age = models.DateField(null=True, blank=True, verbose_name=_('Age'))
+    city = models.CharField(max_length=70, verbose_name=_('City'))
+    gender = models.CharField(max_length=70, verbose_name=_('Gender'))
+    prof = models.CharField(max_length=70, verbose_name=_('Professionalism'))
+    experience = models.TextField(max_length=8000, blank=True,
+                                  verbose_name=_('Experience'))
+    grouping = models.BooleanField(default=False, verbose_name=_('Grouping'))
+    crowd_scene = models.BooleanField(default=False,
+                                      verbose_name=_('Crowd scene'))
+    about_info = models.TextField(max_length=8000, blank=True,
+                                  verbose_name=_('About info'))
+    video_url = models.CharField(max_length=150, blank=True,
+                                 verbose_name=_('Video url'))
+    votes = GenericRelation(LikeDislike, related_query_name='persons',
+                            verbose_name=_('Votes'))
     images = models.CharField(max_length=150, default=None, null=True,
-                              blank=True)
-    is_main = models.BooleanField(default=False)
-    created_date = models.DateTimeField(auto_now_add=True)
+                              blank=True, verbose_name=_('Images'))
+    is_main = models.BooleanField(default=False, verbose_name=_('Is main'))
+    created_date = models.DateTimeField(auto_now_add=True,
+                                        verbose_name=_('Created date'))
+
+    class Meta:
+        verbose_name = _('Persons')
+        verbose_name_plural = _('Persons')
 
 
 class PersonPhoto(models.Model):
     person = models.ForeignKey(Person, default=None, on_delete=None,
-                               unique=False, related_name='photos')
+                               unique=False, related_name='photos',
+                               verbose_name=_('Person'))
     photo = models.ImageField(upload_to=get_person_photo_path, blank=True,
-                              null=True)
+                              null=True, verbose_name=_('Photo'))
 
     def __str__(self):
         return str(self.photo)
 
+    class Meta:
+        verbose_name = _('Person photos')
+        verbose_name_plural = _('Person photos')
+
 
 class YoutubeVideo(models.Model):
-    title = models.CharField(max_length=250, null=True)
-    video_id = models.CharField(max_length=70)
+    title = models.CharField(max_length=250, null=True,
+                             verbose_name=_('Title'))
+    video_id = models.CharField(max_length=70, verbose_name=_('Video id'))
+
+    class Meta:
+        verbose_name = _('Youtube videos')
+        verbose_name_plural = _('Youtube videos')
 
 
 class FilmPhoto(models.Model):
-    title = models.CharField(max_length=250, null=True)
+    title = models.CharField(max_length=250, null=True,
+                             verbose_name=_('Title'))
     photo = models.ImageField(upload_to=get_film_photo_path, blank=True,
-                              null=True)
+                              null=True, verbose_name=_('Photo'))
+
+    class Meta:
+        verbose_name = _('Film photos')
+        verbose_name_plural = _('Film photos')
 
 
 class Partner(models.Model):
-    title = models.CharField(max_length=250, null=True)
+    title = models.CharField(max_length=250, null=True,
+                             verbose_name=_('Title'))
     photo = models.ImageField(upload_to=get_partner_photo_path, blank=True,
-                              null=True)
-    partner_url = models.CharField(max_length=150, blank=True)
+                              null=True, verbose_name=_('Photo'))
+    partner_url = models.CharField(max_length=150, blank=True,
+                                   verbose_name=_('Partner url'))
+
+    class Meta:
+        verbose_name = _('Partners')
+        verbose_name_plural = _('Partners')
 
 
 class Social(models.Model):
-    title = models.CharField(max_length=250, unique=True)
-    social_id = models.CharField(max_length=150, blank=True)
-    social_url = models.CharField(max_length=150, blank=True)
+    title = models.CharField(max_length=250, unique=True,
+                             verbose_name=_('Title'))
+    social_id = models.CharField(max_length=150, blank=True,
+                                 verbose_name=_('Social id'))
+    social_url = models.CharField(max_length=150, blank=True,
+                                  verbose_name=_('Social url'))
+
+    class Meta:
+        verbose_name = _('Socials')
+        verbose_name_plural = _('Socials')
