@@ -2688,7 +2688,7 @@ select option {
 
 .casting-person-info {
     background-size: cover;
-    background: url("/static/casting/img/grey_bg.png") center;
+    background: url("/static/casting/img/grey_bg.jpg") center;
     display: none;
     width: 100rem;
     height: max-content;
@@ -2705,9 +2705,8 @@ select option {
     font-family: "lora-light", sans-serif;
     font-size: 1.5rem;
     line-height: 2;
-
     overflow: hidden;
-    padding: 2rem 6rem;
+    padding: 2rem 1rem;
 }
 
 .casting-person-info .person-block {
@@ -2718,9 +2717,21 @@ select option {
     flex-direction: row;
 }
 
+.person-info-video {
+    padding-top: 2rem;
+}
+
+.person-next.swiper-button-next {
+    background: none;
+}
+
+.person-prev.swiper-button-prev {
+    background: none;
+}
+
 .casting-person-info .person-avatar {
     width: calc((100% - 5%) * .33333333);
-    padding: 2rem 3.5rem;
+    padding: 2rem .5rem;
     height: 58rem;
     display: flex;
     align-items: center;
@@ -2729,14 +2740,15 @@ select option {
 
 .casting-person-info .person-avatar .person-cont {
     width: auto;
-    height: 20%;
-    overflow: hidden;
+    height: 30%;
+    margin: 0 3rem;
 }
 
 #personImages {
     position: relative;
     width: 100%;
     height: 100%;
+    flex-direction: row;
 }
 
 .casting-person-info .person-avatar img {
@@ -2807,7 +2819,6 @@ select option {
 .casting-person-info .person-avatar .like-vote span {
     display: flex;
     align-items: center;
-    color: #FFFFFF;
     margin: 0 2rem;
 }
 
@@ -3804,7 +3815,7 @@ html.no-csstransitions .casting-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-clients {
-    background: url("/static/casting/img/grey_bg.png") center center;
+    background: url("/static/casting/img/grey_bg.jpg") center center;
     background-size: cover;
     padding: 7rem 0 10rem;
     color: #757575;

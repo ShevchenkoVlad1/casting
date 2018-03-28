@@ -349,7 +349,12 @@
 
                                     <div class="person-cont swiper-container">
                                         <div id="personImages" class="swiper-wrapper"></div>
-                                        <div class="person-scroll swiper-pagination"></div>
+                                        <div class="person-prev swiper-button-prev"><i class="fa fa-angle-double-left hvr-icon-back"></i></div>
+                                        <div class="person-next swiper-button-next"><i class="fa fa-angle-double-right hvr-icon-forward"></i></div>
+                                    </div>
+
+                                    <div class="person-info-video">
+                                        <iframe src="" class="person-video-iframe" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media"></iframe>
                                     </div>
 
                                     <div class="person-info-likes">
@@ -363,10 +368,6 @@
 
                                             </span>
                                         </span>
-                                    </div>
-
-                                    <div class="person-info-video">
-                                        <iframe src="" class="person-video-iframe" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media"></iframe>
                                     </div>
 
                                 </div>
@@ -982,13 +983,12 @@
 
     <script>
         var swiperPerson = new Swiper('.person-cont.swiper-container', {
-            direction: 'vertical',
             slidesPerView: 1,
             spaceBetween: 30,
-            mousewheel: true,
-            pagination: {
-                el: '.person-scroll.swiper-pagination',
-                clickable: true
+            loop: true,
+            navigation: {
+                nextEl: '.person-next.swiper-button-next',
+                prevEl: '.person-prev.swiper-button-prev'
             }
         });
         var swiperVideo = new Swiper('.video-cont.swiper-container', {

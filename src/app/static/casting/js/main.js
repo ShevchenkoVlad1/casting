@@ -392,7 +392,6 @@
                     $('.person-grouping').html(data.grouping);
                     $('.person-about_info').html(data.about_info);
                     $('.person-video_url').html(data.video_url);
-                    console.log(data.video);
                     if (data.video !== '') {
                         var video_id = data.video_url.split("v=")[1].split("?")[0];
                         $('.person-video-iframe').attr("src", 'https://www.youtube.com/embed/' + video_id + '?autoplay=0&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1');
@@ -402,10 +401,12 @@
                         var img_arr = data.contact_image.split("\n");
                         $.each(img_arr, function (index, img_url) {
                             if (img_url !== '') {
+                                var div_slide = $('<div class="swiper-slide">');
                                 var img = $('<img class="swiper-slide">');
                                 img.attr("src", '/media/' + img_url);
-                                img.attr("class", ' person-contact_image');
-                                img.appendTo('#personImages');
+                                img.attr("class", 'person-contact_image');
+                                img.appendTo(div_slide);
+                                div_slide.appendTo('#personImages');
                             }
 
                         });
