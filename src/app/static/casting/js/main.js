@@ -513,6 +513,18 @@
         $('[data-action="like"]').click(like);
     });
 
+    function PhotoModel() {
+        $('#thumb-link').on("click", function (e) {
+            console.log('here');
+            var modal = $('#myModal');
+            modal.fadeIn('slow');
+
+            $(".close").on("click", function () {
+                modal.fadeOut('slow')
+            })
+        })
+    }
+
 
     /* Initialize
      * ------------------------------------------------------ */
@@ -535,6 +547,7 @@
         facebookShare();
         twitterShare();
         SubscribeForm();
+        PhotoModel();
 
     })();
 

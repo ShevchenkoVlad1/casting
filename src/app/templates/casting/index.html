@@ -642,9 +642,7 @@
                                     <div class="item-folio">
 
                                         <div class="item-folio__thumb">
-                                            <a href="/media/{{ photo.photo }}" id="thumb-link">
-                                                <img src="/media/{{ photo.photo }}" alt="">
-                                            </a>
+                                            <img src="/media/{{ photo.photo }}" alt="" id="thumb-link">
                                         </div>
 
                                         <div class="item-folio__text">
@@ -654,16 +652,19 @@
                                         </div>
 
                                     </div>
+                                    <!-- The Modal -->
+                                    <div id="myModal" class="modal">
+                                        <span class="close">&times;</span>
+                                        <img src="/media/{{ photo.photo }}" class="modal-content">
+                                        <div id="caption">{{ photo.title }}</div>
+                                    </div>
                                 </div>
                             {%  endfor %}
                         </div>
+                        <div class="photo-prev swiper-button-prev"><i class="fa fa-angle-double-left hvr-icon-back"></i></div>
+                        <div class="photo-next swiper-button-next"><i class="fa fa-angle-double-right hvr-icon-forward"></i></div>
                     </div> <!-- end photos-content -->
                 </div> <!-- end intro-wrap -->
-
-                <div class="photo-arrows">
-                    <div class="photo-prev swiper-button-prev"><i class="fa fa-angle-double-left hvr-icon-back"></i></div>
-                    <div class="photo-next swiper-button-next"><i class="fa fa-angle-double-right hvr-icon-forward"></i></div>
-                </div>
 
             </section> <!-- end s-photos -->
         </div>
@@ -992,8 +993,10 @@
             }
         });
         var swiperVideo = new Swiper('.video-cont.swiper-container', {
+
+            autoHeight: true,
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 5,
             slidesPerGroup: 3,
             loop: true,
             loopFillGroupWithBlank: true,
@@ -1004,8 +1007,6 @@
         });
         var swiperPhoto = new Swiper('.photo-cont.swiper-container', {
             effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
             coverflowEffect: {
                 rotate: 50,
                 stretch: 0,
