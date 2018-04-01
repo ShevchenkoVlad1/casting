@@ -730,9 +730,23 @@
 
 /* 768px - 701px */
 @media screen and (max-width: 768px) {
+    /* Social updates */
+    .s-social a.btn {
+        position: relative;
+        width: 100%;
+    }
+
     /* Footer */
+    footer ul li {
+        font-size: 15px;
+    }
+
     footer .float {
         width: 100%;
+    }
+
+    .footer-links ul {
+        justify-content: space-between;
     }
 }
 
@@ -1081,6 +1095,10 @@
         float: none;
     }
 
+    #get-all-info .person-block {
+        width: 50%;
+    }
+
     /* Video */
     .video-main iframe {
         width: 36rem;
@@ -1120,6 +1138,11 @@
     }
 
     /* Photo */
+    .s-photos .intro-wrap {
+        padding: 3rem 0 4rem;
+        color: #FFFFFF;
+    }
+
     .s-photos {
         min-height: 0;
     }
@@ -1266,6 +1289,12 @@
         min-height: 642px;
     }
 
+    .cast-td img {
+        margin: 0 auto;
+        width: 100px;
+        height: 100px
+    }
+
     .casting-content h1 {
         font-size: 3.5rem;
     }
@@ -1344,6 +1373,11 @@
     }
 
     /* Footer */
+    .footer-links ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
     .footer-subscribe #mail-form input[type="email"] {
         padding: 1.2rem 20px 1.2rem;
         background: rgba(0, 0, 0, 0.1);
