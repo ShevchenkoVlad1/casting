@@ -330,7 +330,8 @@
 
                     <div class="container section-header" data-aos="fade-up">
                         <div class="col-full">
-                            <h1 class="display-2 display-2--light">{% trans "Sign up for the casting" %}</h1>
+                            <h1 class="display-2 display-2--light">{% trans "Casting" %}</h1>
+                            <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id blandit lectus. Sed at augue eget dui efficitur pellentesque. Nam in metus turpis. Mauris eu purus neque. Praesent sit amet dolor eros. Curabitur nec lacinia tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</h5>
                         </div>
                     </div>
 
@@ -513,7 +514,7 @@
                         <div class="casting-table">
                             <div class="contact-info">
 
-                                <h3 class="h6 hide-on-fullwidth">{% trans 'List users who`ve already signed up' %}</h3>
+                                <h3 class="h6 hide-on-fullwidth">{% trans 'Applicants' %}</h3>
 
                                 <div class="cast-table">
                                     <table id="get-all-info">
@@ -550,9 +551,8 @@
         <!-- videos
         ================================================== -->
         <div data-section="videos">
-            <section class="s-videos" data-parallax="scroll" data-image-src="/static/casting/img/red_bg.jpg" data-position-y=center>
+            <section class="s-videos" data-parallax="scroll" data-image-src="/static/casting/img/lights-bg.png" data-position-y=top>
 
-                <div class="overlay"></div>
 
                 <div class="video-block">
 
@@ -589,7 +589,6 @@
                                                     <div class="featured-video">
                                                         <img class="video-image" src="https://img.youtube.com/vi/{{ video.video_id }}/0.jpg">
                                                         <img class="play-video" src="/static/casting/img/youtube-play.png">
-                                                        <p class="video-title">{{ video.title }}</p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -599,7 +598,6 @@
                                                     <div class="featured-video">
                                                         <img class="video-image" src="https://img.youtube.com/vi/0.jpg">
                                                         <img class="play-video" src="/static/casting/img/youtube-play.png">
-                                                        <p class="video-title">{{ video.title }}</p>
                                                     </div>
                                                 </div>
                                             </li>
@@ -623,7 +621,7 @@
         <!-- photos
         ================================================== -->
         <div data-section="photos">
-            <section class="s-photos" data-parallax="scroll" data-image-src="/static/casting/img/lights-bg.png" data-position-y=center>
+            <section class="s-photos" data-parallax="scroll" data-image-src="/static/casting/img/2914.jpg" data-position-y=center>
 
                 <div class="intro-wrap">
 
@@ -687,10 +685,10 @@
                             <a href="{{ instagram.social_url }}" class="btn hvr-pulse-shrink" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i>Instagram</a>
                             <a href="{{ facebook.social_url }}" class="btn hvr-pulse-shrink" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
                         </div>
-                        <!--<div class="social-updates">-->
-                            <!--<iframe class="instagram-news" src="https://www.powr.io/plugins/social-feed/view?unique_label=f2386889_1521584497&external_type=iframe" height="100%" frameborder="0"></iframe>-->
-                            <!--<iframe class="facebook-news" src="https://www.powr.io/plugins/social-feed/view?unique_label=c482661a_1521585530&external_type=iframe" height="100%" frameborder="0"></iframe>-->
-                        <!--</div>-->
+                        <div class="social-updates">
+                            <iframe class="instagram-news" src="https://www.powr.io/plugins/social-feed/view?unique_label=f2386889_1521584497&external_type=iframe" height="100%" frameborder="0"></iframe>
+                            <iframe class="facebook-news" src="https://www.powr.io/plugins/social-feed/view?unique_label=c482661a_1521585530&external_type=iframe" height="100%" frameborder="0"></iframe>
+                        </div>
                     </div>
                 </div>
 

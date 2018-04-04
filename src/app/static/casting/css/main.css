@@ -2376,11 +2376,11 @@ html.no-csstransitions .home-content__main {
 }
 
 .crew-text {
-    width: calc((100% - 5%) * .66666667);
+    width: calc((100% - 5%) * .75);
     margin-top: 0;
     margin-right: 0;
     max-width: 1024px;
-    padding-left: 20px;
+    padding-left: 4rem;
 }
 
 .crew-text h2 {
@@ -2402,11 +2402,15 @@ html.no-csstransitions .home-content__main {
     font-family: 'Source Sans Pro', sans-serif;
 }
 
+.crew-position {
+    margin-top: 1.2rem;
+}
+
 .crew-position h2 {
-    font-family: 'RUSCheap', sans-serif;
+    font-family: 'WarIsOver', sans-serif;
     margin: 0;
     color: #FFFFFF;
-    font-size: 27pt;
+    font-size: 19pt;
     line-height: 1.4;
     font-style: normal;
     font-weight: normal;
@@ -2850,6 +2854,7 @@ select option {
 }
 
 #person-close {
+    margin-right: 3rem;
     float: right;
     color: white;
     cursor: pointer;
