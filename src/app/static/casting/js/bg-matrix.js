@@ -136,9 +136,9 @@
      * ------------------------------------------------------ */
     (function ssInit() {
 
-        // aboutBg();
-        // castingBg();
-        // subscribeBg();
+        aboutBg();
+        castingBg();
+        subscribeBg();
 
     })();
 

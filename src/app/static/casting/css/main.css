@@ -1346,7 +1346,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .display-2 {
-    font-family: "lora-regular", sans-serif;
+    font-family: 'WarIsOver', sans-serif;
     font-size: 5.2rem;
     line-height: 1.255;
     color: #000000;
@@ -1755,29 +1755,6 @@ button::-moz-focus-inner, input::-moz-focus-inner {
     display: table;
 }
 
-.s-home .shadow-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: .4;
-    background: -moz-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-    background: -webkit-linear-gradient(top, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#cc000000', GradientType=0);
-}
-
-.s-home .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: .6;
-    background-color: #000000;
-}
-
 .s-home .intro-wrap {
     padding: 15rem 0 25.2rem;
     background: #111111;
@@ -1790,6 +1767,13 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 /* -------------------------------------------------------------------
  * ## home content
  * ------------------------------------------------------------------- */
+#TitlesVideo {
+    width: 100%;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+}
+
 .home-content {
     display: table-cell;
     width: 100%;
@@ -1844,7 +1828,9 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 
 .home-buttons {
-    position: relative;
+    position: absolute;
+    right: 0;
+    left: 0;
     top: 63%;
 }
 
@@ -2376,7 +2362,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .crew-text {
-    width: calc((100% - 5%) * .75);
+    width: calc((100% - 5%) * .7);
     margin-top: 0;
     margin-right: 0;
     max-width: 1024px;
@@ -2674,6 +2660,14 @@ select option {
     cursor: pointer;
 }
 
+.casting-rules {
+    font-size: 10.5pt;
+}
+
+.casting-rules p {
+    margin-bottom: 1rem;
+}
+
 .casting-container {
     width: 100%;
 }
@@ -2869,6 +2863,10 @@ select option {
     width: 100%;
     position: relative;
     display: flex;
+}
+
+.casting-contact input[type="radio"] + label {
+    font-size: 8.5pt;
 }
 
 .casting-row .form-field {
@@ -3637,8 +3635,8 @@ html.no-csstransitions .casting-content__main {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 /* Modal Content (image) */
@@ -3670,13 +3668,21 @@ html.no-csstransitions .casting-content__main {
 }
 
 @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)}
-    to {-webkit-transform:scale(1)}
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
 }
 
 @keyframes zoom {
-    from {transform:scale(0)}
-    to {transform:scale(1)}
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
 
 /* The Close Button */
@@ -3698,7 +3704,7 @@ html.no-csstransitions .casting-content__main {
 }
 
 /* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px) {
     .modal-content {
         width: 100%;
     }
@@ -4440,16 +4446,45 @@ html.no-csstransitions .casting-content__main {
 
 .social-updates {
     position: relative;
-    display: block;
+    display: flex;
     margin: 0 auto;
     width: 100%;
+    height: auto;
+    padding: 6rem;
 }
 
-.facebook-news, .instagram-news {
+.social-updates img {
     margin: 0 auto;
+    width: 20rem;
+    height: 17rem;
     display: block;
-    width: 100%;
-    min-height: 370px;
+    object-fit: cover;
+    padding: 2rem 0
+}
+
+.social-updates a {
+    text-decoration: none;
+    border-radius: .4rem;
+    width: 30rem;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6);
+    position: relative;
+    display: block;
+    padding: 2rem;
+    margin: 0 .5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.social-updates a:hover, .social-updates a:after {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+
+.social-updates h5 {
+    margin: 0;
+    text-align: center;
+}
+.social-updates p {
+    font-size: 10pt;
+    color: black;
 }
 
 /* ===================================================================

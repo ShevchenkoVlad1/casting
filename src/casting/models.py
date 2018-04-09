@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+from datetime import datetime
 
 from django.contrib.contenttypes.fields import GenericForeignKey, \
     GenericRelation
@@ -7,7 +8,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.db.models import Sum
 from django.utils.translation import ugettext_lazy as _
-from datetime import datetime
 
 time_as_folder = datetime.now().strftime('%Y/%m/%d')
 
@@ -30,6 +30,10 @@ def get_film_photo_path(instance, filename):
 
 def get_partner_photo_path(instance, filename):
     return os.path.join('partner_photos', time_as_folder, filename)
+
+
+def get_news_photo_path(instance, filename):
+    return os.path.join('news_photos', time_as_folder, filename)
 
 
 class FilmAbout(models.Model):
@@ -143,6 +147,9 @@ class Person(models.Model):
     created_date = models.DateTimeField(auto_now_add=True,
                                         verbose_name=_('Created date'))
 
+    def __str__(self):
+        return '{}({})'.format(self.first_name, self.email)
+
     class Meta:
         verbose_name = _('Persons')
         verbose_name_plural = _('Persons')
@@ -208,3 +215,40 @@ class Social(models.Model):
     class Meta:
         verbose_name = _('Socials')
         verbose_name_plural = _('Socials')
+
+
+class CastingRules(models.Model):
+    about_info = models.TextField(max_length=8000, blank=True,
+                                  verbose_name=_('About info'))
+    languages = models.CharField(max_length=128, unique=False,
+                                 choices=(
+                                     ('ua', _('Ukrainian')),
+                                     ('en', _('English')),
+                                 ), default=('ua', _('Ukrainian')),
+                                 verbose_name=_('languages'))
+
+    class Meta:
+        verbose_name = _('Casting rules')
+        verbose_name_plural = _('Casting rules')
+
+
+class CastingNews(models.Model):
+    title = models.CharField(max_length=250, unique=True,
+                             verbose_name=_('Title'))
+    about_info = models.TextField(max_length=8000, blank=True,
+                                  verbose_name=_('About info'))
+    link = models.CharField(max_length=150, blank=True,
+                            verbose_name=_('Social url'))
+    photo = models.ImageField(upload_to=get_news_photo_path, blank=True,
+                              null=True, verbose_name=_('Photo'))
+
+    languages = models.CharField(max_length=128, unique=False,
+                                 choices=(
+                                     ('ua', _('Ukrainian')),
+                                     ('en', _('English')),
+                                 ), default=('ua', _('Ukrainian')),
+                                 verbose_name=_('languages'))
+
+    class Meta:
+        verbose_name = _('Casting news')
+        verbose_name_plural = _('Casting news')

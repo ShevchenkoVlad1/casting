@@ -16,7 +16,8 @@ from django.views.decorators.http import require_POST, require_GET
 
 from casting.forms import PersonForm, ImageForm
 from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, \
-    FilmAbout, FilmPhoto, Partner, Social, UserIP, LikeDislike
+    FilmAbout, FilmPhoto, Partner, Social, UserIP, LikeDislike, CastingRules, \
+    CastingNews
 
 
 class HomeView(View):
@@ -53,13 +54,15 @@ class HomeView(View):
 
         film_about = FilmAbout.objects.filter(languages=current_lang
                                               ).order_by('-id')[:1]
+        casting_rules = CastingRules.objects.filter(languages=current_lang
+                                                    ).order_by('-id')[:1]
+        news_list = CastingNews.objects.filter(languages=current_lang)
         film_photo_list = FilmPhoto.objects.all()
         partner_list = Partner.objects.all()
 
         image_form = ImageForm
 
         # social
-        twitter = Social.objects.filter(title="Twitter").get()
         instagram = Social.objects.filter(title="Instagram").get()
         youtube = Social.objects.filter(title="YouTube").get()
         facebook = Social.objects.filter(title="Facebook").get()
@@ -72,8 +75,9 @@ class HomeView(View):
             'main_in_crew': main_in_crew,
             'crew': crew,
             'film_about': film_about,
+            'news_list': news_list,
+            'casting_rules': casting_rules,
             'film_photo_list': film_photo_list,
-            'twitter': twitter,
             'instagram': instagram,
             'youtube': youtube,
             'facebook': facebook,

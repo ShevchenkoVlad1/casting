@@ -12,7 +12,6 @@
 
     /* Home */
     .home-buttons {
-        position: relative;
         top: 55%;
     }
 
@@ -48,7 +47,6 @@
 
     /* Home */
     .home-buttons {
-        position: relative;
         top: 63%;
     }
 
@@ -92,7 +90,6 @@
     }
 
     .home-buttons {
-        position: relative;
         top: 63%;
     }
 
@@ -161,7 +158,6 @@
     }
 
     .home-buttons {
-        position: relative;
         top: 67%;
     }
 
@@ -216,6 +212,10 @@
     }
 
     /* Casting */
+    .casting-rules {
+        font-size: 11.5pt;
+    }
+
     .casting-person-info {
         width: 100%;
     }
@@ -335,7 +335,6 @@
     }
 
     .home-buttons {
-        position: relative;
         top: 67%;
     }
 
@@ -422,11 +421,6 @@
     .home-content__buttons .btn {
         display: block;
         width: 50%;
-    }
-
-    .home-buttons {
-        position: relative;
-        top: 40%;
     }
 
     /* Casting */
@@ -526,11 +520,6 @@
         margin: 0 auto;
     }
 
-    .home-buttons {
-        position: relative;
-        top: 40%;
-    }
-
     .home-news a {
         float: none;
     }
@@ -574,8 +563,12 @@
         font-size: 3rem;
     }
 
+    .crew-list .crew-item {
+        width: 100%;
+        margin: auto;
+    }
+
     .crew-list .crew-text {
-        padding-left: 0;
         margin-left: 0;
     }
 
@@ -794,6 +787,14 @@
     }
 
     /* Casting */
+    .casting-rules {
+        font-size: 8.5pt;
+    }
+
+    .casting-rules p {
+        margin-bottom: 0.2rem;
+    }
+
     .casting-content__main {
         max-width: 490px;
     }
@@ -931,11 +932,6 @@
         margin: 0 auto;
     }
 
-    .home-buttons {
-        position: relative;
-        top: 20%;
-    }
-
     .home-news a {
         float: none;
     }
@@ -1006,6 +1002,14 @@
     .crew-list {
         flex-direction: column;
         margin: 1rem;
+    }
+
+    .crew-list .crew-text {
+        width: calc((100% - 5%) * .65);
+    }
+
+    .crew-list.main-in-crew .crew-text {
+        width: calc((100% - 5%) * .6);
     }
 
     .crew-list .crew-item {
@@ -1097,6 +1101,10 @@
 
     #get-all-info .person-block {
         width: 50%;
+    }
+
+    .crew-list .crew-text {
+        padding-left: 1rem;
     }
 
     /* Video */
@@ -1260,11 +1268,6 @@
         display: block;
         width: 100%;
         margin: 0 auto;
-    }
-
-    .home-buttons {
-        position: relative;
-        top: 20%;
     }
 
     .home-news a {
@@ -1469,7 +1472,11 @@
         margin: 0;
     }
 
-    .crew-text {
+    .crew-list.main-in-crew .crew-text {
+        width: 90%;
+    }
+
+    .crew-list .crew-text {
         width: 90%;
     }
 
@@ -1493,6 +1500,10 @@
     .casting-content__main {
         padding-top: 16.2rem;
         width: auto;
+    }
+
+    .crew-list .crew-text {
+        padding-left: 0;
     }
 
     /* Video */

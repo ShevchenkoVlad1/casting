@@ -2,7 +2,7 @@
 from django.contrib import admin
 
 from casting.models import Person, PersonPhoto, YoutubeVideo, Worker, \
-    FilmAbout, FilmPhoto, Partner, Social, UserIP
+    FilmAbout, FilmPhoto, Partner, Social, UserIP, CastingRules, CastingNews
 
 from django_summernote.admin import SummernoteModelAdmin
 
@@ -71,6 +71,20 @@ class FilmAboutAdmin(SummernoteModelAdmin):
     summernote_fields = ('about_info',)
     list_display = ('title', 'about_info', 'photo', 'languages',)
     fields = ('title', 'about_info', 'photo', 'languages',)
+
+
+@admin.register(CastingRules)
+class CastingRulesAdmin(SummernoteModelAdmin):
+    summernote_fields = ('about_info',)
+    list_display = ('about_info', 'languages',)
+    fields = ('about_info', 'languages',)
+
+
+@admin.register(CastingNews)
+class CastingNewsAdmin(SummernoteModelAdmin):
+    summernote_fields = ('about_info',)
+    list_display = ('title', 'about_info', 'photo', 'link', 'languages',)
+    fields = ('title', 'about_info', 'photo', 'link', 'languages',)
 
 
 @admin.register(Partner)

@@ -11,6 +11,5 @@ else
 fi
 
 python3 src/manage.py collectstatic --noinput
-python3 src/manage.py compilemessages
 
 sudo systemctl restart apache2

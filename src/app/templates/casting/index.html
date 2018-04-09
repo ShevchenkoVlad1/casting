@@ -97,7 +97,6 @@
                     </ul>
                     <ul class="home-social">
                         <li><a href="{{ facebook.social_url }}"><i class="fa fa-facebook hvr-pulse-shrink" aria-hidden="true"></i></a></li>
-                        <li><a href="{{ twitter.social_url }}"><i class="fa fa-twitter hvr-pulse-shrink" aria-hidden="true"></i></a></li>
                         <li><a href="{{ instagram.social_url }}"><i class="fa fa-instagram hvr-pulse-shrink" aria-hidden="true"></i></a></li>
                         <li><a href="{{ youtube.social_url }}"><i class="fa fa-youtube hvr-pulse-shrink" aria-hidden="true"></i></a></li>
                     </ul>
@@ -105,7 +104,6 @@
             </nav>
             <ul class="home-social social-mobile">
                 <li><a href="{{ facebook.social_url }}"><i class="fa fa-facebook hvr-pulse-shrink" aria-hidden="true"></i></a></li>
-                <li><a href="{{ twitter.social_url }}"><i class="fa fa-twitter hvr-pulse-shrink" aria-hidden="true"></i></a></li>
                 <li><a href="{{ instagram.social_url }}"><i class="fa fa-instagram hvr-pulse-shrink" aria-hidden="true"></i></a></li>
                 <li><a href="{{ youtube.social_url }}"><i class="fa fa-youtube hvr-pulse-shrink" aria-hidden="true"></i></a></li>
             </ul>
@@ -114,12 +112,12 @@
         <!-- home
         ================================================== -->
         <div data-section="home">
-            <section class="s-home target-section" data-parallax="scroll" data-image-src="/static/casting/img/home_bg.jpg" data-position-y=top>
-
-                <div class="overlay"></div>
-                <div class="shadow-overlay"></div>
-
+            <section class="s-home target-section">
                 <div class="home-content">
+                    <video autoplay muted loop id="TitlesVideo">
+                        <source src="/static/casting/img/titles.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
                     <div class="home-buttons">
                         <div class="container">
                             <div class="row">
@@ -142,12 +140,6 @@
 
                             </div>
                         </div>
-                    </div>
-
-                    <div class="home-content__scroll hvr-bounce-in">
-                        <a href="#" data-nav-section="about">
-                            <span>{% trans "Scroll Down" %}</span>
-                        </a>
                     </div>
 
                 </div>
@@ -231,7 +223,7 @@
         <!-- crew
         ================================================== -->
         <div data-section="crew">
-            <section class="s-crew" data-parallax="scroll" data-image-src="/static/casting/img/2914.jpg" data-position-y=center>
+            <section class="s-crew" data-parallax="scroll" data-image-src="/static/casting/img/wall_bg.jpg" data-position-y=center>
 
                 <div class="container section-header" data-aos="fade-up">
                     <div class="col-full">
@@ -331,7 +323,9 @@
                     <div class="container section-header" data-aos="fade-up">
                         <div class="col-full">
                             <h1 class="display-2 display-2--light">{% trans "Casting" %}</h1>
-                            <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque id blandit lectus. Sed at augue eget dui efficitur pellentesque. Nam in metus turpis. Mauris eu purus neque. Praesent sit amet dolor eros. Curabitur nec lacinia tortor. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</h5>
+                            {% for post in casting_rules %}
+                            <h5 class="casting-rules">{{ post.about_info|safe }}</h5>
+                            {% endfor %}
                         </div>
                     </div>
 
@@ -560,7 +554,7 @@
 
                         <div class="row section-header has-bottom-sep light-sep" data-aos="fade-up">
                             <div class="col-full">
-                                <h1 class="display-2">{% trans 'Videos' %}</h1>
+                                <h1 class="display-2 display-2--light">{% trans 'Videos' %}</h1>
                             </div>
                         </div> <!-- end section-header -->
 
@@ -621,7 +615,7 @@
         <!-- photos
         ================================================== -->
         <div data-section="photos">
-            <section class="s-photos" data-parallax="scroll" data-image-src="/static/casting/img/2914.jpg" data-position-y=center>
+            <section class="s-photos" data-parallax="scroll" data-image-src="/static/casting/img/wall_bg.jpg" data-position-y=center>
 
                 <div class="intro-wrap">
 
@@ -670,7 +664,7 @@
         <!-- social updates
         ================================================== -->
         <div data-section="social">
-            <section class="s-social" data-parallax="scroll" data-image-src="/static/casting/img/network-neural-bg.jpg" data-position-y=center>>
+            <section class="s-social" data-parallax="scroll" data-image-src="/static/casting/img/network-neural-bg.jpg" data-position-y=center>
 
                 <div class="intro-wrap">
 
@@ -685,10 +679,20 @@
                             <a href="{{ instagram.social_url }}" class="btn hvr-pulse-shrink" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i>Instagram</a>
                             <a href="{{ facebook.social_url }}" class="btn hvr-pulse-shrink" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i>Facebook</a>
                         </div>
-                        <!--<div class="social-updates">-->
-                            <!--<iframe class="instagram-news" src="https://www.powr.io/plugins/social-feed/view?unique_label=f2386889_1521584497&external_type=iframe" height="100%" frameborder="0"></iframe>-->
-                            <!--<iframe class="facebook-news" src="https://www.powr.io/plugins/social-feed/view?unique_label=c482661a_1521585530&external_type=iframe" height="100%" frameborder="0"></iframe>-->
-                        <!--</div>-->
+                        <div class="social-updates swiper-container">
+                            <div class="swiper-wrapper">
+                                {% for news in news_list %}
+                                <div class="swiper-slide">
+                                    <a href="{{ news.link }}" target="_blank">
+                                        <img src="/media/{{ news.photo }}" alt="">
+                                        <h5>{{ news.title }}</h5>
+                                        {{ news.about_info|safe }}
+                                    </a>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="soc-pag swiper-pagination"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -794,7 +798,6 @@
                 <div class="text-center">
                     <ul class="footer-social">
                         <li><a href="{{ facebook.social_url }}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="{{ twitter.social_url }}"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                         <li><a href="{{ instagram.social_url }}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                         <li><a href="{{ youtube.social_url }}"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
                     </ul>
@@ -828,50 +831,19 @@
     {% if is_welcome == True %}
     <div class="welcome-section content-hidden">
         <div class="content-wrap">
-            {% if LANGUAGE_CODE == 'ru' %}
+            {% if LANGUAGE_CODE == 'ua' %}
             <ul class="fly-in-text">
-                <li>Г</li>
-                <li>О</li>
-                <li>Т</li>
-                <li>О</li>
-                <li>В</li>
-                <li> </li>
-                <li>Л</li>
-                <li>И</li>
-                <li> </li>
-                <li>Т</li>
-                <li>Ы</li>
-            </ul>
-            <ul class="fly-in-text">
-                <li>У</li>
-                <li>М</li>
-                <li>Е</li>
-                <li>Р</li>
-                <li>Е</li>
-                <li>Т</li>
-                <li>Ь</li>
-                <li> </li>
-                <li>Р</li>
+                <li>Н</li>
                 <li>А</li>
-                <li>Д</li>
-                <li>И</li>
-            </ul>
-            <ul class="fly-in-text">
-                <li>П</li>
-                <li>Р</li>
-                <li>А</li>
-                <li>В</li>
-                <li>Д</li>
-                <li>Ы</li>
                 <li> </li>
-                <li>?</li>
-            </ul>
-            <a href="#" class="enter-button">Перейти</a>
-            {% elif LANGUAGE_CODE == 'ua' %}
-            <ul class="fly-in-text">
-                <li>Ч</li>
+                <li>Щ</li>
+                <li>О</li>
+                <li> </li>
+                <li>Т</li>
                 <li>И</li>
                 <li> </li>
+            </ul>
+            <ul class="fly-in-text">
                 <li>Г</li>
                 <li>О</li>
                 <li>Т</li>
@@ -879,18 +851,6 @@
                 <li>В</li>
                 <li>И</li>
                 <li>Й</li>
-                <li> </li>
-                <li>Т</li>
-                <li>И</li>
-            </ul>
-            <ul class="fly-in-text">
-                <li>П</li>
-                <li>О</li>
-                <li>М</li>
-                <li>Е</li>
-                <li>Р</li>
-                <li>Т</li>
-                <li>И</li>
                 <li> </li>
                 <li>З</li>
                 <li>А</li>
@@ -912,35 +872,32 @@
             <a href="#" class="enter-button">Перейти</a>
             {% elif LANGUAGE_CODE == 'en' %}
             <ul class="fly-in-text">
+                <li>H</li>
+                <li>O</li>
+                <li>W</li>
+                <li> </li>
+                <li>F</li>
                 <li>A</li>
                 <li>R</li>
-                <li>E</li>
                 <li> </li>
+                <li>W</li>
+                <li>I</li>
+                <li>L</li>
+                <li>L</li>
+            </ul>
+            <ul class="fly-in-text">
                 <li>Y</li>
                 <li>O</li>
                 <li>U</li>
                 <li> </li>
-                <li>R</li>
-                <li>E</li>
-                <li>A</li>
-                <li>D</li>
-                <li>Y</li>
-            </ul>
-            <ul class="fly-in-text">
-                <li>T</li>
+                <li>G</li>
                 <li>O</li>
-                <li> </li>
-                <li>D</li>
-                <li>I</li>
-                <li>E</li>
                 <li> </li>
                 <li>F</li>
                 <li>O</li>
                 <li>R</li>
                 <li> </li>
-                <li>T</li>
-                <li>H</li>
-                <li>E</li>
+                <li>A</li>
             </ul>
             <ul class="fly-in-text">
                 <li>T</li>
@@ -977,10 +934,25 @@
     <script src="/static/casting/js/bg-matrix.js"></script>
     <script src="/static/casting/js/nav.js"></script>
     <script src="/static/casting/js/swiper.min.js"></script>
-    <script async src="/static/casting/js/twitter.js"></script>
     <script src="https://apis.google.com/js/platform.js"></script>
 
     <script>
+        var w = window.innerWidth;
+
+        var num_slides = 3;
+
+        if (w <= 700)  {
+            num_slides = 2
+        }
+
+        var swiper = new Swiper('.social-updates.swiper-container', {
+            slidesPerView: num_slides,
+            spaceBetween: 30,
+            pagination: {
+                el: '.soc-pag.swiper-pagination',
+                clickable: true
+            }
+        });
         var swiperPerson = new Swiper('.person-cont.swiper-container', {
             slidesPerView: 1,
             spaceBetween: 30,
