@@ -1777,9 +1777,8 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 .home-content {
     display: table-cell;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     vertical-align: middle;
-    padding-bottom: 15.6rem;
     position: relative;
     overflow: hidden;
 }
@@ -2279,7 +2278,8 @@ html.no-csstransitions .home-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-crew {
-    background: transparent;
+    background: url("/static/casting/img/wall_bg.jpg") center center;
+    background-size: cover;
     padding: 7rem 0 10rem;
     color: #FFFFFF;
     position: relative;
@@ -2685,8 +2685,6 @@ select option {
 }
 
 .casting-person-info {
-    background-size: cover;
-    background: url("/static/casting/img/grey_bg.jpg") center;
     display: none;
     width: 100rem;
     height: max-content;
@@ -2708,6 +2706,8 @@ select option {
 }
 
 .casting-person-info .person-block {
+    background-size: cover;
+    background: url("/static/casting/img/grey_bg.jpg") center;
     width: 100%;
     position: relative;
     margin-top: 1.5rem;
@@ -2772,7 +2772,11 @@ select option {
 .casting-person-info .person-avatar .like-vote i {
     content: "\f08a";
     color: #730606;
-    font-size: 5rem;
+    font-size: 3rem;
+}
+
+.pers-pag .swiper-pagination-bullet {
+    background: #c80606;
 }
 
 /* Icon Bounce */
@@ -2817,7 +2821,7 @@ select option {
 .casting-person-info .person-avatar .like-vote span {
     display: flex;
     align-items: center;
-    margin: 0 2rem;
+    margin-right: 2rem;
 }
 
 .casting-person-info .person-info {
@@ -2840,7 +2844,9 @@ select option {
 }
 
 #person-id {
+    width: 100%;
     display: flex;
+    color: white;
     justify-content: center;
     font-family: "lora-regular", sans-serif;
     font-size: 4.2rem;
@@ -3342,7 +3348,8 @@ html.no-csstransitions .casting-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-videos {
-    background: transparent;
+    background: url("/static/casting/img/lights-bg.png") center center;
+    background-size: cover;
     padding: 0;
     position: relative;
     height: 100%;
@@ -3382,9 +3389,6 @@ html.no-csstransitions .casting-content__main {
     color: #111111;
 }
 
-.s-videos .container {
-    width: 100%;
-}
 
 .s-videos .intro-wrap .section-header {
     position: relative;
@@ -3436,7 +3440,7 @@ html.no-csstransitions .casting-content__main {
     opacity: 0;
     position: absolute;
     transition: opacity .5s ease;
-    width: 13%;
+    width: 45%;
 }
 
 .featured-content-img:hover .play-video {
@@ -3450,7 +3454,7 @@ html.no-csstransitions .casting-content__main {
 .social-buttons {
     text-align: center;
     margin: 2rem auto;
-    width: 40%;
+    width: 30%;
     height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -3461,9 +3465,10 @@ html.no-csstransitions .casting-content__main {
 }
 
 .youtube-style {
-    margin: auto;
     position: relative;
-    display: block;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
 }
 
 .social-buttons a {
@@ -3471,12 +3476,13 @@ html.no-csstransitions .casting-content__main {
     height: auto;
     background: none;
     border: black;
-    display: block;
+    display: flex;
     margin: auto;
 }
 
 .social-buttons a img {
-    width: 50%;
+    height: 100%;
+    width: 100%;
     border-radius: 10%;
 }
 
@@ -3496,67 +3502,8 @@ html.no-csstransitions .casting-content__main {
     display: flex;
 }
 
-.video-arrows {
-    bottom: 20%;
-    display: flex;
-    position: absolute;
-    flex-direction: row;
-    width: 100%;
-}
-
-.photo-arrows {
-    display: flex;
-}
-
-.video-next.swiper-button-next {
-    background: none;
-    z-index: 0;
-    right: 0;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    margin-top: 0;
-    display: flex;
-    width: 104%;
-    height: 100%;
-    align-items: center;
-    justify-content: flex-end;
-    flex-direction: row;
-
-}
-
-.video-prev.swiper-button-prev {
-    background: none;
-    z-index: 0;
-    right: 0;
-    left: 0;
-    display: flex;
-    top: 0;
-    bottom: 0;
-    margin-top: 0;
-    width: 104%;
-    height: 100%;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-}
-
-.video-next.swiper-button-next {
-    font-size: 5rem;
-}
-
-.video-prev.swiper-button-prev {
-    font-size: 5rem;
-}
-
-.photo-next.swiper-button-next {
-    background: none;
-    font-size: 5rem;
-}
-
-.photo-prev.swiper-button-prev {
-    background: none;
-    font-size: 5rem;
+.video-pag .swiper-pagination-bullet{
+    background: #c80606;
 }
 
 .video-slideshow li {
@@ -3594,7 +3541,8 @@ html.no-csstransitions .casting-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-photos {
-    background: transparent;
+    background: url("/static/casting/img/wall_bg.jpg") center center;
+    background-size: cover;
     padding: 0;
     position: relative;
     height: 100%;
@@ -3616,12 +3564,15 @@ html.no-csstransitions .casting-content__main {
     cursor: pointer;
 }
 
-.photo-next {
-    margin-right: 10rem;
+
+.photo-pag .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background: #ec6161;
+    opacity: 1;
 }
 
-.photo-prev {
-    margin-right: 10rem;
+.photo-pag .swiper-pagination-bullet{
+    background: rgb(230, 6, 6);
+    opacity: .5;
 }
 
 /* The Modal (background) */
@@ -4392,7 +4343,8 @@ html.no-csstransitions .casting-content__main {
  *
  * ------------------------------------------------------------------- */
 .s-social {
-    background: transparent;
+    background: url("/static/casting/img/red_bg.jpg") center center;
+    background-size: cover;
     padding: 0;
     min-height: 800px;
     position: relative;
@@ -4487,6 +4439,9 @@ html.no-csstransitions .casting-content__main {
     color: black;
 }
 
+.soc-pag .swiper-pagination-bullet{
+    background: #333
+}
 /* ===================================================================
  * # footer
  *

@@ -1118,7 +1118,7 @@
     }
 
     .social-buttons {
-        width: 100%;
+        width: 73%;
     }
 
     .social-buttons a img {
@@ -1183,6 +1183,18 @@
 
     .clients-testimonials .testimonials p {
         font-size: 2rem;
+    }
+
+    /* Social updates */
+    .social-updates img {
+        width: 12rem;
+        height: 10rem;
+    }
+
+    .social-updates p {
+        font-size: 7.5pt;
+        color: black;
+        text-align: justify;
     }
 
     /* Subscribe */

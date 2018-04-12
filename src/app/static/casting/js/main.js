@@ -419,6 +419,9 @@
                     $('.casting-person-info-overlay').fadeIn("slow");
                     $('.casting-person-info').fadeIn("slow");
                     $('.casting-content').fadeOut("slow");
+                    $('html, body').animate({
+                        scrollTop: $("#scrollToCast").offset().top
+                    }, 2000);
                 });
 
 

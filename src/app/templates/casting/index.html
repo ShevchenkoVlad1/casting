@@ -223,7 +223,7 @@
         <!-- crew
         ================================================== -->
         <div data-section="crew">
-            <section class="s-crew" data-parallax="scroll" data-image-src="/static/casting/img/wall_bg.jpg" data-position-y=center>
+            <section class="s-crew">
 
                 <div class="container section-header" data-aos="fade-up">
                     <div class="col-full">
@@ -330,7 +330,7 @@
                     </div>
 
                     <!-- Pop-up -->
-                    <div class="casting-container">
+                    <div class="casting-container" id="scrollToCast">
 
                         <div class="casting-person-info-overlay"></div>
 
@@ -344,8 +344,7 @@
 
                                     <div class="person-cont swiper-container">
                                         <div id="personImages" class="swiper-wrapper"></div>
-                                        <div class="person-prev swiper-button-prev"><i class="fa fa-angle-double-left hvr-icon-back"></i></div>
-                                        <div class="person-next swiper-button-next"><i class="fa fa-angle-double-right hvr-icon-forward"></i></div>
+                                        <div class="pers-pag swiper-pagination"></div>
                                     </div>
 
                                     <div class="person-info-video">
@@ -545,7 +544,7 @@
         <!-- videos
         ================================================== -->
         <div data-section="videos">
-            <section class="s-videos" data-parallax="scroll" data-image-src="/static/casting/img/lights-bg.png" data-position-y=top>
+            <section class="s-videos">
 
 
                 <div class="video-block">
@@ -563,16 +562,17 @@
                             <div class="col-block video-main">
                                 <iframe class="main-youtube" data-youtube-id="" src="https://www.youtube.com/embed/qylb0dvPOf8?autoplay=0&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media"></iframe>
                             </div>
-
-                            <div class="videos_social social-buttons">
-                                <a id="facebook_share" href="{{ facebook.social_url }}" data-type="facebook" class="btn hvr-pulse-shrink video-facebook" data-share-type="facebook" target="_blank">
-                                    <img src="/static/casting/img/icons/facebook-icon.png" alt="">                                </a>
+                            <div class="video-social-block">
+                                <div class="videos_social social-buttons">
+                                    <a id="facebook_share" href="{{ facebook.social_url }}" data-type="facebook" class="btn hvr-pulse-shrink video-facebook" data-share-type="facebook" target="_blank">
+                                        <img src="/static/casting/img/icons/facebook-icon.png" alt="">                                </a>
+                                    <a id="instagram_share" href="{{ instagram.social_url }}" data-type="instagram" class="btn hvr-pulse-shrink video-facebook" data-share-type="instagram" target="_blank">
+                                        <img src="/static/casting/img/icons/instagram-icon.png" alt="">
+                                    </a>
+                                </div>
                                 <div class="youtube-style">
                                     <div class="g-ytsubscribe btn hvr-pulse-shrink" data-channelid="{{ youtube.social_id }}" data-layout="default" data-count="default"></div>
                                 </div>
-                                <a id="instagram_share" href="{{ instagram.social_url }}" data-type="instagram" class="btn hvr-pulse-shrink video-facebook" data-share-type="instagram" target="_blank">
-                                    <img src="/static/casting/img/icons/instagram-icon.png" alt="">
-                                </a>
                             </div>
                             <div class="block-tab-full video-slideshow padding-video">
                                 <div class="video-cont swiper-container">
@@ -597,16 +597,12 @@
                                             </li>
                                         {% endfor %}
                                     </ul>
+                                    <div class="video-pag swiper-pagination"></div>
                                 </div>
 
                             </div>
                         </div>
                     </div> <!-- end intro-wrap -->
-
-                    <div class="video-arrows">
-                        <i class="fa fa-caret-left hvr-icon-back video-prev swiper-button-prev"></i>
-                        <i class="fa fa-caret-right hvr-icon-forward video-next swiper-button-next"></i>
-                    </div>
                 </div>
 
             </section> <!-- end s-videos -->
@@ -615,7 +611,7 @@
         <!-- photos
         ================================================== -->
         <div data-section="photos">
-            <section class="s-photos" data-parallax="scroll" data-image-src="/static/casting/img/wall_bg.jpg" data-position-y=center>
+            <section class="s-photos">
 
                 <div class="intro-wrap">
 
@@ -653,8 +649,7 @@
                                 </div>
                             {%  endfor %}
                         </div>
-                        <div class="photo-prev swiper-button-prev"><i class="fa fa-angle-double-left hvr-icon-back"></i></div>
-                        <div class="photo-next swiper-button-next"><i class="fa fa-angle-double-right hvr-icon-forward"></i></div>
+                        <div class="photo-pag swiper-pagination"></div>
                     </div> <!-- end photos-content -->
                 </div> <!-- end intro-wrap -->
 
@@ -664,7 +659,7 @@
         <!-- social updates
         ================================================== -->
         <div data-section="social">
-            <section class="s-social" data-parallax="scroll" data-image-src="/static/casting/img/network-neural-bg.jpg" data-position-y=center>
+            <section class="s-social">
 
                 <div class="intro-wrap">
 
@@ -681,6 +676,24 @@
                         </div>
                         <div class="social-updates swiper-container">
                             <div class="swiper-wrapper">
+                                {% for news in news_list %}
+                                <div class="swiper-slide">
+                                    <a href="{{ news.link }}" target="_blank">
+                                        <img src="/media/{{ news.photo }}" alt="">
+                                        <h5>{{ news.title }}</h5>
+                                        {{ news.about_info|safe }}
+                                    </a>
+                                </div>
+                                {% endfor %}
+                                {% for news in news_list %}
+                                <div class="swiper-slide">
+                                    <a href="{{ news.link }}" target="_blank">
+                                        <img src="/media/{{ news.photo }}" alt="">
+                                        <h5>{{ news.title }}</h5>
+                                        {{ news.about_info|safe }}
+                                    </a>
+                                </div>
+                                {% endfor %}
                                 {% for news in news_list %}
                                 <div class="swiper-slide">
                                     <a href="{{ news.link }}" target="_blank">
@@ -947,7 +960,6 @@
 
         var swiper = new Swiper('.social-updates.swiper-container', {
             slidesPerView: num_slides,
-            spaceBetween: 30,
             pagination: {
                 el: '.soc-pag.swiper-pagination',
                 clickable: true
@@ -956,23 +968,19 @@
         var swiperPerson = new Swiper('.person-cont.swiper-container', {
             slidesPerView: 1,
             spaceBetween: 30,
-            loop: true,
-            navigation: {
-                nextEl: '.person-next.swiper-button-next',
-                prevEl: '.person-prev.swiper-button-prev'
+            pagination: {
+                el: '.pers-pag.swiper-pagination',
+                clickable: true
             }
         });
         var swiperVideo = new Swiper('.video-cont.swiper-container', {
-
-            autoHeight: true,
-            slidesPerView: 3,
-            spaceBetween: 5,
-            slidesPerGroup: 3,
+            slidesPerView: num_slides,
             loop: true,
             loopFillGroupWithBlank: true,
-            navigation: {
-                nextEl: '.video-next.swiper-button-next',
-                prevEl: '.video-prev.swiper-button-prev'
+            spaceBetween: 30,
+            pagination: {
+                el: '.video-pag.swiper-pagination',
+                clickable: true
             }
         });
         var swiperPhoto = new Swiper('.photo-cont.swiper-container', {
@@ -984,14 +992,13 @@
                 modifier: 1,
                 slideShadows: true
             },
-            slidesPerView: 3,
+            slidesPerView: num_slides,
             spaceBetween: 30,
-            slidesPerGroup: 3,
             loop: true,
             loopFillGroupWithBlank: true,
-            navigation: {
-                nextEl: '.photo-next.swiper-button-next',
-                prevEl: '.photo-prev.swiper-button-prev'
+            pagination: {
+                el: '.photo-pag.swiper-pagination',
+                clickable: true
             }
         })
     </script>
