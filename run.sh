@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+cp ./src/app/production_settings.py ./src/app/local_settings.py
+
 if [ "$(src/manage.py NecessaryDB)" = "True" ];
 then
     echo "NecessaryDB == TRUE"
