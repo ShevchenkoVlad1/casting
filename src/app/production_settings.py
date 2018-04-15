@@ -25,8 +25,6 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = '/static'
-
 EMAIL_HOST = get_secret('EMAIL_HOST')
 EMAIL_HOST_USER = get_secret('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = get_secret('EMAIL_HOST_PASSWORD')
