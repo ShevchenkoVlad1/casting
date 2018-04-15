@@ -2380,7 +2380,7 @@ html.no-csstransitions .home-content__main {
 }
 
 .crew-text p {
-    font-size: 12pt;
+    font-size: 13pt;
     text-shadow: 0 0 3px #000000;
 }
 
@@ -2661,7 +2661,7 @@ select option {
 }
 
 .casting-rules {
-    font-size: 10.5pt;
+    font-size: 12.5pt;
 }
 
 .casting-rules p {
@@ -2702,7 +2702,7 @@ select option {
     font-size: 1.5rem;
     line-height: 2;
     overflow: hidden;
-    padding: 2rem 1rem;
+    padding: .5rem 2rem 1rem;
 }
 
 .casting-person-info .person-block {
@@ -2849,7 +2849,7 @@ select option {
     color: white;
     justify-content: center;
     font-family: "lora-regular", sans-serif;
-    font-size: 4.2rem;
+    font-size: 2.2rem;
     line-height: 1.255;
 }
 
@@ -2858,7 +2858,7 @@ select option {
     float: right;
     color: white;
     cursor: pointer;
-    padding: 5px;
+    padding: 0;
 }
 
 #person-close:hover {
@@ -3389,7 +3389,6 @@ html.no-csstransitions .casting-content__main {
     color: #111111;
 }
 
-
 .s-videos .intro-wrap .section-header {
     position: relative;
     margin-top: 2rem;
@@ -3502,7 +3501,7 @@ html.no-csstransitions .casting-content__main {
     display: flex;
 }
 
-.video-pag .swiper-pagination-bullet{
+.video-pag .swiper-pagination-bullet {
     background: #c80606;
 }
 
@@ -3564,13 +3563,12 @@ html.no-csstransitions .casting-content__main {
     cursor: pointer;
 }
 
-
-.photo-pag .swiper-pagination-bullet.swiper-pagination-bullet-active{
+.photo-pag .swiper-pagination-bullet.swiper-pagination-bullet-active {
     background: #ec6161;
     opacity: 1;
 }
 
-.photo-pag .swiper-pagination-bullet{
+.photo-pag .swiper-pagination-bullet {
     background: rgb(230, 6, 6);
     opacity: .5;
 }
@@ -4426,6 +4424,7 @@ html.no-csstransitions .casting-content__main {
     margin: 0 .5rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
 .social-updates a:hover, .social-updates a:after {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
 }
@@ -4434,14 +4433,16 @@ html.no-csstransitions .casting-content__main {
     margin: 0;
     text-align: center;
 }
+
 .social-updates p {
     font-size: 10pt;
     color: black;
 }
 
-.soc-pag .swiper-pagination-bullet{
+.soc-pag .swiper-pagination-bullet {
     background: #333
 }
+
 /* ===================================================================
  * # footer
  *
