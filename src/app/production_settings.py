@@ -9,8 +9,8 @@ TEMPLATES[0]['DIRS'].append("/src/app/templates")
 
 
 def get_secret(key):
-    print('{}: {}'.format(key, type(key)))
     value = os.environ.get(key)
+    print('{} = {}: {}'.format(key, value, type(value)))
     return str(value).strip()
 
 
