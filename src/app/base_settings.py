@@ -18,6 +18,12 @@ ALLOWED_HOSTS = []
 
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = [
+        'morethaneverythingmovie.com',
+        '13.59.69.189',
+        'ec2-13-59-69-189.us-east-2.compute.amazonaws.com',
+    ]
 
 # Application definition
 

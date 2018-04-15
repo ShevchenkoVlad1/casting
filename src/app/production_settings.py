@@ -8,16 +8,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATES[0]['DIRS'].append("/src/app/templates")
 
 
-def get_secret(key, default=False):
+def get_secret(key):
     value = os.environ.get(key)
-    if value:
-        return value.strip()
-    try:
-        f = open("/run/secrets/%s" % key)
-    except OSError as e:
-        return default
-    value = f.read()
-    f.close()
     return value.strip()
 
 
