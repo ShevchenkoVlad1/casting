@@ -27,7 +27,7 @@ DATABASES = {
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'morethancast@gmail.com'
-EMAIL_HOST_PASSWORD = 'Morethan2019'
+EMAIL_HOST_PASSWORD = '2018Morethan2019'
 EMAIL_FAKE = 'no'
 
 if get_secret('DEBUG'):
