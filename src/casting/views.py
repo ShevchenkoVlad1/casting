@@ -103,57 +103,51 @@ def save_file(file):
 @require_POST
 def casting(request):
     if request.method == 'POST':
-        person_form = PersonForm(request.POST)
-        print(person_form)
-        print(person_form.is_valid())
-        if person_form.is_valid():
-            person = Person()
-            person.first_name = request.POST['first_name']
-            person.second_name = request.POST['second_name']
-            person.email = request.POST['email']
-            person.phone = request.POST['phone']
-            person.age = request.POST['age']
-            person.city = request.POST['city']
-            person.gender = request.POST['gender']
-            person.prof = request.POST['prof']
-            person.experience = request.POST['experience']
-            person.crowd_scene = request.POST['crowd_scene']
-            person.grouping = request.POST['grouping']
-            person.about_info = request.POST['about_info']
-            person.video_url = request.POST['video_url']
-            print(person.phone)
-            print(person.age)
+        person = Person()
+        person.first_name = request.POST['first_name']
+        person.second_name = request.POST['second_name']
+        person.email = request.POST['email']
+        person.phone = request.POST['phone']
+        person.age = request.POST['age']
+        person.city = request.POST['city']
+        person.gender = request.POST['gender']
+        person.prof = request.POST['prof']
+        person.experience = request.POST['experience']
+        person.crowd_scene = request.POST['crowd_scene']
+        person.grouping = request.POST['grouping']
+        person.about_info = request.POST['about_info']
+        person.video_url = request.POST['video_url']
 
-            images = ''
-            person.save()
-            for image in request.FILES.getlist('contact_image'):
-                save_file(image)
-                photo = PersonPhoto(
-                    person=person,
-                    photo='person_photos/%s' % image._get_name())
-                images += '/media/person_photos/%s\n' % image._get_name()
+        images = ''
+        person.save()
+        for image in request.FILES.getlist('contact_image'):
+            save_file(image)
+            photo = PersonPhoto(
+                person=person,
+                photo='person_photos/%s' % image._get_name())
+            images += '/media/person_photos/%s\n' % image._get_name()
 
-                photo.save()
-            person.images = images
-            person.save()
+            photo.save()
+        person.images = images
+        person.save()
 
-            # Email sending
-            email = request.POST['email']
+        # Email sending
+        email = request.POST['email']
 
-            email_title = 'Casting | Registered'
-            context = {
-                'first_name': request.POST['first_name']
-            }
-            email_message = render_to_string('casting/email_registered.html',
-                                             context)
-            to_email = '{}'.format(email)
+        email_title = 'Casting | Registered'
+        context = {
+            'first_name': request.POST['first_name']
+        }
+        email_message = render_to_string('casting/email_registered.html',
+                                         context)
+        to_email = '{}'.format(email)
 
-            if settings.EMAIL_FAKE == 'yes':
-                print(email_message)
-            else:
-                email_sending = EmailMessage(email_title, email_message,
-                                             to=[to_email])
-                email_sending.send()
+        if settings.EMAIL_FAKE == 'yes':
+            print(email_message)
+        else:
+            email_sending = EmailMessage(email_title, email_message,
+                                         to=[to_email])
+            email_sending.send()
 
     return HttpResponse()
 
