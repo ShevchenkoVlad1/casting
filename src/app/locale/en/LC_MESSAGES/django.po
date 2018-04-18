@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-18 15:08+0300\n"
+"POT-Creation-Date: 2018-04-18 16:06+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,9 +76,11 @@ msgid "Photos"
 msgstr "Photos"
 
 #: src/app/templates/casting/index.html:94
+#: src/app/templates/casting/index.html:136
+#: src/app/templates/casting/index.html:668
 #: src/app/templates/casting/index.html:806
-msgid "Social updates"
-msgstr "Social updates"
+msgid "News"
+msgstr "News"
 
 #: src/app/templates/casting/index.html:95
 #: src/app/templates/casting/index.html:807
@@ -94,11 +96,6 @@ msgstr "Partners"
 #: src/app/templates/casting/index.html:128
 msgid "Go to the casting"
 msgstr "Go to the casting"
-
-#: src/app/templates/casting/index.html:136
-#: src/app/templates/casting/index.html:668
-msgid "News"
-msgstr "News"
 
 #: src/app/templates/casting/index.html:198 src/casting/models.py:41
 #: src/casting/models.py:175 src/casting/models.py:185
@@ -409,6 +406,9 @@ msgstr "Casting rules"
 #: src/casting/models.py:253 src/casting/models.py:254
 msgid "Casting news"
 msgstr "Casting news"
+
+#~ msgid "Social updates"
+#~ msgstr "Social updates"
 
 #~ msgid "Scroll Down"
 #~ msgstr "Scroll Down"
