@@ -11,7 +11,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>{% trans "Casting" %}</title>
+    <title>{% trans "'Понад Усе' перший український бойовик" %}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -115,7 +115,7 @@
             <section class="s-home target-section">
                 <div class="home-content">
                     <video autoplay muted loop id="TitlesVideo">
-                        <source src="/static/casting/img/titles.mp4" type="video/mp4">
+                        <source src="/static/casting/media/{% if LANGUAGE_CODE == 'ua' %}titr_ua{% else %}titr_en{% endif %}.mp4" type="video/mp4">
                         Your browser does not support HTML5 video.
                     </video>
                     <div class="home-buttons">
@@ -560,7 +560,7 @@
                         <div class="film-featured-videos--desktop container" data-aos="fade-up">
 
                             <div class="col-block video-main">
-                                <iframe class="main-youtube" data-youtube-id="" src="https://www.youtube.com/embed/qylb0dvPOf8?autoplay=0&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media"></iframe>
+                                <iframe class="main-youtube" data-youtube-id="" src="https://www.youtube.com/embed/9C-uJVk5A1o?autoplay=0&amp;rel=0&amp;enablejsapi=1&amp;widgetid=1" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media"></iframe>
                             </div>
                             <div class="video-social-block">
                                 <div class="videos_social social-buttons">
@@ -665,7 +665,7 @@
 
                     <div class="row section-header has-bottom-sep" data-aos="fade-up">
                         <div class="col-full">
-                            <h1 class="display-2 display-2--light">{% trans 'Social updates' %}</h1>
+                            <h1 class="display-2 display-2--light">{% trans 'News' %}</h1>
                         </div>
                     </div> <!-- end section-header -->
 
