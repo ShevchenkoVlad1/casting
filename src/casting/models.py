@@ -126,7 +126,7 @@ class Person(models.Model):
     email = models.EmailField()
     phone = models.CharField(max_length=20, default=None,
                              verbose_name=_('Phone'))
-    age = models.DateField(null=True, blank=True, verbose_name=_('Age'))
+    age = models.CharField(max_length=20, default=None, verbose_name=_('Age'))
     city = models.CharField(max_length=70, verbose_name=_('City'))
     gender = models.CharField(max_length=70, verbose_name=_('Gender'))
     prof = models.CharField(max_length=70, verbose_name=_('Professionalism'))

@@ -9,7 +9,7 @@ class PersonForm(forms.ModelForm):
     second_name = forms.CharField(max_length=35)
     email = forms.EmailField()
     phone = forms.CharField(max_length=20)
-    age = forms.DateField()
+    age = forms.CharField(max_length=20)
     city = forms.CharField(max_length=70)
     gender = forms.CharField(max_length=70)
     prof = forms.CharField(max_length=70)

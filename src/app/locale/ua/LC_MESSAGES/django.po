@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-18 16:09+0300\n"
+"POT-Creation-Date: 2018-04-18 17:59+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: src/app/admin_dashboard.py:13 src/app/templates/casting/index.html:91
 #: src/app/templates/casting/index.html:325
-#: src/app/templates/casting/index.html:803
+#: src/app/templates/casting/index.html:785
 msgid "Casting"
 msgstr "Кастинг"
 
@@ -48,46 +48,46 @@ msgid "'Понад Усе' перший український бойовик"
 msgstr "'Понад Усе' перший український бойовик"
 
 #: src/app/templates/casting/index.html:88
-#: src/app/templates/casting/index.html:800
+#: src/app/templates/casting/index.html:782
 msgid "Home"
 msgstr "Головна"
 
 #: src/app/templates/casting/index.html:89
-#: src/app/templates/casting/index.html:801
+#: src/app/templates/casting/index.html:783
 msgid "About"
 msgstr "Опис"
 
 #: src/app/templates/casting/index.html:90
-#: src/app/templates/casting/index.html:802
+#: src/app/templates/casting/index.html:784
 msgid "Crew"
 msgstr "Команда"
 
 #: src/app/templates/casting/index.html:92
 #: src/app/templates/casting/index.html:556
-#: src/app/templates/casting/index.html:804
+#: src/app/templates/casting/index.html:786
 msgid "Videos"
 msgstr "Відео"
 
 #: src/app/templates/casting/index.html:93
 #: src/app/templates/casting/index.html:620
-#: src/app/templates/casting/index.html:805
+#: src/app/templates/casting/index.html:787
 msgid "Photos"
 msgstr "Фото"
 
 #: src/app/templates/casting/index.html:94
 #: src/app/templates/casting/index.html:136
 #: src/app/templates/casting/index.html:668
-#: src/app/templates/casting/index.html:806
+#: src/app/templates/casting/index.html:788
 msgid "News"
 msgstr "Новини"
 
 #: src/app/templates/casting/index.html:95
-#: src/app/templates/casting/index.html:807
+#: src/app/templates/casting/index.html:789
 msgid "Subscribe"
 msgstr "Підписка"
 
 #: src/app/templates/casting/index.html:96
-#: src/app/templates/casting/index.html:808 src/casting/models.py:203
+#: src/app/templates/casting/index.html:790 src/casting/models.py:203
 #: src/casting/models.py:204
 msgid "Partners"
 msgstr "Партнери"
@@ -195,7 +195,7 @@ msgid "Your Second Name"
 msgstr "Ваше Прізвище"
 
 #: src/app/templates/casting/index.html:408
-#: src/app/templates/casting/index.html:736
+#: src/app/templates/casting/index.html:718
 msgid "Your Email"
 msgstr "Email"
 
@@ -254,17 +254,17 @@ msgid "Url On Your Video"
 msgstr "Посилання на Ваше відео"
 
 #: src/app/templates/casting/index.html:481
-#: src/app/templates/casting/index.html:739
+#: src/app/templates/casting/index.html:721
 msgid "Submit"
 msgstr "Відправити"
 
 #: src/app/templates/casting/index.html:483
-#: src/app/templates/casting/index.html:741
+#: src/app/templates/casting/index.html:723
 msgid "Sending"
 msgstr "Відправлення"
 
 #: src/app/templates/casting/index.html:497
-#: src/app/templates/casting/index.html:752
+#: src/app/templates/casting/index.html:734
 msgid "Что-то пошло не так"
 msgstr "Щось пішло не так"
 
@@ -280,15 +280,15 @@ msgstr ""
 msgid "Applicants"
 msgstr "Кандидати"
 
-#: src/app/templates/casting/index.html:724
+#: src/app/templates/casting/index.html:706
 msgid "Subscribe us"
 msgstr "Підпишіться на нас"
 
-#: src/app/templates/casting/index.html:757
+#: src/app/templates/casting/index.html:739
 msgid "Подписка оформлена"
 msgstr "Підписку оформлено"
 
-#: src/app/templates/casting/index.html:774
+#: src/app/templates/casting/index.html:756
 msgid "Our Partners"
 msgstr "Наші партнери"
 

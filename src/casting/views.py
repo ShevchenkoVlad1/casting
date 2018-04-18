@@ -104,7 +104,8 @@ def save_file(file):
 def casting(request):
     if request.method == 'POST':
         person_form = PersonForm(request.POST)
-
+        print(person_form)
+        print(person_form.is_valid())
         if person_form.is_valid():
             person = Person()
             person.first_name = request.POST['first_name']
@@ -120,6 +121,8 @@ def casting(request):
             person.grouping = request.POST['grouping']
             person.about_info = request.POST['about_info']
             person.video_url = request.POST['video_url']
+            print(person.phone)
+            print(person.age)
 
             images = ''
             person.save()
@@ -197,8 +200,8 @@ def person_list(request):
             'gender': person.gender,
             'prof': person.prof,
             'experience': person.experience,
-            'crowd_scene': person.crowd_scene,
-            'grouping': person.grouping,
+            'crowd_scene': '✓' if person.crowd_scene else '×',
+            'grouping': '✓' if person.grouping else '×',
             'about_info': person.about_info,
             'contact_image': contact_image,
             'video_url': person.video_url,
