@@ -40,13 +40,19 @@
     var clPreloader = function () {
         $("html").addClass('cl-preload');
         var video = document.querySelector("#TitlesVideo");
-        if ( video.readyState === 4 ) {
+        function checkLoad() {
+            if ( video.readyState === 4 ) {
             $("#loader").fadeOut("slow", function () {
                 $("#preloader").delay(300).fadeOut("slow");
             });
             $("html").removeClass('cl-preload');
             $("html").addClass('cl-loaded');
+            } else {
+                setTimeout(checkLoad, 100);
+            }
         }
+
+        checkLoad();
     };
     var clMenuOnScrolldown = function () {
         var menuTrigger = $('.header-menu-toggle');
