@@ -39,13 +39,14 @@
     };
     var clPreloader = function () {
         $("html").addClass('cl-preload');
-        setTimeout(function () {
+        var video = document.querySelector("#TitlesVideo");
+        if ( video.readyState === 4 ) {
             $("#loader").fadeOut("slow", function () {
                 $("#preloader").delay(300).fadeOut("slow");
             });
             $("html").removeClass('cl-preload');
             $("html").addClass('cl-loaded');
-        }, 800);
+        }
     };
     var clMenuOnScrolldown = function () {
         var menuTrigger = $('.header-menu-toggle');
