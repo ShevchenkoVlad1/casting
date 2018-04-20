@@ -129,8 +129,8 @@
 .crew-text p{font-size:11.5pt;}
 .crew-list .crew-icon{font-size:4.5rem;float:none;margin-top:0;}
 .casting-person-info .person-avatar img{max-width:190px;}
-.casting-person-info .person-avatar{padding:2rem 1rem;width:100%;height:40rem;}
-.casting-person-info{padding:0;}
+.casting-person-info .person-avatar{padding:2rem 1rem;width:100%;}
+.casting-person-info .person-info{width:calc(100% - 5%);}
 .casting-content h3{font-size:1.5rem;}
 .casting-content h1{font-size:4rem;}
 .casting-content__main{padding-right:70px;max-width:550px;}
@@ -229,6 +229,9 @@ th, td{padding:0.5rem 2rem;}
 .crew-position h2{font-size:19pt;}
 .crew-text p{font-size:11.5pt;}
 .casting-person-info .person-block{flex-direction:row;}
+.casting-person-info{background: #d4cdcd;}
+.casting-person-info .person-avatar{height: 100%;}
+.casting-person-info .person-info{height: 100%;margin: 0}
 .s-casting{padding:3rem 0 0;}
 .casting-content h1{font-size:3.8rem;}
 .casting-social{right:2rem;}

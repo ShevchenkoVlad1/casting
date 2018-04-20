@@ -342,26 +342,24 @@
 
                                 <div class="person-avatar">
 
-                                    <div class="person-cont swiper-container">
-                                        <div id="personImages" class="swiper-wrapper"></div>
-                                        <div class="pers-pag swiper-pagination"></div>
-                                    </div>
+                                    <div id="personImages"></div>
+                                    <div class="person-dinam">
+                                        <div class="person-info-video">
+                                            <iframe src="" class="person-video-iframe" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media"></iframe>
+                                        </div>
 
-                                    <div class="person-info-video">
-                                        <iframe src="" class="person-video-iframe" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media"></iframe>
-                                    </div>
+                                        <div class="person-info-likes">
+                                            <span class="like-system">
+                                                <span class="person-likes">
 
-                                    <div class="person-info-likes">
-                                        <span class="like-system">
-                                            <span class="person-likes">
+                                                    <div class="like-vote" data-link="{% url 'person_like' pk=1 %}" data-id="" data-type="person" data-action="like" title="{% trans 'Like' %}">
+                                                        <i class="fa"></i>
+                                                        <span class="like-count" data-count="like"></span>
+                                                    </div>
 
-                                                <div class="like-vote" data-link="{% url 'person_like' pk=1 %}" data-id="" data-type="person" data-action="like" title="{% trans 'Like' %}">
-                                                    <i class="fa"></i>
-                                                    <span class="like-count" data-count="like"></span>
-                                                </div>
-
+                                                </span>
                                             </span>
-                                        </span>
+                                        </div>
                                     </div>
 
                                 </div>

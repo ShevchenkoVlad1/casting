@@ -462,15 +462,16 @@ select option{background-color:#730606;color:#fff;}
 .casting-rules p{margin-bottom:1rem;}
 .casting-container{width:100%;}
 .casting-person-info-overlay{position:absolute;display:none;top:0;left:0;width:100%;height:100%;opacity:.8;background-color:#000000;z-index:1;}
-.casting-person-info{display:none;width:100rem;height:max-content;border:2px solid #730606;color:#000000;border-radius:6px;position:relative;z-index:1;left:0;right:0;top:0;bottom:0;margin:auto;font-family:"lora-light", sans-serif;font-size:1.5rem;line-height:2;overflow:hidden;padding:.5rem 2rem 1rem;}
-.casting-person-info .person-block{background-size:cover;background:url("/static/casting/img/grey_bg.jpg") center;width:100%;position:relative;margin-top:1.5rem;display:flex;flex-direction:row;}
+.casting-person-info{background-size:cover;background:url("/static/casting/img/grey_bg.jpg") center;display:none;width:65%;height:max-content;border:2px solid #730606;color:#000000;border-radius:6px;position:relative;z-index:1;left:0;right:0;top:0;bottom:0;margin:auto;font-family:"lora-light", sans-serif;font-size:1.5rem;line-height:2;overflow:hidden;padding:.5rem 2rem 1rem;}
+.casting-person-info .person-block{width:100%;position:relative;margin-top:1.5rem;display:flex;flex-direction:row;}
 .person-info-video{padding-top:2rem;}
 .person-next.swiper-button-next{background:none;}
 .person-prev.swiper-button-prev{background:none;}
-.casting-person-info .person-avatar{width:calc((100% - 5%) * .33333333);padding:2rem .5rem;height:58rem;display:flex;align-items:center;flex-direction:column;}
+.casting-person-info .person-avatar{box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);width:calc((100% - 5%) * .6);padding:2rem .5rem;height:58rem;display:flex;align-items:center;flex-direction:column;}
 .casting-person-info .person-avatar .person-cont{width:auto;height:30%;margin:0 3rem;}
-#personImages{position:relative;width:100%;height:100%;flex-direction:row;}
-.casting-person-info .person-avatar img{margin:0;max-width:235px;width:100%;display:block;height:auto;}
+#personImages{flex-direction:column;align-content:center;position:relative;width:100%;align-items:center;display:flex;justify-content:center;flex-wrap:wrap;}
+.casting-person-info .person-avatar img{box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin:1rem;max-width:235px;width:100%;display:block;height:auto;}
+.casting-person-info .person-avatar img:hover{box-shadow:0 4px 8px 0 rgba(115, 6, 6, 0.5), 0 6px 20px 0 rgba(115, 6, 6, 0.39);}
 .casting-person-info .person-avatar iframe{margin:0;max-width:235px;display:block;height:auto;}
 .casting-person-info .person-avatar .like-vote{display:flex;margin:3rem 1rem;}
 .casting-person-info .person-avatar .like-vote i{content:"\f08a";color:#730606;font-size:3rem;}
@@ -481,7 +482,8 @@ select option{background-color:#730606;color:#fff;}
 .casting-person-info .person-avatar .like-vote i:focus:before,
 .casting-person-info .person-avatar .like-vote i:active:before{content:"\f004";-webkit-transform:scale(1.5);transform:scale(1.5);-webkit-transition-timing-function:cubic-bezier(0.47, 2.02, 0.31, -0.36);transition-timing-function:cubic-bezier(0.47, 2.02, 0.31, -0.36);}
 .casting-person-info .person-avatar .like-vote span{display:flex;align-items:center;margin-right:2rem;}
-.casting-person-info .person-info{width:calc((100% - 5%) * .66666667);padding:0 6rem;height:58rem;overflow:auto;}
+.casting-person-info .person-avatar .person-dinam{margin:1rem;position:relative;width:100%;align-items:center;display:flex;justify-content:space-around;flex-wrap:wrap;}
+.casting-person-info .person-info{box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding:1rem;margin-left:1rem;width:calc((100% - 5%) * .4);height:58rem;overflow:auto;}
 .casting-person-info .person-info p{text-align:left;font-size:1.8rem;position:relative;margin-bottom:1rem;font-weight:bold;}
 .casting-person-info .person-info p span{font-weight:normal;}
 #person-id{width:100%;display:flex;color:white;justify-content:center;font-family:"lora-regular", sans-serif;font-size:2.2rem;line-height:1.255;}

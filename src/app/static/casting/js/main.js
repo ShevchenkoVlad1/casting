@@ -260,12 +260,9 @@
                     var img_arr = data.contact_image.split("\n");
                     $.each(img_arr, function (index, img_url) {
                         if (img_url !== '') {
-                            var div_slide = $('<div class="swiper-slide">');
-                            var img = $('<img class="swiper-slide">');
+                            var img = $('<img class="person-contact_image">');
                             img.attr("src", '/media/' + img_url);
-                            img.attr("class", 'person-contact_image');
-                            img.appendTo(div_slide);
-                            div_slide.appendTo('#personImages');
+                            img.appendTo('#personImages');
                         }
                     });
                 }
